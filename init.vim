@@ -57,14 +57,13 @@ Plug 'liuchengxu/vista.vim'
 " Requirements - :LspInstallServer
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-
+Plug 'folke/lsp-colors.nvim'
 
 " Plugin       - asyncomplete 
 " Repository   - https://github.com/prabirshrestha/asyncomplete.vim
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
-
 
 " Plugin       - neoformat
 " Repository   - https://github.com/sbdchd/neoformat
