@@ -121,6 +121,9 @@ Plug 'dkarter/bullets.vim'
 
 " Plugin       - vim-markdown-toc
 " Repository   - https://github.com/mzlogin/vim-markdown-toc
+" Usage        - :GenTocGFM 
+"              - :UpdateToc
+"              - :RemoveToc 
 Plug 'mzlogin/vim-markdown-toc'
 
 " Plugin       - coc
