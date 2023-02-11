@@ -59,6 +59,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
+
 
 " Plugin       - neoformat
 " Repository   - https://github.com/sbdchd/neoformat
@@ -251,6 +253,15 @@ nmap gr <Plug>(lsp-references)
 map <leader>a <ESC>::LspCodeAction<CR>
 
 " [asyncomplete]
+call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
+  \ 'name': 'tabnine',
+  \ 'allowlist': ['*'],
+  \ 'completor': function('asyncomplete#sources#tabnine#completor'),
+  \ 'config': {
+  \   'line_limit': 1000,
+  \   'max_num_result': 20,
+  \  },
+  \ }))
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
