@@ -246,8 +246,6 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
-
-
 " [gitgutter]
 autocmd BufWritePost * GitGutter
 
@@ -280,6 +278,11 @@ EOF
 " [vim-hexokinase]
 set termguicolors
 let g:Hexokinase_highlighters = ['backgroundfull']
+
+" [fzf]
+map ff <ESC>:Files<CR>
+map fh <ESC>:History<CR>
+
 
 " [tabnine]
 " lua <<EOF
