@@ -244,10 +244,10 @@ au BufWrite * :Neoformat
 " [vim-lsp]
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_float_cursor = 0
-map dj <Plug>(lsp-previous-diagnostic)
-map dk <Plug>(lsp-next-diagnostic)
-map dh <ESC>:LspHover<CR>
-map gr <Plug>(lsp-references)
+nmap dj <Plug>(lsp-previous-diagnostic)
+nmap dk <Plug>(lsp-next-diagnostic)
+nmap dh <ESC>:LspHover<CR>
+nmap gr <Plug>(lsp-references)
 map <leader>a <ESC>::LspCodeAction<CR>
 
 " [asyncomplete]
