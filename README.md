@@ -4,7 +4,7 @@
   - [Iterm2](#iterm2)
   - [zsh](#zsh)
   - [oh-my-zsh](#oh-my-zsh)
-  - [nerd-fon](#nerd-fon)
+  - [nerd-font](#nerd-font)
   - [zplug](#zplug)
   - [复制 zsh 配置文件](#复制-zsh-配置文件)
   - [命令行工具](#命令行工具)
@@ -35,7 +35,7 @@ https://github.com/robbyrussell/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-### nerd-fon
+### nerd-font
 
 https://github.com/ryanoasis/nerd-fonts
 
