@@ -142,6 +142,10 @@ Plug 'RRethy/vim-illuminate'
 " Repository   - https://github.com/codota/tabnine-nvim
 " Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 
+" Plugin       - vim-translator
+" Repository   - https://github.com/voldikss/vim-translator
+Plug 'voldikss/vim-translator'
+
 call plug#end()
 
 " [basic]
@@ -283,6 +287,8 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 map ff <ESC>:Files<CR>
 map fh <ESC>:History<CR>
 
+" [vim-translator]
+nmap ts <ESC>:TranslateW<CR>
 
 " [tabnine]
 " lua <<EOF
