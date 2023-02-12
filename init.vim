@@ -173,7 +173,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'tzachar/cmp-fuzzy-path'
 Plug 'tzachar/fuzzy.nvim'
 
-
 " Plugin       - mason.nvim 
 " Repository   - https://github.com/williamboman/mason.nvim
 Plug 'williamboman/mason.nvim'
@@ -380,6 +379,8 @@ lua <<EOF
       { name = 'nvim_lsp' },
     }, {
       { name = 'buffer' },
+    }, {
+      { name = 'fuzzy_path' },
     })
   })
 
@@ -398,6 +399,8 @@ lua <<EOF
       { name = 'path' }
     }, {
       { name = 'cmdline' }
+    }, {
+      { name = 'fuzzy_path' }
     })
   })
 
@@ -453,18 +456,6 @@ lua <<EOF
     capabilities = capabilities,
     on_attach = on_attach,
   }
-
-  -- fzf
-  require'cmp'.setup {
-    sources = cmp.config.sources({
-      { name = 'fuzzy_path'},
-    })
-  }
-  cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-      { name = 'fuzzy_path' }
-    })
-  })
 EOF
 
 " [mason]
