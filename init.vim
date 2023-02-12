@@ -169,6 +169,10 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug 'tzachar/cmp-fuzzy-path'
+Plug 'tzachar/fuzzy.nvim'
+
 
 " Plugin       - mason.nvim 
 " Repository   - https://github.com/williamboman/mason.nvim
@@ -449,6 +453,18 @@ lua <<EOF
     capabilities = capabilities,
     on_attach = on_attach,
   }
+
+  -- fzf
+  require'cmp'.setup {
+    sources = cmp.config.sources({
+      { name = 'fuzzy_path'},
+    })
+  }
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'fuzzy_path' }
+    })
+  })
 EOF
 
 " [mason]
