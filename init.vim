@@ -397,6 +397,7 @@ lua <<EOF
   })
 
   -- Set up lspconfig.
+  -- 每种语言第一次打开文件需要执行:LspInstallServer
   -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require('lspconfig')['gopls'].setup {
