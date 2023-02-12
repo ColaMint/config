@@ -61,9 +61,9 @@ Plug 'folke/lsp-colors.nvim'
 
 " Plugin       - asyncomplete 
 " Repository   - https://github.com/prabirshrestha/asyncomplete.vim
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
 
 " Plugin       - neoformat
 " Repository   - https://github.com/sbdchd/neoformat
@@ -158,6 +158,17 @@ Plug 'voldikss/vim-translator'
 " Repository   - https://github.com/romgrk/barbar.nvim
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+
+" Plugin       - nvim-cmp 
+" Repository   - https://github.com/hrsh7th/nvim-cmp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 call plug#end()
 
@@ -259,18 +270,18 @@ nmap gr <Plug>(lsp-references)
 map <leader>a <ESC>::LspCodeAction<CR>
 
 " [asyncomplete]
-call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
-  \ 'name': 'tabnine',
-  \ 'allowlist': ['*'],
-  \ 'completor': function('asyncomplete#sources#tabnine#completor'),
-  \ 'config': {
-  \   'line_limit': 1000,
-  \   'max_num_result': 20,
-  \  },
-  \ }))
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+" call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
+"   \ 'name': 'tabnine',
+"   \ 'allowlist': ['*'],
+"   \ 'completor': function('asyncomplete#sources#tabnine#completor'),
+"   \ 'config': {
+"   \   'line_limit': 1000,
+"   \   'max_num_result': 20,
+"   \  },
+"   \ }))
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 " [gitgutter]
 autocmd BufWritePost * GitGutter
@@ -333,6 +344,76 @@ nnoremap <silent> <Space>bb <Cmd>BufferOrderByBufferNumber<CR>
 nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>
 nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
+
+" [nvim-cmp]
+set completeopt=menu,menuone,noselect
+lua <<EOF
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) 
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<Tab>'] = cmp.mapping.select_next_item(),
+      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Set up lspconfig.
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['pylsp'].setup {
+    capabilities = capabilities
+  }
+  -- npm i -g typescript typescript-language-server
+  require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+  -- npm i -g vscode-langservers-extracted
+  require('lspconfig')['html'].setup {
+    capabilities = capabilities
+  }
+EOF
 
 " [tabnine]
 " lua <<EOF
