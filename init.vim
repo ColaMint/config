@@ -55,9 +55,9 @@ Plug 'liuchengxu/vista.vim'
 " Repository   - https://github.com/prabirshrestha/vim-lsp
 " Requirements - python - pip3 install python-lsp-server 
 " Requirements - :LspInstallServer
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'folke/lsp-colors.nvim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" Plug 'folke/lsp-colors.nvim'
 
 " Plugin       - asyncomplete 
 " Repository   - https://github.com/prabirshrestha/asyncomplete.vim
@@ -170,6 +170,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+" Plugin       - mason.nvim 
+" Repository   - https://github.com/williamboman/mason.nvim
+Plug 'williamboman/mason.nvim'
+
 call plug#end()
 
 " [basic]
@@ -256,18 +260,18 @@ au BufWrite * :Neoformat
 " let g:ale_linters = {'json': [], 'proto': [], 'go': ['gopls']}
 " nmap <silent> dk <Plug>(ale_previous_wrap)
 " nmap <silent> dj <Plug>(ale_next_wrap)
-" nmap <silent> gr <ESC>:ALEFindReferences<CR>
+" nmap <silent> gr <ESC>:ALEFindReferences -quickfix<CR>
 " nmap <silent> gd <ESC>:ALEHover<CR>
 " map <leader>a <ESC>:ALECodeAction<CR>
 
 " [vim-lsp]
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_float_cursor = 0
-nmap dj <Plug>(lsp-previous-diagnostic)
-nmap dk <Plug>(lsp-next-diagnostic)
-nmap dh <ESC>:LspHover<CR>
-nmap gr <Plug>(lsp-references)
-map <leader>a <ESC>::LspCodeAction<CR>
+" let g:lsp_diagnostics_echo_cursor = 1
+" let g:lsp_diagnostics_float_cursor = 0
+" nmap dj <Plug>(lsp-previous-diagnostic)
+" nmap dk <Plug>(lsp-next-diagnostic)
+" nmap dh <ESC>:LspHover<CR>
+" nmap gr <Plug>(lsp-references)
+" map <leader>a <ESC>::LspCodeAction<CR>
 
 " [asyncomplete]
 " call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
@@ -347,6 +351,7 @@ nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 
 " [nvim-cmp]
 set completeopt=menu,menuone,noselect
+
 lua <<EOF
   -- Set up nvim-cmp.
   local cmp = require'cmp'
@@ -396,24 +401,63 @@ lua <<EOF
     })
   })
 
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+  vim.keymap.set('n', 'dj', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', 'dk', vim.diagnostic.goto_next, opts)
+
+  -- Use an on_attach function to only map the following keys
+  -- after the language server attaches to the current buffer
+  local on_attach = function(client, bufnr)
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'dh', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  end
+
   -- Set up lspconfig.
-  -- 每种语言第一次打开文件需要执行:LspInstallServer
+  -- 每种语言第一次打开文件需要执行:Mason来安装对应的lsp-server
   -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require('lspconfig')['gopls'].setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    on_attach = on_attach,
   }
   require('lspconfig')['pylsp'].setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    on_attach = on_attach,
   }
   -- npm i -g typescript typescript-language-server
   require('lspconfig')['tsserver'].setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    on_attach = on_attach,
   }
   -- npm i -g vscode-langservers-extracted
   require('lspconfig')['html'].setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    on_attach = on_attach,
   }
+EOF
+
+" [mason]
+lua <<EOF
+  require("mason").setup()
 EOF
 
 " [tabnine]
