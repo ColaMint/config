@@ -177,9 +177,9 @@ Plug 'tzachar/fuzzy.nvim'
 " Repository   - https://github.com/williamboman/mason.nvim
 Plug 'williamboman/mason.nvim'
 
-" Plugin       - vim-easymotion 
-" Repository   - https://github.com/easymotion/vim-easymotion
-Plug 'easymotion/vim-easymotion'
+" Plugin       - leap.nvim
+" Repository   - https://github.com/ggandor/leap.nvim
+Plug 'ggandor/leap.nvim'
 
 call plug#end()
 
@@ -467,18 +467,8 @@ lua <<EOF
   require("mason").setup()
 EOF
 
-" [vim-easymotion]
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" [leap]
+lua require('leap').add_default_mappings()
 
 " [tabnine]
 " lua <<EOF
