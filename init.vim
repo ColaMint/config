@@ -181,6 +181,7 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'tzachar/cmp-fuzzy-path'
 Plug 'tzachar/fuzzy.nvim'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " Plugin       - mason.nvim 
 " Repository   - https://github.com/williamboman/mason.nvim
@@ -396,6 +397,10 @@ lua <<EOF
     }, {
       { 
         name = 'nvim_lsp_signature_help',
+      },
+    }, {
+      { 
+        name = 'cmp_tabnine',
       },
     }, {
       { 
