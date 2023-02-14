@@ -177,6 +177,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'tzachar/cmp-fuzzy-path'
 Plug 'tzachar/fuzzy.nvim'
@@ -391,6 +392,10 @@ lua <<EOF
     sources = cmp.config.sources({
       { 
         name = 'nvim_lsp',
+      },
+    }, {
+      { 
+        name = 'nvim_lsp_signature_help',
       },
     }, {
       { 
