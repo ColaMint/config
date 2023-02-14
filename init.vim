@@ -171,6 +171,7 @@ Plug 'romgrk/barbar.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'amarakon/nvim-cmp-buffer-lines'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
@@ -388,11 +389,26 @@ lua <<EOF
       ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
+      { 
+        name = 'nvim_lsp',
+      },
     }, {
-      { name = 'buffer' },
+      { 
+        name = 'buffer',
+        option = {
+          get_bufnrs = function()
+            return vim.api.nvim_list_bufs()
+          end
+        },
+      },
     }, {
-      { name = 'fuzzy_path' },
+      { 
+        name = 'buffer-lines',
+      },
+    }, {
+      { 
+        name = 'fuzzy_path',
+      },
     })
   })
 
@@ -400,7 +416,14 @@ lua <<EOF
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = 'buffer' }
+      { 
+        name = 'buffer',
+        option = {
+          get_bufnrs = function()
+            return vim.api.nvim_list_bufs()
+          end
+        },
+      },
     }
   })
 
@@ -408,11 +431,17 @@ lua <<EOF
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+      { 
+        name = 'path',
+      }
     }, {
-      { name = 'cmdline' }
+      { 
+        name = 'cmdline',
+      }
     }, {
-      { name = 'fuzzy_path' }
+      { 
+        name = 'fuzzy_path',
+      }
     })
   })
 
