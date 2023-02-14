@@ -126,6 +126,13 @@ Plug 'dkarter/bullets.vim'
 "              - :RemoveToc 
 Plug 'mzlogin/vim-markdown-toc'
 
+" Plugin       - markdown-preview
+" Repository   - https://github.com/iamcco/markdown-preview.nvim
+" Usage        - :MarkdownPreview
+"              - :MarkdownPreviewStop
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+
 " Plugin       - coc
 " Repository   - https://github.com/neoclide/coc.nvim
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
