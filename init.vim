@@ -265,6 +265,7 @@ let g:neoformat_enabled_python = ['autopep8']
 let g:neoformat_enabled_markdown = ['prettier']
 let g:neoformat_enabled_sql = ['pg_format']
 let g:neoformat_enabled_go = ['goimports']
+let g:neoformat_enabled_python = ['yapf']
 au BufWrite * :Neoformat
 " au BufWrite *.go,*.proto,*.py,*.html,*.js,*.css,*.vue,*.json,*.xml,*.yml,*.yaml,*.md :Neoformat
 
