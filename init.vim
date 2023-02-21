@@ -206,6 +206,10 @@ Plug 'williamboman/mason.nvim'
 Plug 'ggandor/leap.nvim'
 Plug 'ggandor/flit.nvim'
 
+" Plugin       - focus 
+" Repository   - https://github.com/beauwilliams/focus.nvim
+Plug 'beauwilliams/focus.nvim'
+
 call plug#end()
 
 " [basic]
@@ -565,6 +569,9 @@ endfunction
 function! MyFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
+
+" [focus]
+lua require("focus").setup()
 
 " [tabnine]
 " lua <<EOF
