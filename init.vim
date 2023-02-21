@@ -24,8 +24,13 @@ Plug 'scrooloose/nerdcommenter'
 
 " Plugin       - fzf
 " Repository   - https://github.com/junegunn/fzf.vim
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+
+" Plugin       - telescope 
+" Repository   - https://github.com/nvim-telescope/telescope.nvim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 " Plugin       - lightline
 " Repository   - https://github.com/itchyny/lightline.vim
@@ -348,8 +353,14 @@ set termguicolors
 let g:Hexokinase_highlighters = ['backgroundfull']
 
 " [fzf]
-map ff <ESC>:Files<CR>
-map fh <ESC>:History<CR>
+" map ff <ESC>:Files<CR>
+" map fh <ESC>:History<CR>
+
+" [telescope]
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " [vim-translator]
 nmap ts <ESC>:TranslateW<CR>
