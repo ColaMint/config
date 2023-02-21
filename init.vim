@@ -323,6 +323,8 @@ au BufWrite * :Neoformat
 
 " [gitgutter]
 autocmd BufWritePost * GitGutter
+nmap <leader>gd <ESC>:GitGutterDiffOrig<CR>
+
 
 " [vim-doge]
 map <leader>d <ESC>:DogeGenerate<CR>
