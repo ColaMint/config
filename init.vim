@@ -119,6 +119,7 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Requirements - brew tap homebrew/cask-fonts
 "                brew install --cask font-hack-nerd-font
 Plug 'ryanoasis/vim-devicons'
+Plug 'johnstef99/vim-nerdtree-syntax-highlight'
 
 " Plugin       - vim-startify
 " Repository   - https://github.com/mhinz/vim-startify
@@ -548,6 +549,22 @@ require('flit').setup {
   opts = {}
 }
 EOF
+
+" [lightline]
+let g:lightline = {
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \ }
+      \ }
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 " [tabnine]
 " lua <<EOF
