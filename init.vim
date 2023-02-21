@@ -33,7 +33,11 @@ Plug 'itchyny/lightline.vim'
 
 " Plugin       - indentLine
 " Repository   - https://github.com/Yggdroot/indentLine
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
+
+" Plugin       - indent-blankline.nvim 
+" Repository   - https://github.com/lukas-reineke/indent-blankline.nvim
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Plugin       - tabular
 " Repository   - https://github.com/godlygeek/tabular
@@ -228,7 +232,7 @@ let g:go_info_mode = 'gopls'
 " let g:go_fmt_options = {
 "     \ 'golines': '-m 128',
 "     \ }
-autocmd FileType go set list lcs=tab:\┊\ 
+" autocmd FileType go set list lcs=tab:\┊\ 
 
 " [nerdtree]
 map <F3> :NERDTreeToggle<CR>
@@ -312,7 +316,15 @@ map <leader>d <ESC>:DogeGenerate<CR>
 " let g:rainbow_active = 1
 
 " [indentLine]
-autocmd Filetype json let g:indentLine_setConceal = 0
+" autocmd Filetype json let g:indentLine_setConceal = 0
+
+" [indent-blankline]
+lua <<EOF
+require("indent_blankline").setup {
+    show_current_context = true,
+    show_current_context_start = true,
+}
+EOF
 
 " [vim-markdown-toc]
 let g:vmt_dont_insert_fence = 1
