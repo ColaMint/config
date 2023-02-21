@@ -90,6 +90,10 @@ Plug 'sbdchd/neoformat'
 " Repository   - https://github.com/flazz/vim-colorschemes
 Plug 'flazz/vim-colorschemes'
 
+" Plugin       - tokyonight 
+" Repository   - https://github.com/folke/tokyonight.nvim
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 " Plugin       - open-browser.vim
 " Repository   - https://github.com/tyru/open-browser.vim
 Plug 'tyru/open-browser.vim'
@@ -221,9 +225,8 @@ set textwidth=500
 autocmd FileType html,xhtml,xml,css,javascript,vue setlocal expandtab shiftwidth=2 tabstop=2
 nnoremap - <PageDown>
 nnoremap = <PageUp>
-
-" [vim-colorschemes]
 colorscheme monokai
+" colorscheme tokyonight 
 
 " [YouCompleteMe]
 " let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
