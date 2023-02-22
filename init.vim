@@ -646,6 +646,11 @@ lua <<EOF
     capabilities = capabilities,
     on_attach = on_attach,
   }
+  -- npm i -g bash-language-server
+  require('lspconfig')['bashls'].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
   -- npm i -g sql-language-server
   -- personal configuration file is located on ~/.config/sql-language-server/.sqllsrc.json
   -- require('lspconfig')['sqlls'].setup {
