@@ -91,7 +91,7 @@ Plug 'liuchengxu/vista.vim'
 "                protobuf                  - brew install clang-format
 "                nginx                     - npm install -g nginxbeautifier
 "                golang                    - go install github.com/segmentio/golines@latest
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 
 " Plugin       - vim-colorschemes
 " Repository   - https://github.com/flazz/vim-colorschemes
@@ -277,20 +277,20 @@ let g:vista#renderer#icons = {
 \  }
 
 " [neoformat]
-let g:neoformat_enabled_html = ['prettier']
-let g:neoformat_enabled_css = ['prettier']
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_json = ['prettier']
-let g:neoformat_enabled_typescript = ['prettier']
-let g:neoformat_enabled_vue = ['prettier']
-let g:neoformat_enabled_xml = ['prettier']
-let g:neoformat_enabled_yaml = ['prettier']
-let g:neoformat_enabled_python = ['autopep8']
-let g:neoformat_enabled_markdown = ['prettier']
-let g:neoformat_enabled_sql = ['pg_format']
-let g:neoformat_enabled_go = ['goimports']
-let g:neoformat_enabled_python = ['yapf']
-au BufWrite * :Neoformat
+" let g:neoformat_enabled_html = ['prettier']
+" let g:neoformat_enabled_css = ['prettier']
+" let g:neoformat_enabled_javascript = ['prettier']
+" let g:neoformat_enabled_json = ['prettier']
+" let g:neoformat_enabled_typescript = ['prettier']
+" let g:neoformat_enabled_vue = ['prettier']
+" let g:neoformat_enabled_xml = ['prettier']
+" let g:neoformat_enabled_yaml = ['prettier']
+" let g:neoformat_enabled_python = ['autopep8']
+" let g:neoformat_enabled_markdown = ['prettier']
+" let g:neoformat_enabled_sql = ['pg_format']
+" let g:neoformat_enabled_go = ['goimports']
+" let g:neoformat_enabled_python = ['yapf']
+" au BufWrite * :Neoformat
 " au BufWrite *.go,*.proto,*.py,*.html,*.js,*.css,*.vue,*.json,*.xml,*.yml,*.yaml,*.md :Neoformat
 
 " [ale]
@@ -591,6 +591,8 @@ lua <<EOF
     capabilities = capabilities,
     on_attach = on_attach,
   }
+
+  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 EOF
 
 " [mason]
