@@ -221,6 +221,10 @@ Plug 'beauwilliams/focus.nvim'
 " Repository   - https://github.com/rcarriga/nvim-notify
 Plug 'rcarriga/nvim-notify'
 
+" Plugin       - toggleterm
+" Repository   - https://github.com/akinsho/toggleterm.nvim
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+
 call plug#end()
 
 " [basic]
@@ -646,6 +650,14 @@ lua require("focus").setup()
 
 " [nvim-notify]
 lua vim.opt.termguicolors = true
+
+" [toggleterm]
+lua << EOF
+require('toggleterm').setup{
+    open_mapping = [[<c-\>]],
+    direction = 'float',
+}
+EOF
 
 " [tabnine]
 " lua <<EOF
