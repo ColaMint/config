@@ -229,6 +229,10 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " Repository   - https://github.com/folke/which-key.nvim
 Plug 'folke/which-key.nvim'
 
+" Plugin       - nvim-autopairs 
+" Repository   - https://github.com/windwp/nvim-autopairs
+Plug 'windwp/nvim-autopairs'
+
 call plug#end()
 
 " [basic]
@@ -668,6 +672,11 @@ lua << EOF
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 require("which-key").setup()
+EOF
+
+" [nvim-autopairs]
+lua << EOF
+require("nvim-autopairs").setup {}
 EOF
 
 " [tabnine]
