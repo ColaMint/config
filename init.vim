@@ -36,7 +36,12 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " Plugin       - lightline
 " Repository   - https://github.com/itchyny/lightline.vim
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+
+" Plugin       - lualine 
+" Repository   - https://github.com/nvim-lualine/lualine.nvim
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Plugin       - indentLine
 " Repository   - https://github.com/Yggdroot/indentLine
@@ -606,20 +611,27 @@ require('flit').setup {
 EOF
 
 " [lightline]
-let g:lightline = {
-      \ 'component_function': {
-      \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat',
-      \ }
-      \ }
+" let g:lightline = {
+"       \ 'component_function': {
+"       \   'filetype': 'MyFiletype',
+"       \   'fileformat': 'MyFileformat',
+"       \ }
+"       \ }
+" 
+" function! MyFiletype()
+"   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+" endfunction
+" 
+" function! MyFileformat()
+"   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+" endfunction
 
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
+" [lualine]
+lua << END
+require('lualine').setup{
+    options = { theme = 'powerline' }
+}
+END
 
 " [focus]
 lua require("focus").setup()
