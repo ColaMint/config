@@ -583,6 +583,12 @@ lua <<EOF
       require("telescope.builtin").lsp_references()
     end, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+    -- https://github.com/redhat-developer/yaml-language-server/issues/486
+    if client.name == "yamlls" then
+      client.server_capabilities.documentFormattingProvider = true 
+      client.server_capabilities.documentRangeFormattingProvider = true 
+    end
   end
 
   -- Set up lspconfig.
@@ -611,6 +617,23 @@ lua <<EOF
   require('lspconfig')['jsonls'].setup {
     capabilities = capabilities,
     on_attach = on_attach,
+  }
+  -- yarn global add yaml-language-server
+  require('lspconfig')['yamlls'].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+      yaml = {
+        format = {
+          enable = true,
+          singleQuote = true,
+          bracketSpacing = true,
+        },
+        schemaStore = {
+          enable =true,
+        },
+      }
+    }
   }
 
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
