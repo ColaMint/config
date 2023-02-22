@@ -217,6 +217,10 @@ Plug 'ggandor/flit.nvim'
 " Repository   - https://github.com/beauwilliams/focus.nvim
 Plug 'beauwilliams/focus.nvim'
 
+" Plugin       - nvim-notify 
+" Repository   - https://github.com/rcarriga/nvim-notify
+Plug 'rcarriga/nvim-notify'
+
 call plug#end()
 
 " [basic]
@@ -639,6 +643,9 @@ END
 
 " [focus]
 lua require("focus").setup()
+
+" [nvim-notify]
+lua vim.opt.termguicolors = true
 
 " [tabnine]
 " lua <<EOF
