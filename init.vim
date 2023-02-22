@@ -607,6 +607,11 @@ lua <<EOF
     capabilities = capabilities,
     on_attach = on_attach,
   }
+  -- npm i -g vscode-langservers-extracted
+  require('lspconfig')['jsonls'].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
 
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 EOF
