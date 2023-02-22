@@ -233,6 +233,10 @@ Plug 'folke/which-key.nvim'
 " Repository   - https://github.com/windwp/nvim-autopairs
 Plug 'windwp/nvim-autopairs'
 
+" Plugin       - fidget 
+" Repository   - https://github.com/j-hui/fidget.nvim
+Plug 'j-hui/fidget.nvim'
+
 call plug#end()
 
 " [basic]
@@ -706,6 +710,9 @@ EOF
 lua << EOF
 require("nvim-autopairs").setup {}
 EOF
+
+" [fidget]
+lua require"fidget".setup{}
 
 " [tabnine]
 " lua <<EOF
