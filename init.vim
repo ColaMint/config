@@ -225,6 +225,10 @@ Plug 'rcarriga/nvim-notify'
 " Repository   - https://github.com/akinsho/toggleterm.nvim
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
+" Plugin       - which-key 
+" Repository   - https://github.com/folke/which-key.nvim
+Plug 'folke/which-key.nvim'
+
 call plug#end()
 
 " [basic]
@@ -657,6 +661,13 @@ require('toggleterm').setup{
     open_mapping = [[<c-\>]],
     direction = 'float',
 }
+EOF
+
+" [which-key]
+lua << EOF
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+require("which-key").setup()
 EOF
 
 " [tabnine]
