@@ -306,6 +306,18 @@ let g:go_info_mode = 'gopls'
 
 " [neo-tree]
 map <F3> :NeoTreeShowToggle<CR>
+lua << EOF
+vim.api.nvim_create_augroup("neotree", {})
+vim.api.nvim_create_autocmd("UiEnter", {
+  desc = "Open Neotree automatically",
+  group = "neotree",
+  callback = function()
+    if vim.fn.argc() == 0 then
+      vim.cmd "Neotree toggle"
+    end
+  end,
+})
+EOF
 
 " [neoformat]
 " let g:neoformat_enabled_html = ['prettier']
