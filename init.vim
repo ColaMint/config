@@ -687,7 +687,7 @@ lua <<EOF
     sources = { null_ls.builtins.formatting.prettier },
   })
 
-  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 EOF
 
 " [mason]
