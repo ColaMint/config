@@ -101,6 +101,10 @@ Plug 'flazz/vim-colorschemes'
 " Repository   - https://github.com/folke/tokyonight.nvim
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
+" Plugin       - everforest 
+" Repository   - https://github.com/sainnhe/everforest
+Plug 'sainnhe/everforest'
+
 " Plugin       - open-browser.vim
 " Repository   - https://github.com/tyru/open-browser.vim
 Plug 'tyru/open-browser.vim'
@@ -259,6 +263,7 @@ nnoremap - <PageDown>
 nnoremap = <PageUp>
 colorscheme monokai
 " colorscheme tokyonight 
+" colorscheme everforest 
 
 " [YouCompleteMe]
 " let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
@@ -699,7 +704,10 @@ EOF
 " [lualine]
 lua << END
 require('lualine').setup{
-    options = { theme = 'powerline' }
+    options = { 
+      theme = 'powerline' 
+      -- theme = 'everforest' 
+    }
 }
 END
 
