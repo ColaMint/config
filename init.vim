@@ -12,11 +12,18 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Plugin       - nerdtree
 " Repository   - https://github.com/preservim/nerdtree
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 
 " Plugin       - vim-nerdtree-syntax-highlight 
 " Repository   - https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Plugin       - neo-tree
+" Repository   - https://github.com/nvim-neo-tree/neo-tree.nvim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
 
 " Plugin       - nerdcommenter
 " Repository   - https://github.com/scrooloose/nerdcommenter
@@ -105,6 +112,10 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Repository   - https://github.com/sainnhe/everforest
 Plug 'sainnhe/everforest'
 
+" Plugin       - monokai-pro 
+" Repository   - https://github.com/loctvl842/monokai-pro.nvim
+Plug 'loctvl842/monokai-pro.nvim'
+
 " Plugin       - open-browser.vim
 " Repository   - https://github.com/tyru/open-browser.vim
 Plug 'tyru/open-browser.vim'
@@ -129,12 +140,17 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Repository   - https://github.com/ryanoasis/vim-devicons
 " Requirements - brew tap homebrew/cask-fonts
 "                brew install --cask font-hack-nerd-font
-Plug 'ryanoasis/vim-devicons'
-Plug 'johnstef99/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'johnstef99/vim-nerdtree-syntax-highlight'
 
 " Plugin       - vim-startify
 " Repository   - https://github.com/mhinz/vim-startify
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
+
+" Plugin       - dashboard-nvim 
+" Repository   - https://github.com/glepnir/dashboard-nvim
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'glepnir/dashboard-nvim'
 
 " Plugin       - vim-rainbow
 " Repository   - https://github.com/frazrepo/vim-rainbow
@@ -244,29 +260,13 @@ Plug 'windwp/nvim-autopairs'
 " Repository   - https://github.com/j-hui/fidget.nvim
 Plug 'j-hui/fidget.nvim'
 
-call plug#end()
+" Plugin       - barbecue
+" Repository   - https://github.com/utilyre/barbecue.nvim
+" Plug 'SmiteshP/nvim-navic'
+" Plug 'utilyre/barbecue.nvim'
 
-" [basic]
-syntax on
-filetype plugin indent on
-set number
-set cursorline
-set shiftwidth=4
-set tabstop=4
-set expandtab
-syntax enable
-set nobackup
-set backspace=indent,eol,start
-let mapleader = ","
-set encoding=UTF-8
-set wrap
-set textwidth=500
-autocmd FileType html,xhtml,xml,css,javascript,vue setlocal expandtab shiftwidth=2 tabstop=2
-nnoremap - <PageDown>
-nnoremap = <PageUp>
-colorscheme monokai
-" colorscheme tokyonight 
-" colorscheme everforest 
+
+call plug#end()
 
 " [YouCompleteMe]
 " let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
@@ -283,26 +283,29 @@ let g:go_info_mode = 'gopls'
 " autocmd FileType go set list lcs=tab:\┊\ 
 
 " [nerdtree]
-map <F3> :NERDTreeToggle<CR>
-autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   NERDTree
-            \ |   wincmd w
-            \ | endif
+" map <F3> :NERDTreeToggle<CR>
+" autocmd VimEnter *
+"             \   if !argc()
+"             \ |   Startify
+"             \ |   NERDTree
+"             \ |   wincmd w
+"             \ | endif
+" 
+" " [vista]
+" nmap <F2> :Vista!!<CR>
+" noremap <c-t> :silent! Vista finder coc<CR>
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" " let g:vista_default_executive = 'ale'
+" let g:vista_default_executive = 'vim_lsp'
+" let g:vista_fzf_preview = ['right:50%']
+" let g:vista#renderer#enable_icon = 1
+" let g:vista#renderer#icons = {
+" \   "function": "\uf794",
+" \   "variable": "\uf71b",
+" \  }
 
-" [vista]
-nmap <F2> :Vista!!<CR>
-noremap <c-t> :silent! Vista finder coc<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-" let g:vista_default_executive = 'ale'
-let g:vista_default_executive = 'vim_lsp'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
+" [neo-tree]
+map <F3> :NeoTreeShowToggle<CR>
 
 " [neoformat]
 " let g:neoformat_enabled_html = ['prettier']
@@ -368,13 +371,12 @@ map <leader>d <ESC>:DogeGenerate<CR>
 " [indentLine]
 " autocmd Filetype json let g:indentLine_setConceal = 0
 
-" [indent-blankline]
-lua <<EOF
-require("indent_blankline").setup {
-    show_current_context = true,
-    show_current_context_start = true,
-}
-EOF
+" [barbecue]
+" lua << EOF
+" require('barbecue').setup {
+"   theme = 'monokai-pro'
+" }
+" EOF
 
 " [vim-markdown-toc]
 let g:vmt_dont_insert_fence = 1
@@ -508,18 +510,11 @@ lua <<EOF
       ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     }),
     sources = cmp.config.sources({
-      { 
-        name = 'nvim_lsp',
-      },
-    }, {
-      { 
-        name = 'nvim_lsp_signature_help',
-      },
-    }, {
-      { 
-        name = 'cmp_tabnine',
-      },
-    }, {
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'cmp_tabnine' },
+      { name = 'buffer-lines' },
+      { name = 'fuzzy_path' },
       { 
         name = 'buffer',
         option = {
@@ -528,15 +523,14 @@ lua <<EOF
           end
         },
       },
-    }, {
-      { 
-        name = 'buffer-lines',
-      },
-    }, {
-      { 
-        name = 'fuzzy_path',
-      },
-    })
+    }),
+    formatting = {
+      format = function(entry, vim_item) 
+        local source = entry.source.name;
+        vim_item.menu = " [" .. source .. "]"
+        return vim_item
+      end
+    },
   })
 
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -595,7 +589,24 @@ lua <<EOF
     vim.keymap.set('n', 'gr', function() 
       require("telescope.builtin").lsp_references()
     end, bufopts)
-    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+
+    -- format
+    local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+    local event = "BufWritePre" -- or "BufWritePost"
+    local async = event == "BufWritePost"
+    if client.server_capabilities.documentFormattingProvider then
+      vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, async = async })
+        end,
+        desc = "[lsp] format on save",
+      })
+    end
   end
 
   -- Set up lspconfig.
@@ -685,9 +696,8 @@ lua <<EOF
   -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
   null_ls.setup({
     sources = { null_ls.builtins.formatting.prettier },
+    on_attach = on_attach,
   })
-
-  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 EOF
 
 " [mason]
@@ -729,8 +739,9 @@ EOF
 lua << END
 require('lualine').setup{
     options = { 
-      theme = 'powerline' 
+      -- theme = 'powerline' 
       -- theme = 'everforest' 
+      theme = 'monokai-pro' 
     }
 }
 END
@@ -763,6 +774,80 @@ EOF
 
 " [fidget]
 lua require"fidget".setup{}
+
+" [monokai-pro]
+lua << EOF
+require("monokai-pro").setup({
+  transparent_background = false,
+  terminal_colors = true,
+  devicons = true, -- highlight the icons of `nvim-web-devicons`
+  italic_comments = true,
+  filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
+  -- Enable this will disable filter option
+  day_night = {
+    enable = false, -- turn off by default
+    day_filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
+    night_filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
+  },
+  inc_search = "background", -- underline | background
+  background_clear = {
+    "float_win",
+    "toggleterm",
+    "telescope",
+    "which-key",
+    "renamer"
+  },-- "float_win", "toggleterm", "telescope", "which-key", "renamer"
+  plugins = {
+    bufferline = {
+      underline_selected = false,
+      underline_visible = false,
+    },
+    indent_blankline = {
+      context_highlight = "pro", -- default | pro
+    },
+  },
+  ---@param c Colorscheme
+  override = function(c) end,
+})
+EOF
+
+" [indent-blankline]
+lua <<EOF
+require("indent_blankline").setup {
+    show_current_context = true,
+    show_current_context_start = true,
+}
+EOF
+
+" [dashboard]
+lua << EOF
+require('dashboard').setup {
+  theme = 'hyper'
+}
+EOF
+
+" [basic]
+syntax on
+filetype plugin indent on
+set number
+set cursorline
+set shiftwidth=4
+set tabstop=4
+set expandtab
+syntax enable
+set nobackup
+set backspace=indent,eol,start
+let mapleader = ","
+set encoding=utf8 
+set wrap
+set textwidth=500
+autocmd FileType html,xhtml,xml,css,javascript,vue setlocal expandtab shiftwidth=2 tabstop=2
+nnoremap - <PageDown>
+nnoremap = <PageUp>
+" colorscheme monokai
+" colorscheme tokyonight 
+" colorscheme everforest 
+colorscheme monokai-pro 
 
 " [tabnine]
 " lua <<EOF
