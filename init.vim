@@ -289,7 +289,7 @@ require("monokai-pro").setup({
   },
   inc_search = "background", -- underline | background
   background_clear = {
-    -- "float_win",
+    "float_win",
     "toggleterm",
     "telescope",
     "which-key",
@@ -1288,8 +1288,9 @@ lua <<EOF
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      border = "rounded",
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -1349,6 +1350,22 @@ lua <<EOF
     --}, {
     --  { name = 'fuzzy_path' }
     })
+  })
+
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+    {border = 'rounded'}
+  )
+
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    {border = 'rounded'}
+  )
+
+  vim.diagnostic.config({
+    float = {
+      border = 'rounded',
+    },
   })
 
   -- Mappings.
