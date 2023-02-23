@@ -207,6 +207,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'tzachar/cmp-fuzzy-path'
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'MunifTanjim/prettier.nvim'
+
 
 " Plugin       - mason.nvim 
 " Repository   - https://github.com/williamboman/mason.nvim
@@ -592,9 +595,6 @@ lua <<EOF
       require("telescope.builtin").lsp_references()
     end, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
-    client.server_capabilities.documentFormattingProvider = true 
-    client.server_capabilities.documentRangeFormattingProvider = true 
   end
 
   -- Set up lspconfig.
@@ -610,24 +610,41 @@ lua <<EOF
     on_attach = on_attach,
   }
   -- npm i -g typescript typescript-language-server
-  require('lspconfig')['tsserver'].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
+  -- require('lspconfig')['tsserver'].setup {
+  --   capabilities = capabilities,
+  --   on_attach = on_attach,
+  -- }
   -- npm i -g vscode-langservers-extracted
   require('lspconfig')['html'].setup {
     capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false 
+      on_attach(client, bufnr)
+    end,
+  }
+  -- npm i -g vscode-langservers-extracted
+  require('lspconfig')['eslint'].setup {
+    capabilities = capabilities,
     on_attach = on_attach,
   }
+
   -- npm i -g vscode-langservers-extracted
   require('lspconfig')['jsonls'].setup {
     capabilities = capabilities,
-    on_attach = on_attach,
+    -- on_attach = on_attach,
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false 
+      on_attach(client, bufnr)
+    end,
   }
   -- yarn global add yaml-language-server
   require('lspconfig')['yamlls'].setup {
     capabilities = capabilities,
     on_attach = on_attach,
+    -- on_attach = function(client, bufnr)
+    --   client.server_capabilities.documentFormattingProvider = true 
+    --   on_attach(client, bufnr)
+    -- end,
     settings = {
       yaml = {
         format = {
@@ -642,10 +659,10 @@ lua <<EOF
     }
   }
   -- npm install -g vls
-  require('lspconfig')['vuels'].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
+  -- require('lspconfig')['vuels'].setup {
+  --   capabilities = capabilities,
+  --   on_attach = on_attach,
+  -- }
   -- npm install -g vim-language-server
   require('lspconfig')['vimls'].setup {
     capabilities = capabilities,
@@ -662,6 +679,12 @@ lua <<EOF
   --   capabilities = capabilities,
   --   on_attach = on_attach,
   -- }
+
+  local null_ls = require("null-ls")
+  -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
+  null_ls.setup({
+    sources = { null_ls.builtins.formatting.prettier },
+  })
 
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 EOF
