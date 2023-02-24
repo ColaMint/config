@@ -1023,6 +1023,7 @@ lua <<EOF
   -- }
 
   -- brew install bufbuild/buf/buf
+  -- brew install hadolint
   local null_ls = require("null-ls")
   -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
   null_ls.setup({
@@ -1030,6 +1031,7 @@ lua <<EOF
       null_ls.builtins.formatting.prettier, 
       null_ls.builtins.diagnostics.buf, 
       null_ls.builtins.formatting.buf,
+      null_ls.builtins.diagnostics.hadolint,
     },
     on_attach = on_attach,
   })
