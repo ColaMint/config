@@ -1022,15 +1022,14 @@ lua <<EOF
   --   on_attach = on_attach,
   -- }
 
-  -- brew tap yoheimuta/protolint
-  -- brew install protolint
+  -- brew install bufbuild/buf/buf
   local null_ls = require("null-ls")
   -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
   null_ls.setup({
     sources = { 
       null_ls.builtins.formatting.prettier, 
-      null_ls.builtins.diagnostics.protolint, 
-      null_ls.builtins.formatting.protolint,
+      null_ls.builtins.diagnostics.buf, 
+      null_ls.builtins.formatting.buf,
     },
     on_attach = on_attach,
   })
