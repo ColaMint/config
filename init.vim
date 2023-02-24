@@ -952,13 +952,13 @@ lua <<EOF
   --   on_attach = on_attach,
   -- }
   -- npm i -g vscode-langservers-extracted
-  require('lspconfig')['html'].setup {
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-      client.server_capabilities.documentFormattingProvider = false 
-      on_attach(client, bufnr)
-    end,
-  }
+  -- require('lspconfig')['html'].setup {
+  --   capabilities = capabilities,
+  --   on_attach = function(client, bufnr)
+  --     client.server_capabilities.documentFormattingProvider = false 
+  --     on_attach(client, bufnr)
+  --   end,
+  -- }
   -- npm i -g vscode-langservers-extracted
   require('lspconfig')['eslint'].setup {
     capabilities = capabilities,
@@ -1025,11 +1025,12 @@ lua <<EOF
   -- brew install bufbuild/buf/buf
   -- brew install hadolint
   -- pip3 install sqlfluff
+  -- brew install tidy-html5
   local null_ls = require("null-ls")
   -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
   null_ls.setup({
     sources = { 
-      null_ls.builtins.formatting.prettier, 
+      --null_ls.builtins.formatting.prettier, 
       null_ls.builtins.diagnostics.buf, 
       null_ls.builtins.formatting.buf,
       null_ls.builtins.diagnostics.hadolint,
@@ -1039,6 +1040,8 @@ lua <<EOF
       null_ls.builtins.formatting.sqlfluff.with({
         extra_args = { "--dialect", "mysql" },
       }),
+      null_ls.builtins.diagnostics.tidy,
+      null_ls.builtins.formatting.tidy,
     },
     on_attach = on_attach,
   })
