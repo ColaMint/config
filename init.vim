@@ -1024,6 +1024,7 @@ lua <<EOF
 
   -- brew install bufbuild/buf/buf
   -- brew install hadolint
+  -- pip3 install sqlfluff
   local null_ls = require("null-ls")
   -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
   null_ls.setup({
@@ -1032,6 +1033,12 @@ lua <<EOF
       null_ls.builtins.diagnostics.buf, 
       null_ls.builtins.formatting.buf,
       null_ls.builtins.diagnostics.hadolint,
+      null_ls.builtins.diagnostics.sqlfluff.with({
+        extra_args = { "--dialect", "mysql" }, --  Available dialects: ansi, athena, bigquery, clickhouse, databricks, db2, exasol, hive, materialize, mysql, oracle, postgres, redshift, snowflake, soql, sparksql, sqlite, teradata, tsq
+      }),
+      null_ls.builtins.formatting.sqlfluff.with({
+        extra_args = { "--dialect", "mysql" },
+      }),
     },
     on_attach = on_attach,
   })
