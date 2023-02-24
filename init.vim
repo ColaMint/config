@@ -1010,6 +1010,11 @@ lua <<EOF
     capabilities = capabilities,
     on_attach = on_attach,
   }
+  -- brew install llvm
+  -- require('lspconfig')['clangd'].setup {
+  --   capabilities = capabilities,
+  --   on_attach = on_attach,
+  -- }
   -- npm i -g sql-language-server
   -- personal configuration file is located on ~/.config/sql-language-server/.sqllsrc.json
   -- require('lspconfig')['sqlls'].setup {
@@ -1017,10 +1022,16 @@ lua <<EOF
   --   on_attach = on_attach,
   -- }
 
+  -- brew tap yoheimuta/protolint
+  -- brew install protolint
   local null_ls = require("null-ls")
   -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
   null_ls.setup({
-    sources = { null_ls.builtins.formatting.prettier },
+    sources = { 
+      null_ls.builtins.formatting.prettier, 
+      null_ls.builtins.diagnostics.protolint, 
+      null_ls.builtins.formatting.protolint,
+    },
     on_attach = on_attach,
   })
 EOF
