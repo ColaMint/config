@@ -270,8 +270,34 @@ Plug 'j-hui/fidget.nvim'
 " Plug 'SmiteshP/nvim-navic'
 " Plug 'utilyre/barbecue.nvim'
 
+" Plugin       - persistence 
+" Repository   - https://github.com/folke/persistence.nvim
+Plug 'folke/persistence.nvim'
 
 call plug#end()
+
+" [basic]
+syntax on
+filetype plugin indent on
+set number
+set cursorline
+set shiftwidth=4
+set tabstop=4
+set expandtab
+syntax enable
+set nobackup
+set backspace=indent,eol,start
+let mapleader = ","
+set encoding=utf8 
+set wrap
+set textwidth=500
+autocmd FileType html,xhtml,xml,css,javascript,vue setlocal expandtab shiftwidth=2 tabstop=2
+nnoremap - <PageDown>
+nnoremap = <PageUp>
+" colorscheme monokai
+" colorscheme tokyonight 
+" colorscheme everforest 
+
 
 " [monokai-pro]
 lua << EOF
@@ -331,6 +357,7 @@ require("monokai-pro").setup({
   end,
 })
 EOF
+colorscheme monokai-pro 
 
 
 " [YouCompleteMe]
@@ -378,7 +405,7 @@ vim.api.nvim_create_autocmd("UiEnter", {
   group = "neotree",
   callback = function()
     if vim.fn.argc() == 0 then
-      vim.cmd "Neotree toggle"
+      vim.cmd "Neotree show"
     end
   end,
 })
@@ -1204,7 +1231,10 @@ dashboard.section.buttons.val = {
     "  Recently files",
     ":Telescope oldfiles <CR>"
   ),
-  dashboard.button("s", "  Find Session", ":SearchSession<CR>"),
+  dashboard.button(
+    "s", 
+    "  Restore Session", 
+    "<cmd>lua require('persistence').load()<cr>"),
   dashboard.button(
     "p",
     "  Find project",
@@ -1226,28 +1256,19 @@ dashboard.opts.layout[1].val = 1
 require'alpha'.setup(dashboard.opts)
 EOF
 
-" [basic]
-syntax on
-filetype plugin indent on
-set number
-set cursorline
-set shiftwidth=4
-set tabstop=4
-set expandtab
-syntax enable
-set nobackup
-set backspace=indent,eol,start
-let mapleader = ","
-set encoding=utf8 
-set wrap
-set textwidth=500
-autocmd FileType html,xhtml,xml,css,javascript,vue setlocal expandtab shiftwidth=2 tabstop=2
-nnoremap - <PageDown>
-nnoremap = <PageUp>
-" colorscheme monokai
-" colorscheme tokyonight 
-" colorscheme everforest 
-colorscheme monokai-pro 
+" [persistence]
+lua << EOF
+require("persistence").setup {}
+
+-- restore the session for the current directory
+vim.api.nvim_set_keymap("n", "<leader>qs", "<cmd>lua require('persistence').load()<cr>", {})
+
+-- restore the last session
+vim.api.nvim_set_keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
+
+-- stop Persistence => session won't be saved on exit
+vim.api.nvim_set_keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {})
+EOF
 
 " [tabnine]
 " lua <<EOF
