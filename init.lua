@@ -503,9 +503,9 @@ require("lazy").setup({
             local dashboard = require("alpha.themes.dashboard")
             local pokemon = require("pokemon")
             local logo = pokemon.get {
-                    no = 'random',
-                    size = 'auto',
-                }
+                no = 'random',
+                size = 'auto',
+            }
             dashboard.section.header.val = vim.split(logo, "\n")
             dashboard.section.buttons.val = {
                 dashboard.button(
@@ -731,14 +731,14 @@ require("lazy").setup({
             })
 
             vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-                    vim.lsp.handlers.hover,
-                    { border = 'rounded' }
-                )
+                vim.lsp.handlers.hover,
+                { border = 'rounded' }
+            )
 
             vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-                    vim.lsp.handlers.signature_help,
-                    { border = 'rounded' }
-                )
+                vim.lsp.handlers.signature_help,
+                { border = 'rounded' }
+            )
 
             vim.diagnostic.config({
                 float = {
@@ -813,28 +813,6 @@ require("lazy").setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             }
-            -- npm i -g vscode-langservers-extracted
-            require('lspconfig')['jsonls'].setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-            }
-            -- yarn global add yaml-language-server
-            require('lspconfig')['yamlls'].setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = {
-                    yaml = {
-                        format = {
-                            enable = true,
-                            singleQuote = true,
-                            bracketSpacing = true,
-                        },
-                        schemaStore = {
-                            enable = true,
-                        },
-                    }
-                }
-            }
             -- npm install -g vim-language-server
             require('lspconfig')['vimls'].setup {
                 capabilities = capabilities,
@@ -855,11 +833,13 @@ require("lazy").setup({
             -- brew install hadolint
             -- pip3 install sqlfluff
             -- brew install tidy-html5
+            -- pip3 install yamllint
+            -- npm install jsonlint -g
             local null_ls = require("null-ls")
-            -- null_ls.builtins.formatting.prettier.filetypes = { "html" }
+            null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
             null_ls.setup({
                 sources = {
-                    -- null_ls.builtins.formatting.prettier,
+                    null_ls.builtins.formatting.prettier,
                     null_ls.builtins.diagnostics.buf,
                     null_ls.builtins.formatting.buf,
                     null_ls.builtins.diagnostics.hadolint,
@@ -871,6 +851,8 @@ require("lazy").setup({
                     }),
                     null_ls.builtins.diagnostics.tidy,
                     null_ls.builtins.formatting.tidy,
+                    null_ls.builtins.diagnostics.jsonlint,
+                    null_ls.builtins.diagnostics.yamllint,
                 },
                 on_attach = on_attach,
             })
