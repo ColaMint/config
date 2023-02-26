@@ -84,7 +84,7 @@ brew install neovim
 ### 复制 neovim 配置文件
 
 ```sh
-cp init.vim ~/.config/nvim/init.vim
+cp init.lua ~/.config/nvim/init.lua
 ```
 
 ### 安装插件管理器 vim-plug
