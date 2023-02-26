@@ -517,11 +517,11 @@ require("lazy").setup({
                     "s",
                     "  Restore Session",
                     "<cmd>lua require('persistence').load()<cr>"),
-                dashboard.button(
-                    "p",
-                    "  Find project",
-                    ":Telescope projects <CR>"
-                ),
+                -- dashboard.button(
+                --     "p",
+                --     "  Find project",
+                --     ":Telescope projects <CR>"
+                -- ),
                 dashboard.button(
                     "i",
                     "  Configuration",
