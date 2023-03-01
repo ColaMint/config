@@ -93,10 +93,6 @@ require("lazy").setup({
         end,
     },
     {
-        "fatih/vim-go",
-        build = ":GoInstallBinaries",
-    },
-    {
         "nvim-neo-tree/neo-tree.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -741,7 +737,10 @@ require("lazy").setup({
             -- go install golang.org/x/tools/gopls@latest
             require("lspconfig")["gopls"].setup({
                 capabilities = capabilities,
-                on_attach = on_attach,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    on_attach(client, bufnr)
+                end,
             })
             -- pip3 install python-lsp-server
             require("lspconfig")["pylsp"].setup({
@@ -771,6 +770,7 @@ require("lazy").setup({
             -- pip3 install yamllint
             -- npm install jsonlint -g
             -- cargo install stylua
+            -- go install golang.org/x/tools/cmd/goimports@latest
             local null_ls = require("null-ls")
             null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
             null_ls.setup({
@@ -791,6 +791,7 @@ require("lazy").setup({
                     null_ls.builtins.diagnostics.yamllint,
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.diagnostics.luacheck,
+                    null_ls.builtins.formatting.goimports,
                 },
                 on_attach = on_attach,
             })
