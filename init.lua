@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.cmd [[
+vim.cmd([[
   syntax enable
   filetype plugin indent on
   let mapleader = ","
@@ -27,11 +27,11 @@ vim.cmd [[
   set textwidth=500
   nnoremap - <PageDown>
   nnoremap = <PageUp>
-]]
+]])
 
 require("lazy").setup({
     {
-        'loctvl842/monokai-pro.nvim',
+        "loctvl842/monokai-pro.nvim",
         config = function()
             require("monokai-pro").setup({
                 transparent_background = false,
@@ -51,7 +51,7 @@ require("lazy").setup({
                     "toggleterm",
                     "telescope",
                     "which-key",
-                    "renamer"
+                    "renamer",
                 }, -- "float_win", "toggleterm", "telescope", "which-key", "renamer"
                 plugins = {
                     bufferline = {
@@ -89,19 +89,19 @@ require("lazy").setup({
                 end,
             })
 
-            vim.cmd('colorscheme monokai-pro')
+            vim.cmd("colorscheme monokai-pro")
         end,
     },
-    -- {
-    --     'fatih/vim-go',
-    --     build = ':GoInstallBinaries',
-    -- },
     {
-        'nvim-neo-tree/neo-tree.nvim',
+        "fatih/vim-go",
+        build = ":GoInstallBinaries",
+    },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
         dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-tree/nvim-web-devicons',
-            'MunifTanjim/nui.nvim',
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
         },
         config = function()
             require("neo-tree").setup({
@@ -137,7 +137,7 @@ require("lazy").setup({
                 --   end , -- this sorts files and directories descendantly
                 default_component_configs = {
                     container = {
-                        enable_character_fade = true
+                        enable_character_fade = true,
                     },
                     indent = {
                         indent_size = 2,
@@ -160,7 +160,7 @@ require("lazy").setup({
                         -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
                         -- then these will never be used.
                         default = "*",
-                        highlight = "NeoTreeFileIcon"
+                        highlight = "NeoTreeFileIcon",
                     },
                     modified = {
                         symbol = "[+]",
@@ -174,17 +174,17 @@ require("lazy").setup({
                     git_status = {
                         symbols = {
                             -- Change type
-                            added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                            modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                            deleted   = "✖", -- this can only be used in the git_status source
-                            renamed   = "", -- this can only be used in the git_status source
+                            added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                            modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                            deleted = "✖", -- this can only be used in the git_status source
+                            renamed = "", -- this can only be used in the git_status source
                             -- Status type
                             untracked = "",
-                            ignored   = "",
-                            unstaged  = "",
-                            staged    = "",
-                            conflict  = "",
-                        }
+                            ignored = "",
+                            unstaged = "",
+                            staged = "",
+                            conflict = "",
+                        },
                     },
                 },
                 window = {
@@ -222,8 +222,8 @@ require("lazy").setup({
                             -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
                             -- some commands may take optional config options, see `:h neo-tree-mappings` for details
                             config = {
-                                show_path = "none" -- "none", "relative", "absolute"
-                            }
+                                show_path = "none", -- "none", "relative", "absolute"
+                            },
                         },
                         ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
                         ["d"] = "delete",
@@ -244,7 +244,7 @@ require("lazy").setup({
                         ["?"] = "show_help",
                         ["<"] = "prev_source",
                         [">"] = "next_source",
-                    }
+                    },
                 },
                 nesting_rules = {},
                 filesystem = {
@@ -294,8 +294,8 @@ require("lazy").setup({
                             ["<c-x>"] = "clear_filter",
                             ["[g"] = "prev_git_modified",
                             ["]g"] = "next_git_modified",
-                        }
-                    }
+                        },
+                    },
                 },
                 buffers = {
                     follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -307,33 +307,29 @@ require("lazy").setup({
                             ["bd"] = "buffer_delete",
                             ["<bs>"] = "navigate_up",
                             ["."] = "set_root",
-                        }
+                        },
                     },
                 },
                 git_status = {
                     window = {
                         position = "float",
                         mappings = {
-                            ["A"]  = "git_add_all",
+                            ["A"] = "git_add_all",
                             ["gu"] = "git_unstage_file",
                             ["ga"] = "git_add_file",
                             ["gr"] = "git_revert_file",
                             ["gc"] = "git_commit",
                             ["gp"] = "git_push",
                             ["gg"] = "git_commit_and_push",
-                        }
-                    }
-                }
+                        },
+                    },
+                },
             })
 
-            vim.fn.sign_define("DiagnosticSignError",
-                { text = " ", texthl = "DiagnosticSignError" })
-            vim.fn.sign_define("DiagnosticSignWarn",
-                { text = " ", texthl = "DiagnosticSignWarn" })
-            vim.fn.sign_define("DiagnosticSignInfo",
-                { text = " ", texthl = "DiagnosticSignInfo" })
-            vim.fn.sign_define("DiagnosticSignHint",
-                { text = "", texthl = "DiagnosticSignHint" })
+            vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+            vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+            vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+            vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
             vim.api.nvim_create_augroup("neotree", {})
             vim.api.nvim_create_autocmd("UiEnter", {
@@ -341,37 +337,33 @@ require("lazy").setup({
                 group = "neotree",
                 callback = function()
                     if vim.fn.argc() == 0 then
-                        vim.cmd('Neotree show')
+                        vim.cmd("Neotree show")
                     end
-                end
+                end,
             })
 
-            vim.api.nvim_set_keymap(
-                'n',
-                '<F3>',
-                '<cmd>NeoTreeShowToggle<cr>',
-                {
-                    noremap = true,
-                    desc = 'NeoTreeShowToggle',
-                }
-            )
+            vim.api.nvim_set_keymap("n", "<F3>", "<cmd>NeoTreeShowToggle<cr>", {
+                noremap = true,
+                desc = "NeoTreeShowToggle",
+            })
         end,
     },
-    { 'scrooloose/nerdcommenter' },
+    { "scrooloose/nerdcommenter" },
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
         dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-ui-select.nvim',
-            'nvim-telescope/telescope-file-browser.nvim',
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-ui-select.nvim",
+            "nvim-telescope/telescope-file-browser.nvim",
         },
         config = function()
-            require("telescope").setup {
+            require("telescope").setup({
                 extensions = {
                     ["ui-select"] = {
-                        require("telescope.themes").get_dropdown {
+                        require("telescope.themes").get_dropdown({
                             -- even more opts
-                        }
+                        }),
                     },
                     file_browser = {
                         theme = "ivy",
@@ -386,8 +378,8 @@ require("lazy").setup({
                             },
                         },
                     },
-                }
-            }
+                },
+            })
             -- To get ui-select loaded and working with telescope, you need to call
             -- load_extension, somewhere after setup function:
             require("telescope").load_extension("ui-select")
@@ -395,219 +387,168 @@ require("lazy").setup({
             -- you need to call load_extension, somewhere after setup function:
             require("telescope").load_extension("file_browser")
 
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>ff',
-                '<cmd>Telescope find_files<cr>',
-                {
-                    noremap = true,
-                    desc = 'Telescope find_files',
-                }
-            )
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>fg',
-                '<cmd>Telescope live_grep<cr>',
-                {
-                    noremap = true,
-                    desc = 'Telescope live_grep',
-                }
-            )
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>fb',
-                '<cmd>Telescope buffers<cr>',
-                {
-                    noremap = true,
-                    desc = 'Telescope buffers',
-                }
-            )
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>fh',
-                '<cmd>Telescope help_tags<cr>',
-                {
-                    noremap = true,
-                    desc = 'Telescope help_tags',
-                }
-            )
-            vim.api.nvim_set_keymap(
-                "n",
-                "<space>fb",
-                "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>",
-                {
-                    noremap = true,
-                    desc = 'Telescope file_browser',
-                }
-            )
-        end,
-    },
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
-        config = function()
-            require('lualine').setup {
-                options = {
-                    theme = 'monokai-pro',
-                }
-            }
-        end,
-    },
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require("indent_blankline").setup {
-                show_current_context = true,
-                show_current_context_start = true,
-            }
-        end,
-    },
-    { 'godlygeek/tabular' },
-    { 'tyru/open-browser.vim' },
-    {
-        'airblade/vim-gitgutter',
-        config = function()
-            vim.api.nvim_create_autocmd('BufWritePost', {
-                desc = "Run Gitgutter Automatically",
-                group = "gitgutter",
-                command = 'GitGutter',
+            vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", {
+                noremap = true,
+                desc = "Telescope find_files",
+            })
+            vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", {
+                noremap = true,
+                desc = "Telescope live_grep",
+            })
+            vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", {
+                noremap = true,
+                desc = "Telescope buffers",
+            })
+            vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", {
+                noremap = true,
+                desc = "Telescope help_tags",
+            })
+            vim.api.nvim_set_keymap("n", "<space>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", {
+                noremap = true,
+                desc = "Telescope file_browser",
             })
         end,
     },
-    { 'psliwka/vim-smoothie' },
     {
-        'kkoomen/vim-doge',
-        build = ':call doge#install()',
+        "nvim-lualine/lualine.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
         config = function()
-            vim.api.nvim_set_keymap(
-                "n",
-                "<space>d",
-                "<cmd>DogeGenerate<cr>",
-                {
-                    noremap = true,
-                    desc = 'DogeGenerate',
-                }
-            )
+            require("lualine").setup({
+                options = {
+                    theme = "monokai-pro",
+                },
+            })
         end,
     },
     {
-        'goolord/alpha-nvim',
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("indent_blankline").setup({
+                show_current_context = true,
+                show_current_context_start = true,
+            })
+        end,
+    },
+    { "godlygeek/tabular" },
+    { "tyru/open-browser.vim" },
+    {
+        "airblade/vim-gitgutter",
+        config = function()
+            vim.api.nvim_create_autocmd("BufWritePost", {
+                desc = "Run Gitgutter Automatically",
+                group = "gitgutter",
+                command = "GitGutter",
+            })
+        end,
+    },
+    { "psliwka/vim-smoothie" },
+    {
+        "kkoomen/vim-doge",
+        build = ":call doge#install()",
+        config = function()
+            vim.api.nvim_set_keymap("n", "<space>d", "<cmd>DogeGenerate<cr>", {
+                noremap = true,
+                desc = "DogeGenerate",
+            })
+        end,
+    },
+    {
+        "goolord/alpha-nvim",
         dependencies = {
-            'nvim-tree/nvim-web-devicons',
-            'ColaMint/vim-pokemon',
+            "nvim-tree/nvim-web-devicons",
+            "ColaMint/pokemon.nvim",
         },
         config = function()
             local alpha = require("alpha")
             local dashboard = require("alpha.themes.dashboard")
             local pokemon = require("pokemon")
-            local logo = pokemon.get {
-                no = 'random',
-                size = 'auto',
-            }
-            dashboard.section.header.val = vim.split(logo, "\n")
+            pokemon.setup({
+                number = "random",
+                size = "auto",
+            })
+            dashboard.section.header.val = pokemon.header()
             dashboard.section.buttons.val = {
-                dashboard.button(
-                    "r",
-                    "  Recently files",
-                    ":Telescope oldfiles <CR>"
-                ),
-                dashboard.button(
-                    "s",
-                    "  Restore Session",
-                    "<cmd>lua require('persistence').load()<cr>"),
+                dashboard.button("r", "  Recently files", ":Telescope oldfiles <CR>"),
+                dashboard.button("s", "  Restore Session", "<cmd>lua require('persistence').load()<cr>"),
                 -- dashboard.button(
                 --     "p",
                 --     "  Find project",
                 --     ":Telescope projects <CR>"
                 -- ),
-                dashboard.button(
-                    "i",
-                    "  Configuration",
-                    ":edit $MYVIMRC<CR>"
-                ),
+                dashboard.button("i", "  Configuration", ":edit $MYVIMRC<CR>"),
                 dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
             }
             dashboard.section.footer.opts.hl = "AlphaFooter"
             dashboard.section.header.opts.hl = "AlphaHeader"
             dashboard.section.buttons.opts.hl = "AlphaButton"
             alpha.setup(dashboard.config)
+
+            vim.api.nvim_set_keymap("n", "<F2>", "<cmd>PokemonTogglePokedex<cr>", {
+                noremap = true,
+                desc = "PokemonTogglePokedex",
+            })
         end,
     },
     {
-        'mzlogin/vim-markdown-toc',
+        "mzlogin/vim-markdown-toc",
         config = function()
             vim.g.vmt_dont_insert_fence = 1
-            vim.g.vmt_fence_text = 'TOC'
-            vim.g.vmt_fence_closing_text = '/TOC'
+            vim.g.vmt_fence_text = "TOC"
+            vim.g.vmt_fence_closing_text = "/TOC"
 
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>mt',
-                '<cmd>GenTocGFM<cr>',
-                {
-                    noremap = true,
-                    desc = 'GenTocGFM',
-                }
-            )
+            vim.api.nvim_set_keymap("n", "<leader>mt", "<cmd>GenTocGFM<cr>", {
+                noremap = true,
+                desc = "GenTocGFM",
+            })
         end,
     },
     {
-        'iamcco/markdown-preview.nvim',
-        build = ':call mkdp#util#install()',
+        "iamcco/markdown-preview.nvim",
+        build = ":call mkdp#util#install()",
         config = function()
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>mp',
-                '<cmd>MarkdownPreview<cr>',
-                {
-                    noremap = true,
-                    desc = 'MarkdownPreview',
-                }
-            )
+            vim.api.nvim_set_keymap("n", "<leader>mp", "<cmd>MarkdownPreview<cr>", {
+                noremap = true,
+                desc = "MarkdownPreview",
+            })
         end,
     },
     {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
         config = function()
-            require('nvim-treesitter.configs').setup {
+            require("nvim-treesitter.configs").setup({
                 ensure_installed = { "go", "python", "json", "javascript", "vim", "yaml", "vue", "sql", "lua", "help" },
                 ignore_install = { "markdown" },
                 auto_install = true,
                 highlight = {
                     enable = true,
                 },
-            }
+            })
         end,
     },
     {
-        'rrethy/vim-hexokinase',
-        build = 'make hexokinase',
+        "rrethy/vim-hexokinase",
+        build = "make hexokinase",
         init = function()
-            vim.cmd('set termguicolors')
-            vim.g.Hexokinase_highlighters = { 'backgroundfull' }
+            vim.cmd("set termguicolors")
+            vim.g.Hexokinase_highlighters = { "backgroundfull" }
         end,
     },
-    { 'RRethy/vim-illuminate' },
+    { "RRethy/vim-illuminate" },
     {
-        'voldikss/vim-translator',
+        "voldikss/vim-translator",
         config = function()
-            vim.api.nvim_set_keymap(
-                'n',
-                'ts',
-                '<cmd>TranslateW<cr>',
-                {
-                    noremap = true,
-                    desc = 'TranslateW',
-                }
-            )
+            vim.api.nvim_set_keymap("n", "ts", "<cmd>TranslateW<cr>", {
+                noremap = true,
+                desc = "TranslateW",
+            })
         end,
     },
     {
-        'romgrk/barbar.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        "romgrk/barbar.nvim",
+        dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             vim.cmd([[
                 nnoremap <silent> <A-,>     <Cmd>BufferPrevious<CR>
@@ -634,28 +575,31 @@ require("lazy").setup({
         end,
     },
     {
-        'neovim/nvim-lspconfig',
+        "neovim/nvim-lspconfig",
         dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/cmp-nvim-lsp-signature-help',
-            'tzachar/cmp-fuzzy-path',
-            'tzachar/fuzzy.nvim',
-            { 'tzachar/cmp-tabnine',                      build = './install.sh' },
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-            'amarakon/nvim-cmp-buffer-lines',
-            'jose-elias-alvarez/null-ls.nvim',
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-vsnip",
+            "hrsh7th/vim-vsnip",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "tzachar/cmp-fuzzy-path",
+            "tzachar/fuzzy.nvim",
+            { "tzachar/cmp-tabnine", build = "./install.sh" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            },
+            "amarakon/nvim-cmp-buffer-lines",
+            "jose-elias-alvarez/null-ls.nvim",
         },
         config = function()
-            vim.cmd('set completeopt=menu,menuone,noselect')
+            vim.cmd("set completeopt=menu,menuone,noselect")
 
             -- Set up nvim-cmp.
-            local cmp = require 'cmp'
+            local cmp = require("cmp")
 
             cmp.setup({
                 preselect = cmp.PreselectMode.None,
@@ -671,87 +615,82 @@ require("lazy").setup({
                     documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-b>'] = cmp.mapping.scroll_docs( -4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                    ['<Tab>'] = cmp.mapping.select_next_item(),
-                    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                    ["<Tab>"] = cmp.mapping.select_next_item(),
+                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
                 }),
                 sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'nvim_lsp_signature_help' },
-                    { name = 'cmp_tabnine' },
-                    { name = 'buffer-lines' },
-                    { name = 'fuzzy_path' },
+                    { name = "nvim_lsp" },
+                    { name = "nvim_lsp_signature_help" },
+                    { name = "cmp_tabnine" },
+                    -- { name = 'buffer-lines' },
+                    { name = "fuzzy_path" },
                     {
-                        name = 'buffer',
+                        name = "buffer",
                         option = {
                             get_bufnrs = function()
                                 return vim.api.nvim_list_bufs()
-                            end
+                            end,
                         },
                     },
                 }),
                 formatting = {
                     format = function(entry, vim_item)
-                        local source = entry.source.name;
+                        local source = entry.source.name
                         vim_item.menu = " [" .. source .. "]"
                         return vim_item
-                    end
+                    end,
                 },
             })
 
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-            cmp.setup.cmdline({ '/', '?' }, {
+            cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
                     {
-                        name = 'buffer',
+                        name = "buffer",
                         option = {
                             get_bufnrs = function()
                                 return vim.api.nvim_list_bufs()
-                            end
+                            end,
                         },
                     },
-                }
+                },
             })
 
             -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-            cmp.setup.cmdline(':', {
+            cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
                     --  { name = 'path' }
                     --}, {
-                    { name = 'cmdline' }
+                    { name = "cmdline" },
                     --}, {
                     --  { name = 'fuzzy_path' }
-                })
+                }),
             })
 
-            vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-                vim.lsp.handlers.hover,
-                { border = 'rounded' }
-            )
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
-            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-                vim.lsp.handlers.signature_help,
-                { border = 'rounded' }
-            )
+            vim.lsp.handlers["textDocument/signatureHelp"] =
+                vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
             vim.diagnostic.config({
                 float = {
-                    border = 'rounded',
+                    border = "rounded",
                 },
             })
 
             -- Mappings.
             local opts = { noremap = true, silent = true }
-            vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-            vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-            vim.keymap.set('n', 'dj', vim.diagnostic.goto_prev, opts)
-            vim.keymap.set('n', 'dk', vim.diagnostic.goto_next, opts)
+            vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+            vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+            vim.keymap.set("n", "dj", vim.diagnostic.goto_prev, opts)
+            vim.keymap.set("n", "dk", vim.diagnostic.goto_next, opts)
 
             -- Use an on_attach function to only map the following keys
             -- after the language server attaches to the current buffer
@@ -759,30 +698,31 @@ require("lazy").setup({
                 -- Mappings.
                 -- See `:help vim.lsp.*` for documentation on any of the below functions
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-                vim.keymap.set('n', 'dh', vim.lsp.buf.hover, bufopts)
-                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-                vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-                vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-                vim.keymap.set('n', '<space>wl', function()
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+                vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+                vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+                vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+                vim.keymap.set("n", "<space>wl", function()
                     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                 end, bufopts)
-                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-                vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-                vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
-                vim.keymap.set('n', 'gr', function()
+                vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+                vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+                vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
+                vim.keymap.set("n", "gr", function()
                     require("telescope.builtin").lsp_references()
                 end, bufopts)
-
 
                 -- format
                 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
                 local event = "BufWritePre" -- or "BufWritePost"
                 local async = event == "BufWritePost"
                 if client.server_capabilities.documentFormattingProvider then
-                    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+                    vim.keymap.set("n", "<leader>f", function()
+                        vim.lsp.buf.format({ async = true })
+                    end, bufopts)
                     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
                     vim.api.nvim_create_autocmd(event, {
                         buffer = bufnr,
@@ -797,37 +737,32 @@ require("lazy").setup({
 
             -- Set up lspconfig.
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
             -- go install golang.org/x/tools/gopls@latest
-            require('lspconfig')['gopls'].setup {
+            require("lspconfig")["gopls"].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-            }
+            })
             -- pip3 install python-lsp-server
-            require('lspconfig')['pylsp'].setup {
+            require("lspconfig")["pylsp"].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-            }
+            })
             -- npm i -g vscode-langservers-extracted
-            require('lspconfig')['eslint'].setup {
+            require("lspconfig")["eslint"].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-            }
+            })
             -- npm install -g vim-language-server
-            require('lspconfig')['vimls'].setup {
+            require("lspconfig")["vimls"].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-            }
+            })
             -- npm i -g bash-language-server
-            require('lspconfig')['bashls'].setup {
+            require("lspconfig")["bashls"].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-            }
-            -- brew install lua-language-server
-            require('lspconfig')['lua_ls'].setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-            }
+            })
 
             -- brew install bufbuild/buf/buf
             -- brew install hadolint
@@ -835,6 +770,7 @@ require("lazy").setup({
             -- brew install tidy-html5
             -- pip3 install yamllint
             -- npm install jsonlint -g
+            -- cargo install stylua
             local null_ls = require("null-ls")
             null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
             null_ls.setup({
@@ -853,53 +789,55 @@ require("lazy").setup({
                     null_ls.builtins.formatting.tidy,
                     null_ls.builtins.diagnostics.jsonlint,
                     null_ls.builtins.diagnostics.yamllint,
+                    null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.diagnostics.luacheck,
                 },
                 on_attach = on_attach,
             })
         end,
     },
     {
-        'williamboman/mason.nvim',
+        "williamboman/mason.nvim",
         config = function()
             require("mason").setup()
         end,
     },
     {
-        'williamboman/mason.nvim',
+        "williamboman/mason.nvim",
         config = function()
             require("mason").setup()
         end,
     },
     {
-        'ggandor/leap.nvim',
+        "ggandor/leap.nvim",
         config = function()
-            require('leap').add_default_mappings()
+            require("leap").add_default_mappings()
         end,
     },
     {
-        'beauwilliams/focus.nvim',
+        "beauwilliams/focus.nvim",
         config = function()
             require("focus").setup()
         end,
     },
     {
-        'rcarriga/nvim-notify',
+        "rcarriga/nvim-notify",
         config = function()
             vim.opt.termguicolors = true
         end,
     },
     {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
         version = "*",
         config = function()
-            require('toggleterm').setup {
+            require("toggleterm").setup({
                 open_mapping = [[<c-\>]],
-                direction = 'float',
-            }
+                direction = "float",
+            })
         end,
     },
     {
-        'folke/which-key.nvim',
+        "folke/which-key.nvim",
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
@@ -907,49 +845,155 @@ require("lazy").setup({
         end,
     },
     {
-        'windwp/nvim-autopairs',
+        "windwp/nvim-autopairs",
         config = function()
-            require("nvim-autopairs").setup {}
+            require("nvim-autopairs").setup({})
         end,
     },
     {
-        'j-hui/fidget.nvim',
+        "j-hui/fidget.nvim",
         config = function()
-            require("fidget").setup {}
+            require("fidget").setup({})
         end,
     },
     {
-        'folke/persistence.nvim',
+        "folke/persistence.nvim",
         config = function()
-            require("persistence").setup {}
+            require("persistence").setup({})
 
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>qs",
-                "<cmd>lua require('persistence').load()<cr>",
-                {
-                    noremap = true,
-                    desc = 'restore the session for the current directory',
-                }
-            )
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>ql",
-                [[<cmd>lua require("persistence").load({ last = true })<cr>]],
-                {
-                    noremap = true,
-                    desc = 'restore the last session',
-                }
-            )
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>qd",
-                [[<cmd>lua require("persistence").stop()<cr>]],
-                {
-                    noremap = true,
-                    desc = 'stop Persistence',
-                }
-            )
+            vim.api.nvim_set_keymap("n", "<leader>qs", "<cmd>lua require('persistence').load()<cr>", {
+                noremap = true,
+                desc = "restore the session for the current directory",
+            })
+            vim.api.nvim_set_keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {
+                noremap = true,
+                desc = "restore the last session",
+            })
+            vim.api.nvim_set_keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {
+                noremap = true,
+                desc = "stop Persistence",
+            })
+        end,
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        config = function()
+            require("telescope").load_extension("lazygit")
+            vim.api.nvim_set_keymap("n", "<leader>gg", [[<cmd>LazyGit<cr>]], {
+                noremap = true,
+                desc = "LazyGit",
+            })
         end,
     },
 })
+
+local pokemon_win_id = nil
+function close_float_window()
+    if pokemon_win_id then
+        vim.api.nvim_win_close(pokemon_win_id, true)
+        pokemon_win_id = nil
+    end
+end
+
+local show_popup = function(path)
+    local width = 48
+    local height = 40
+
+    local f = io.open(path, "r")
+    local content = f:read("*all")
+    local art = vim.fn.json_decode(content)
+    f:close()
+
+    f = io.open("/tmp/0001.json", "r")
+    local pokemon = vim.fn.json_decode(f:read("*all"))
+    f:close()
+
+    for i = 1, #pokemon do
+        local line = ""
+        for j = 1, #pokemon[i] do
+            art[i + 9][j + 4] = pokemon[i][j]
+        end
+    end
+
+    for i = 1, 7 do
+        for j = 1, 42 do
+            art[i + 32][j + 3] = { " ", "000000" }
+        end
+    end
+
+    name = "Bulbasaur #0001"
+    for i = 1, #name do
+        art[34][i + 4] = { name:sub(i, i), "cccccc" }
+    end
+
+    local function splitByChunk(text, chunkSize)
+        local s = {}
+        for i = 1, #text, chunkSize do
+            s[#s + 1] = text:sub(i, i + chunkSize - 1)
+        end
+        return s
+    end
+
+    -- TODO
+    -- utf8
+    description =
+        "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
+    description =
+        "There is a plant seed on its back right from the day this Pokemon is born. The seed slowly grows larger."
+    chunks = splitByChunk(description, 40)
+    print(vim.inspect(chunks))
+    for i = 1, #chunks do
+        if i > 5 then
+            break
+        end
+        for j = 1, #chunks[i] do
+            art[35 + i][j + 4] = { chunks[i]:sub(j, j), "cccccc" }
+        end
+    end
+
+    local buf = vim.api.nvim_create_buf(false, true)
+    for i = 1, #art do
+        local line = ""
+        for j = 1, #art[i] do
+            local pixel = art[i][j]
+            local char = pixel[1]
+            local color = pixel[2]
+            local highlight_group = "Pixel_" .. color
+            line = line .. char
+        end
+        vim.api.nvim_buf_set_lines(buf, i - 1, i - 1, false, { line })
+
+        col = 0
+        for j = 1, #art[i] do
+            local pixel = art[i][j]
+            local char = pixel[1]
+            local color = pixel[2]
+            local highlight_group = "pokemon_" .. color
+            vim.api.nvim_set_hl(0, highlight_group, { fg = "#" .. color })
+            vim.api.nvim_buf_add_highlight(buf, 0, highlight_group, i - 1, col, col + #char)
+            col = col + #char
+        end
+    end
+
+    local win_width = vim.fn.winwidth(0)
+    local win_height = vim.fn.winheight(0)
+    local win_id = vim.api.nvim_open_win(buf, true, {
+        relative = "win",
+        row = (win_height / 2) - (height / 2),
+        col = (win_width / 2) - (width / 2),
+        width = width,
+        height = height,
+        style = "minimal",
+        -- border = 'rounded',
+    })
+
+    pokemon_win_id = win_id
+    --vim.defer_fn(function()
+    --    vim.api.nvim_set_current_win(pokemon_win_id)
+    --end, 1000)
+
+    vim.api.nvim_buf_set_keymap(buf, "n", "q", ":lua close_float_window()<cr>", { noremap = true })
+    vim.api.nvim_buf_set_keymap(buf, "n", "<ESC>", ":lua close_float_window()<cr>", { noremap = true })
+end
+
+-- show_popup('/Users/liming/go/src/github.com/ColaMint/pokemon.nvim/lua/data/pokedex.json')
