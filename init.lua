@@ -416,6 +416,14 @@ require("lazy").setup({
                 options = {
                     theme = "monokai-pro",
                 },
+                sections = {
+                    lualine_a = { "mode" },
+                    lualine_b = { "branch", "diff", "diagnostics" },
+                    lualine_c = { { "filename", file_status = true, path = 2 } },
+                    lualine_x = { "encoding", "fileformat", "filetype" },
+                    lualine_y = { "progress" },
+                    lualine_z = { "location" },
+                },
             })
         end,
     },
@@ -572,15 +580,13 @@ require("lazy").setup({
         end,
     },
     {
-        "neovim/nvim-lspconfig",
+        "hrsh7th/nvim-cmp",
         dependencies = {
+            "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-vsnip",
-            "hrsh7th/vim-vsnip",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "tzachar/cmp-fuzzy-path",
             "tzachar/fuzzy.nvim",
@@ -591,19 +597,29 @@ require("lazy").setup({
             },
             "amarakon/nvim-cmp-buffer-lines",
             "jose-elias-alvarez/null-ls.nvim",
+            {
+                "quangnguyen30192/cmp-nvim-ultisnips",
+                dependencies = {
+                    "SirVer/ultisnips",
+                    "honza/vim-snippets",
+                },
+                config = function()
+                    require("cmp_nvim_ultisnips").setup({})
+                end,
+            },
         },
         config = function()
             vim.cmd("set completeopt=menu,menuone,noselect")
 
             -- Set up nvim-cmp.
             local cmp = require("cmp")
+            local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
             cmp.setup({
                 preselect = cmp.PreselectMode.None,
                 snippet = {
-                    -- REQUIRED - you must specify a snippet engine
                     expand = function(args)
-                        vim.fn["vsnip#anonymous"](args.body)
+                        vim.fn["UltiSnips#Anon"](args.body)
                     end,
                 },
                 window = {
@@ -617,8 +633,20 @@ require("lazy").setup({
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                    ["<Tab>"] = cmp.mapping.select_next_item(),
-                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    -- ["<Tab>"] = cmp.mapping.select_next_item(),
+                    -- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                    end, {
+                        "i",
+                        "s", --[[ "c" (to enable the mapping in command mode) ]]
+                    }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        cmp_ultisnips_mappings.jump_backwards(fallback)
+                    end, {
+                        "i",
+                        "s", --[[ "c" (to enable the mapping in command mode) ]]
+                    }),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
@@ -626,6 +654,7 @@ require("lazy").setup({
                     { name = "cmp_tabnine" },
                     -- { name = 'buffer-lines' },
                     { name = "fuzzy_path" },
+                    { name = "ultisnips" },
                     {
                         name = "buffer",
                         option = {
