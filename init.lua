@@ -763,9 +763,10 @@ require("lazy").setup({
 
             -- Set up lspconfig.
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+            local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             -- go install golang.org/x/tools/gopls@latest
-            require("lspconfig")["gopls"].setup({
+            lspconfig.gopls.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     client.server_capabilities.documentFormattingProvider = false
@@ -773,22 +774,22 @@ require("lazy").setup({
                 end,
             })
             -- pip3 install python-lsp-server
-            require("lspconfig")["pylsp"].setup({
+            lspconfig.pylsp.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
             -- npm i -g vscode-langservers-extracted
-            require("lspconfig")["eslint"].setup({
+            lspconfig.eslint.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
             -- npm install -g vim-language-server
-            require("lspconfig")["vimls"].setup({
+            lspconfig.vimls.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
             -- npm i -g bash-language-server
-            require("lspconfig")["bashls"].setup({
+            lspconfig.bashls.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
