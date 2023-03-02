@@ -25,6 +25,7 @@ vim.cmd([[
   set encoding=utf8
   set wrap
   set textwidth=500
+  set signcolumn=yes
   nnoremap - <PageDown>
   nnoremap = <PageUp>
 ]])
@@ -462,7 +463,7 @@ require("lazy").setup({
             local pokemon = require("pokemon")
             pokemon.setup({
                 number = "random",
-                size = "auto",
+                size = "large",
             })
             dashboard.section.header.val = pokemon.header()
             dashboard.section.buttons.val = {
