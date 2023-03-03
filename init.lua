@@ -94,6 +94,255 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"tzachar/cmp-fuzzy-path",
+			"tzachar/fuzzy.nvim",
+			{ "tzachar/cmp-tabnine", build = "./install.sh" },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			},
+			"amarakon/nvim-cmp-buffer-lines",
+			"jose-elias-alvarez/null-ls.nvim",
+			{
+				"quangnguyen30192/cmp-nvim-ultisnips",
+				dependencies = {
+					"SirVer/ultisnips",
+					"honza/vim-snippets",
+				},
+				config = function()
+					require("cmp_nvim_ultisnips").setup({})
+				end,
+			},
+		},
+		config = function()
+			vim.cmd("set completeopt=menu,menuone,noselect")
+
+			-- Set up nvim-cmp.
+			local cmp = require("cmp")
+			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+
+			cmp.setup({
+				preselect = cmp.PreselectMode.None,
+				snippet = {
+					expand = function(args)
+						vim.fn["UltiSnips#Anon"](args.body)
+					end,
+				},
+				window = {
+					border = "rounded",
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
+				mapping = cmp.mapping.preset.insert({
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					-- ["<Tab>"] = cmp.mapping.select_next_item(),
+					-- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+					end, {
+						"i",
+						"s", --[[ "c" (to enable the mapping in command mode) ]]
+					}),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						cmp_ultisnips_mappings.jump_backwards(fallback)
+					end, {
+						"i",
+						"s", --[[ "c" (to enable the mapping in command mode) ]]
+					}),
+				}),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
+					{ name = "cmp_tabnine" },
+					-- { name = 'buffer-lines' },
+					{ name = "fuzzy_path" },
+					{ name = "ultisnips" },
+					{
+						name = "buffer",
+						option = {
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end,
+						},
+					},
+				}),
+				formatting = {
+					format = function(entry, vim_item)
+						local source = entry.source.name
+						vim_item.menu = " [" .. source .. "]"
+						return vim_item
+					end,
+				},
+			})
+
+			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+			cmp.setup.cmdline({ "/", "?" }, {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{
+						name = "buffer",
+						option = {
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end,
+						},
+					},
+				},
+			})
+
+			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					--  { name = 'path' }
+					--}, {
+					{ name = "cmdline" },
+					--}, {
+					--  { name = 'fuzzy_path' }
+				}),
+			})
+
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+			vim.lsp.handlers["textDocument/signatureHelp"] =
+				vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+			vim.diagnostic.config({
+				float = {
+					border = "rounded",
+				},
+			})
+
+			-- Mappings.
+			local opts = { noremap = true, silent = true }
+			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+			vim.keymap.set("n", "dj", vim.diagnostic.goto_prev, opts)
+			vim.keymap.set("n", "dk", vim.diagnostic.goto_next, opts)
+
+			-- Use an on_attach function to only map the following keys
+			-- after the language server attaches to the current buffer
+			local on_attach = function(client, bufnr)
+				-- Mappings.
+				-- See `:help vim.lsp.*` for documentation on any of the below functions
+				local bufopts = { noremap = true, silent = true, buffer = bufnr }
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+				vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
+				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+				vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+				vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+				vim.keymap.set("n", "<space>wl", function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end, bufopts)
+				vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+				vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+				vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
+				vim.keymap.set("n", "gr", function()
+					require("telescope.builtin").lsp_references()
+				end, bufopts)
+
+				-- format
+				local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+				local event = "BufWritePre" -- or "BufWritePost"
+				local async = event == "BufWritePost"
+				if client.server_capabilities.documentFormattingProvider then
+					vim.keymap.set("n", "<leader>f", function()
+						vim.lsp.buf.format({ async = true })
+					end, bufopts)
+					vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+					vim.api.nvim_create_autocmd(event, {
+						buffer = bufnr,
+						group = group,
+						callback = function()
+							vim.lsp.buf.format({ bufnr = bufnr, async = async })
+						end,
+						desc = "[lsp] format on save",
+					})
+				end
+			end
+
+			-- Set up lspconfig.
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+			local lspconfig = require("lspconfig")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- go install golang.org/x/tools/gopls@latest
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					client.server_capabilities.documentFormattingProvider = false
+					on_attach(client, bufnr)
+				end,
+			})
+			-- pip3 install python-lsp-server
+			lspconfig.pylsp.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			-- npm i -g vscode-langservers-extracted
+			lspconfig.eslint.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			-- npm install -g vim-language-server
+			lspconfig.vimls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			-- npm i -g bash-language-server
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- brew install bufbuild/buf/buf
+			-- brew install hadolint
+			-- pip3 install sqlfluff
+			-- brew install tidy-html5
+			-- pip3 install yamllint
+			-- npm install jsonlint -g
+			-- cargo install stylua
+			-- go install golang.org/x/tools/cmd/goimports@latest
+			local null_ls = require("null-ls")
+			null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
+			null_ls.setup({
+				sources = {
+					null_ls.builtins.formatting.prettier,
+					null_ls.builtins.diagnostics.buf,
+					null_ls.builtins.formatting.buf,
+					null_ls.builtins.diagnostics.hadolint,
+					null_ls.builtins.diagnostics.sqlfluff.with({
+						extra_args = { "--dialect", "mysql" }, --  Available dialects: ansi, athena, bigquery, clickhouse, databricks, db2, exasol, hive, materialize, mysql, oracle, postgres, redshift, snowflake, soql, sparksql, sqlite, teradata, tsq
+					}),
+					null_ls.builtins.formatting.sqlfluff.with({
+						extra_args = { "--dialect", "mysql" },
+					}),
+					null_ls.builtins.diagnostics.tidy,
+					null_ls.builtins.formatting.tidy,
+					null_ls.builtins.diagnostics.jsonlint,
+					null_ls.builtins.diagnostics.yamllint,
+					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.diagnostics.luacheck,
+					null_ls.builtins.formatting.goimports,
+				},
+				on_attach = on_attach,
+			})
+		end,
+	},
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -577,255 +826,6 @@ require("lazy").setup({
                 nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
                 nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
             ]])
-		end,
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			"tzachar/cmp-fuzzy-path",
-			"tzachar/fuzzy.nvim",
-			{ "tzachar/cmp-tabnine", build = "./install.sh" },
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-			},
-			"amarakon/nvim-cmp-buffer-lines",
-			"jose-elias-alvarez/null-ls.nvim",
-			{
-				"quangnguyen30192/cmp-nvim-ultisnips",
-				dependencies = {
-					"SirVer/ultisnips",
-					"honza/vim-snippets",
-				},
-				config = function()
-					require("cmp_nvim_ultisnips").setup({})
-				end,
-			},
-		},
-		config = function()
-			vim.cmd("set completeopt=menu,menuone,noselect")
-
-			-- Set up nvim-cmp.
-			local cmp = require("cmp")
-			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-
-			cmp.setup({
-				preselect = cmp.PreselectMode.None,
-				snippet = {
-					expand = function(args)
-						vim.fn["UltiSnips#Anon"](args.body)
-					end,
-				},
-				window = {
-					border = "rounded",
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					-- ["<Tab>"] = cmp.mapping.select_next_item(),
-					-- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-					["<Tab>"] = cmp.mapping(function(fallback)
-						cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-					end, {
-						"i",
-						"s", --[[ "c" (to enable the mapping in command mode) ]]
-					}),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						cmp_ultisnips_mappings.jump_backwards(fallback)
-					end, {
-						"i",
-						"s", --[[ "c" (to enable the mapping in command mode) ]]
-					}),
-				}),
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "nvim_lsp_signature_help" },
-					{ name = "cmp_tabnine" },
-					-- { name = 'buffer-lines' },
-					{ name = "fuzzy_path" },
-					{ name = "ultisnips" },
-					{
-						name = "buffer",
-						option = {
-							get_bufnrs = function()
-								return vim.api.nvim_list_bufs()
-							end,
-						},
-					},
-				}),
-				formatting = {
-					format = function(entry, vim_item)
-						local source = entry.source.name
-						vim_item.menu = " [" .. source .. "]"
-						return vim_item
-					end,
-				},
-			})
-
-			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline({ "/", "?" }, {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{
-						name = "buffer",
-						option = {
-							get_bufnrs = function()
-								return vim.api.nvim_list_bufs()
-							end,
-						},
-					},
-				},
-			})
-
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					--  { name = 'path' }
-					--}, {
-					{ name = "cmdline" },
-					--}, {
-					--  { name = 'fuzzy_path' }
-				}),
-			})
-
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
-			vim.lsp.handlers["textDocument/signatureHelp"] =
-				vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-
-			vim.diagnostic.config({
-				float = {
-					border = "rounded",
-				},
-			})
-
-			-- Mappings.
-			local opts = { noremap = true, silent = true }
-			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-			vim.keymap.set("n", "dj", vim.diagnostic.goto_prev, opts)
-			vim.keymap.set("n", "dk", vim.diagnostic.goto_next, opts)
-
-			-- Use an on_attach function to only map the following keys
-			-- after the language server attaches to the current buffer
-			local on_attach = function(client, bufnr)
-				-- Mappings.
-				-- See `:help vim.lsp.*` for documentation on any of the below functions
-				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-				vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-				vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-				vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-				vim.keymap.set("n", "<space>wl", function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, bufopts)
-				vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-				vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-				vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
-				vim.keymap.set("n", "gr", function()
-					require("telescope.builtin").lsp_references()
-				end, bufopts)
-
-				-- format
-				local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-				local event = "BufWritePre" -- or "BufWritePost"
-				local async = event == "BufWritePost"
-				if client.server_capabilities.documentFormattingProvider then
-					vim.keymap.set("n", "<leader>f", function()
-						vim.lsp.buf.format({ async = true })
-					end, bufopts)
-					vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-					vim.api.nvim_create_autocmd(event, {
-						buffer = bufnr,
-						group = group,
-						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr, async = async })
-						end,
-						desc = "[lsp] format on save",
-					})
-				end
-			end
-
-			-- Set up lspconfig.
-			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			-- go install golang.org/x/tools/gopls@latest
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					client.server_capabilities.documentFormattingProvider = false
-					on_attach(client, bufnr)
-				end,
-			})
-			-- pip3 install python-lsp-server
-			lspconfig.pylsp.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-			-- npm i -g vscode-langservers-extracted
-			lspconfig.eslint.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-			-- npm install -g vim-language-server
-			lspconfig.vimls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-			-- npm i -g bash-language-server
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			-- brew install bufbuild/buf/buf
-			-- brew install hadolint
-			-- pip3 install sqlfluff
-			-- brew install tidy-html5
-			-- pip3 install yamllint
-			-- npm install jsonlint -g
-			-- cargo install stylua
-			-- go install golang.org/x/tools/cmd/goimports@latest
-			local null_ls = require("null-ls")
-			null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
-			null_ls.setup({
-				sources = {
-					null_ls.builtins.formatting.prettier,
-					null_ls.builtins.diagnostics.buf,
-					null_ls.builtins.formatting.buf,
-					null_ls.builtins.diagnostics.hadolint,
-					null_ls.builtins.diagnostics.sqlfluff.with({
-						extra_args = { "--dialect", "mysql" }, --  Available dialects: ansi, athena, bigquery, clickhouse, databricks, db2, exasol, hive, materialize, mysql, oracle, postgres, redshift, snowflake, soql, sparksql, sqlite, teradata, tsq
-					}),
-					null_ls.builtins.formatting.sqlfluff.with({
-						extra_args = { "--dialect", "mysql" },
-					}),
-					null_ls.builtins.diagnostics.tidy,
-					null_ls.builtins.formatting.tidy,
-					null_ls.builtins.diagnostics.jsonlint,
-					null_ls.builtins.diagnostics.yamllint,
-					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.diagnostics.luacheck,
-					null_ls.builtins.formatting.goimports,
-				},
-				on_attach = on_attach,
-			})
 		end,
 	},
 	{
