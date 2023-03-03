@@ -171,7 +171,7 @@ require("lazy").setup({
                     { name = "nvim_lsp_signature_help" },
                     { name = "cmp_tabnine" },
                     -- { name = 'buffer-lines' },
-                    { name = "fuzzy_path" },
+                    -- { name = "fuzzy_path" },
                     { name = "ultisnips" },
                     {
                         name = "buffer",
@@ -311,6 +311,12 @@ require("lazy").setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
+            -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lemminx
+            -- https://github.com/redhat-developer/vscode-xml/releases/download/latest/lemminx-osx-x86_64.zip
+            lspconfig.lemminx.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+            })
 
             -- brew install bufbuild/buf/buf
             -- brew install hadolint
@@ -322,6 +328,8 @@ require("lazy").setup({
             -- go install golang.org/x/tools/cmd/goimports@latest
             local null_ls = require("null-ls")
             null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
+            null_ls.builtins.diagnostics.tidy.filetypes = { "html" }
+            null_ls.builtins.formatting.tidy.filetypes = { "html" }
             null_ls.setup({
                 sources = {
                     null_ls.builtins.formatting.prettier,
