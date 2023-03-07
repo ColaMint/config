@@ -327,12 +327,11 @@ require("lazy").setup({
             -- cargo install stylua
             -- go install golang.org/x/tools/cmd/goimports@latest
             local null_ls = require("null-ls")
-            null_ls.builtins.formatting.prettier.filetypes = { "json", "yaml" }
-            null_ls.builtins.diagnostics.tidy.filetypes = { "html" }
-            null_ls.builtins.formatting.tidy.filetypes = { "html" }
             null_ls.setup({
                 sources = {
-                    null_ls.builtins.formatting.prettier,
+                    null_ls.builtins.formatting.prettier.with({
+                        filetypes = { "json", "yaml" },
+                    }),
                     null_ls.builtins.diagnostics.buf,
                     null_ls.builtins.formatting.buf,
                     null_ls.builtins.diagnostics.hadolint,
@@ -342,8 +341,12 @@ require("lazy").setup({
                     null_ls.builtins.formatting.sqlfluff.with({
                         extra_args = { "--dialect", "mysql" },
                     }),
-                    null_ls.builtins.diagnostics.tidy,
-                    null_ls.builtins.formatting.tidy,
+                    null_ls.builtins.diagnostics.tidy.with({
+                        filetypes = { "html" },
+                    }),
+                    null_ls.builtins.formatting.tidy.with({
+                        filetypes = { "html" },
+                    }),
                     null_ls.builtins.diagnostics.jsonlint,
                     null_ls.builtins.diagnostics.yamllint,
                     null_ls.builtins.formatting.stylua,
