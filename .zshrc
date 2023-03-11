@@ -8,27 +8,39 @@ fi
 # setup path
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Download Znap, if it's not there yet.
-[[ -f ~/.zsh-snap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
-
-source ~/.zsh-snap/znap.zsh  # Start Znap
-
-# `znap prompt` makes your prompt visible in just 15-40ms!
-# znap prompt sindresorhus/pure
-
-# `znap source` automatically downloads and starts your plugins.
-znap source romkatv/powerlevel10k 
-znap source paulirish/git-open 
-znap source marlonrichert/zsh-autocomplete
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-completions
-# znap source zsh-users/zsh-history-substring-search.zsh
-
-# `znap eval` caches and runs any kind of command output for you.
-# znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+# antigen 
+[[ -f ~/antigen.zsh ]] ||
+    curl -L git.io/antigen > ~/antigen.zsh
+source ~/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle git-flow
+antigen bundle pip
+antigen bundle adb 
+antigen bundle aws 
+antigen bundle autojump 
+antigen bundle brew 
+antigen bundle colored-man-pages 
+antigen bundle command-not-found
+antigen bundle common-aliases 
+antigen bundle docker 
+antigen bundle docker-compose 
+antigen bundle docker-machine 
+antigen bundle fzf 
+antigen bundle golang 
+antigen bundle node 
+antigen bundle npm 
+antigen bundle pyenv 
+antigen bundle virtualenv 
+antigen bundle sublime 
+antigen bundle history-substring-search 
+antigen bundle paulirish/git-open 
+antigen bundle marlonrichert/zsh-autocomplete@main
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen theme romkatv/powerlevel10k 
+antigen apply
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
