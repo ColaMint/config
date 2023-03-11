@@ -20,6 +20,8 @@
 
 https://iterm2.com/downloads.html
 
+安装配色(Solarized Dark): https://github.com/mbadolato/iTerm2-Color-Schemes
+
 ### zsh
 
 ```sh
