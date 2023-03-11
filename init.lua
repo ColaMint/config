@@ -151,20 +151,20 @@ require("lazy").setup({
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                    -- ["<Tab>"] = cmp.mapping.select_next_item(),
-                    -- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-                    end, {
-                        "i",
-                        "s", --[[ "c" (to enable the mapping in command mode) ]]
-                    }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        cmp_ultisnips_mappings.jump_backwards(fallback)
-                    end, {
-                        "i",
-                        "s", --[[ "c" (to enable the mapping in command mode) ]]
-                    }),
+                    ["<Tab>"] = cmp.mapping.select_next_item(),
+                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    -- ["<Tab>"] = cmp.mapping(function(fallback)
+                    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                    -- end, {
+                    --     "i",
+                    --     "s", --[[ "c" (to enable the mapping in command mode) ]]
+                    -- }),
+                    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    --     cmp_ultisnips_mappings.jump_backwards(fallback)
+                    -- end, {
+                    --     "i",
+                    --     "s", --[[ "c" (to enable the mapping in command mode) ]]
+                    -- }),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },

@@ -9,9 +9,9 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # antigen 
-[[ -f ~/antigen.zsh ]] ||
-    curl -L git.io/antigen > ~/antigen.zsh
-source ~/antigen.zsh
+[[ -f ~/.antigen.zsh ]] ||
+    curl -L git.io/antigen > ~/.antigen.zsh
+source ~/.antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle git-flow
