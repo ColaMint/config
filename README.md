@@ -46,14 +46,6 @@ brew install --cask font-hack-nerd-font
 
 Iterm2 -> Preferences -> Profiles -> Text -> Non-Ascii-Font 选择 nerd-font 然后重启 Iterm2
 
-### zplug
-
-https://github.com/zplug/zplug
-
-```sh
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-```
-
 ### 复制 zsh 配置文件
 
 ```sh
