@@ -98,131 +98,23 @@ require("lazy").setup({
         end,
     },
     {
-        "hrsh7th/nvim-cmp",
+        "neovim/nvim-lspconfig",
         dependencies = {
-            "neovim/nvim-lspconfig",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
-            "tzachar/cmp-fuzzy-path",
-            "tzachar/fuzzy.nvim",
-            { "tzachar/cmp-tabnine", build = "./install.sh" },
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-            },
-            "amarakon/nvim-cmp-buffer-lines",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
             "jose-elias-alvarez/null-ls.nvim",
-            {
-                "quangnguyen30192/cmp-nvim-ultisnips",
-                dependencies = {
-                    "SirVer/ultisnips",
-                    "honza/vim-snippets",
-                },
-                config = function()
-                    require("cmp_nvim_ultisnips").setup({})
-                end,
-            },
         },
         config = function()
-            vim.cmd("set completeopt=menu,menuone,noselect")
+            -- Mason Usage
+            -- :Mason
+            -- :LspInstall
+            require("mason").setup()
+            require("mason-lspconfig").setup()
 
-            -- Set up nvim-cmp.
-            local cmp = require("cmp")
-            local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-
-            cmp.setup({
-                preselect = cmp.PreselectMode.None,
-                snippet = {
-                    expand = function(args)
-                        vim.fn["UltiSnips#Anon"](args.body)
-                    end,
-                },
-                window = {
-                    border = "rounded",
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                    ["<Tab>"] = cmp.mapping.select_next_item(),
-                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-                    -- ["<Tab>"] = cmp.mapping(function(fallback)
-                    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-                    -- end, {
-                    --     "i",
-                    --     "s", --[[ "c" (to enable the mapping in command mode) ]]
-                    -- }),
-                    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    --     cmp_ultisnips_mappings.jump_backwards(fallback)
-                    -- end, {
-                    --     "i",
-                    --     "s", --[[ "c" (to enable the mapping in command mode) ]]
-                    -- }),
-                }),
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "nvim_lsp_signature_help" },
-                    { name = "cmp_tabnine" },
-                    -- { name = 'buffer-lines' },
-                    -- { name = "fuzzy_path" },
-                    { name = "ultisnips" },
-                    {
-                        name = "buffer",
-                        option = {
-                            get_bufnrs = function()
-                                return vim.api.nvim_list_bufs()
-                            end,
-                        },
-                    },
-                }),
-                formatting = {
-                    format = function(entry, vim_item)
-                        local source = entry.source.name
-                        vim_item.menu = " [" .. source .. "]"
-                        return vim_item
-                    end,
-                },
-            })
-
-            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-            cmp.setup.cmdline({ "/", "?" }, {
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = {
-                    {
-                        name = "buffer",
-                        option = {
-                            get_bufnrs = function()
-                                return vim.api.nvim_list_bufs()
-                            end,
-                        },
-                    },
-                },
-            })
-
-            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-            cmp.setup.cmdline(":", {
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = cmp.config.sources({
-                    --  { name = 'path' }
-                    --}, {
-                    { name = "cmdline" },
-                    --}, {
-                    --  { name = 'fuzzy_path' }
-                }),
-            })
-
+            -- border
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
             vim.lsp.handlers["textDocument/signatureHelp"] =
                 vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-
             vim.diagnostic.config({
                 float = {
                     border = "rounded",
@@ -354,6 +246,126 @@ require("lazy").setup({
                     null_ls.builtins.formatting.goimports,
                 },
                 on_attach = on_attach,
+            })
+        end,
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "tzachar/cmp-fuzzy-path",
+            "tzachar/fuzzy.nvim",
+            { "tzachar/cmp-tabnine", build = "./install.sh" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            },
+            "amarakon/nvim-cmp-buffer-lines",
+            {
+                "quangnguyen30192/cmp-nvim-ultisnips",
+                dependencies = {
+                    "SirVer/ultisnips",
+                    "honza/vim-snippets",
+                },
+                config = function()
+                    require("cmp_nvim_ultisnips").setup({})
+                end,
+            },
+        },
+        config = function()
+            vim.cmd("set completeopt=menu,menuone,noselect")
+
+            -- Set up nvim-cmp.
+            local cmp = require("cmp")
+            local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+
+            cmp.setup({
+                preselect = cmp.PreselectMode.None,
+                snippet = {
+                    expand = function(args)
+                        vim.fn["UltiSnips#Anon"](args.body)
+                    end,
+                },
+                window = {
+                    border = "rounded",
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                    ["<Tab>"] = cmp.mapping.select_next_item(),
+                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    -- ["<Tab>"] = cmp.mapping(function(fallback)
+                    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                    -- end, {
+                    --     "i",
+                    --     "s", --[[ "c" (to enable the mapping in command mode) ]]
+                    -- }),
+                    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    --     cmp_ultisnips_mappings.jump_backwards(fallback)
+                    -- end, {
+                    --     "i",
+                    --     "s", --[[ "c" (to enable the mapping in command mode) ]]
+                    -- }),
+                }),
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "nvim_lsp_signature_help" },
+                    { name = "cmp_tabnine" },
+                    -- { name = 'buffer-lines' },
+                    -- { name = "fuzzy_path" },
+                    { name = "ultisnips" },
+                    {
+                        name = "buffer",
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end,
+                        },
+                    },
+                }),
+                formatting = {
+                    format = function(entry, vim_item)
+                        local source = entry.source.name
+                        vim_item.menu = " [" .. source .. "]"
+                        return vim_item
+                    end,
+                },
+            })
+
+            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline({ "/", "?" }, {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    {
+                        name = "buffer",
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end,
+                        },
+                    },
+                },
+            })
+
+            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    --  { name = 'path' }
+                    --}, {
+                    { name = "cmdline" },
+                    --}, {
+                    --  { name = 'fuzzy_path' }
+                }),
             })
         end,
     },
@@ -842,18 +854,6 @@ require("lazy").setup({
                 nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
                 nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
             ]])
-        end,
-    },
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
-    },
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
         end,
     },
     {
