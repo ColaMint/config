@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- https://github.com/nvim-treesitter/nvim-treesitter/issues/2254
 -- you should NOT set syntax enable, especially when using tree-sitter highlighting
--- 在有nvim-treesitter和lsp的情况下，加了这个会导致用vim直接打开指定文件时lsp不能自动启动
+-- 在有nvim-treesitter的情况下，加了这个会导致用vim直接打开指定文件时lsp不能自动启动
 -- syntax enable
 
 vim.cmd([[
@@ -797,7 +797,6 @@ require("lazy").setup({
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        -- event = "BufEnter", -- 不加这个用vim直接打开文件lsp很大概率无法自动启动?
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
