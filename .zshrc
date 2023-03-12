@@ -8,6 +8,9 @@ fi
 # setup path
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# disable url quote
+DISABLE_MAGIC_FUNCTIONS=true
+
 # antigen 
 [[ -f ~/.antigen.zsh ]] ||
     curl -L git.io/antigen > ~/.antigen.zsh
