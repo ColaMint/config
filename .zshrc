@@ -38,15 +38,16 @@ antigen bundle virtualenv
 antigen bundle sublime 
 antigen bundle history-substring-search 
 antigen bundle paulirish/git-open 
-antigen bundle marlonrichert/zsh-autocomplete@main
+# antigen bundle marlonrichert/zsh-autocomplete@main
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen theme romkatv/powerlevel10k 
 antigen apply
 
-# fix zsh-users/zsh-autosuggestions
+# zsh-users/zsh-autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+bindkey '^k' autosuggest-accept
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
