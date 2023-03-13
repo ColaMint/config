@@ -45,6 +45,9 @@ antigen bundle zsh-users/zsh-completions
 antigen theme romkatv/powerlevel10k 
 antigen apply
 
+# fix zsh-users/zsh-autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
