@@ -231,6 +231,7 @@ require("lazy").setup({
             -- npm install jsonlint -g
             -- cargo install stylua
             -- go install golang.org/x/tools/cmd/goimports@latest
+            -- npm install -g cspell@latest
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
@@ -257,6 +258,8 @@ require("lazy").setup({
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.diagnostics.luacheck,
                     null_ls.builtins.formatting.goimports,
+                    null_ls.builtins.diagnostics.cspell,
+                    null_ls.builtins.code_actions.cspell,
                 },
                 on_attach = on_attach,
             })
