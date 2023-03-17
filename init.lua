@@ -843,22 +843,22 @@ require("lazy").setup({
             })
         end,
     },
-    -- {
-    --     "JuanZoran/Trans.nvim",
-    --     branch = "dev",
-    --     build = ":lua require('Trans').install()",
-    --     keys = {
-    --         { "mm", mode = { "n", "x" }, "<Cmd>Translate<CR>", desc = " Translate" },
-    --         { "mk", mode = { "n", "x" }, "<Cmd>TransPlay<CR>", desc = " 自动发音" },
-    --         { "mi", "<Cmd>TranslateInput<CR>", desc = " Translate From Input" },
-    --     },
-    --     dependencies = { "kkharji/sqlite.lua", lazy = true },
-    --     config = function()
-    --         require("Trans").setup({
-    --             dir = os.getenv("HOME") .. "/.local/share/nvim/Trans.nvim",
-    --         })
-    --     end,
-    -- },
+    {
+        "JuanZoran/Trans.nvim",
+        branch = "experimental",
+        build = ":lua require('Trans').install()",
+        keys = {
+            { "mm", mode = { "n", "x" }, "<Cmd>Translate<CR>", desc = " Translate" },
+            { "mk", mode = { "n", "x" }, "<Cmd>TransPlay<CR>", desc = " 自动发音" },
+            { "mi", "<Cmd>TranslateInput<CR>", desc = " Translate From Input" },
+        },
+        dependencies = { "kkharji/sqlite.lua", lazy = true },
+        config = function()
+            require("Trans").setup({
+                dir = os.getenv("HOME") .. "/.local/share/nvim/Trans.nvim",
+            })
+        end,
+    },
     {
         "romgrk/barbar.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
