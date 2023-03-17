@@ -2,6 +2,7 @@
 
 - [终端](#终端)
   - [Iterm2](#iterm2)
+  - [Wezterm](#wezterm)
   - [zsh](#zsh)
   - [oh-my-zsh](#oh-my-zsh)
   - [nerd-font](#nerd-font)
@@ -21,6 +22,16 @@
 https://iterm2.com/downloads.html
 
 安装配色(Solarized Dark): https://github.com/mbadolato/iTerm2-Color-Schemes
+
+### Wezterm 
+
+https://github.com/wez/wezterm
+
+拷贝配置文件
+
+```sh
+cp .wezterm.lua ~/
+```
 
 ### zsh
 
