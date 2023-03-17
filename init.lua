@@ -834,15 +834,15 @@ require("lazy").setup({
         end,
     },
     { "RRethy/vim-illuminate" },
-    {
-        "voldikss/vim-translator",
-        config = function()
-            vim.api.nvim_set_keymap("n", "ts", "<cmd>TranslateW<cr>", {
-                noremap = true,
-                desc = "TranslateW",
-            })
-        end,
-    },
+    -- {
+    --     "voldikss/vim-translator",
+    --     config = function()
+    --         vim.api.nvim_set_keymap("n", "ts", "<cmd>TranslateW<cr>", {
+    --             noremap = true,
+    --             desc = "TranslateW",
+    --         })
+    --     end,
+    -- },
     {
         "JuanZoran/Trans.nvim",
         branch = "experimental",
