@@ -17,6 +17,5 @@ return {
         { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
         { key = "LeftArrow", mods = "OPT", action = act.SendString("\x1bb") },
         { key = "RightArrow", mods = "OPT", action = act.SendString("\x1bf") },
-        { key = "C", mods = "CMD", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
     },
 }
