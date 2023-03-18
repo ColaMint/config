@@ -30,6 +30,7 @@ vim.cmd([[
   set wrap
   set textwidth=500
   set signcolumn=yes
+  set mouse=
   nnoremap - <PageDown>
   nnoremap = <PageUp>
 ]])

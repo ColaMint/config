@@ -11,10 +11,12 @@ return {
     color_scheme = "Builtin Solarized Dark",
     font = wezterm.font("Hack Nerd Font", { weight = "Regular" }),
     font_size = 14,
+    tbeat_east_asian_ambiguous_width_as_wide = true,
     keys = {
         { key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },
         { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
         { key = "LeftArrow", mods = "OPT", action = act.SendString("\x1bb") },
         { key = "RightArrow", mods = "OPT", action = act.SendString("\x1bf") },
+        { key = "C", mods = "CMD", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
     },
 }
