@@ -67,3 +67,6 @@ eval $(thefuck --alias)
 
 # source your own shrc file if exists
 [ -f ~/.env.sh ] && source ~/.env.sh
+
+# lsd
+alias ls='lsd --hyperlink=auto'
