@@ -202,11 +202,6 @@ require("lazy").setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
-            -- npm i -g vscode-langservers-extracted
-            lspconfig.eslint.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
             -- npm install -g vim-language-server
             lspconfig.vimls.setup({
                 capabilities = capabilities,
@@ -233,11 +228,12 @@ require("lazy").setup({
             -- cargo install stylua
             -- go install golang.org/x/tools/cmd/goimports@latest
             -- npm install -g cspell@latest
+            -- npm i -g vscode-langservers-extracted
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "json", "yaml" },
+                        filetypes = { "json", "yaml", "javascript", "typescript" },
                     }),
                     null_ls.builtins.diagnostics.buf,
                     null_ls.builtins.formatting.buf,
@@ -259,6 +255,8 @@ require("lazy").setup({
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.diagnostics.luacheck,
                     null_ls.builtins.formatting.goimports,
+                    null_ls.builtins.diagnostics.eslint,
+                    null_ls.builtins.code_actions.eslint,
                     -- null_ls.builtins.diagnostics.cspell,
                     -- null_ls.builtins.code_actions.cspell,
                 },
