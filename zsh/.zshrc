@@ -70,3 +70,6 @@ eval $(thefuck --alias)
 
 # lsd
 alias ls='lsd --hyperlink=auto'
+
+# fix kiity ssh issue
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
