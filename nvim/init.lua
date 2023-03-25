@@ -1038,4 +1038,23 @@ require("lazy").setup({
             require("noice").setup({})
         end,
     },
+    {
+        name = "cursor",
+        dir = "/Users/liming/go/src/github.com/ColaMint/cursor.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        keys = {
+            { "ck", mode = { "n", "x" }, "<Cmd>CursorQueryWithContext<CR>", desc = "Cursor Query with Context" },
+            {
+                "cl",
+                mode = { "n", "x" },
+                "<Cmd>CursorQueryWithoutContext<CR>",
+                desc = "Cursor Query without Context",
+            },
+        },
+        config = function()
+            -- require("cursor").query()
+        end,
+    },
 })
