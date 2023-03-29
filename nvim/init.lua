@@ -1043,18 +1043,32 @@ require("lazy").setup({
         dir = "/Users/liming/go/src/github.com/ColaMint/cursor.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
         },
         keys = {
-            { "ck", mode = { "n", "x" }, "<Cmd>CursorQueryWithContext<CR>", desc = "Cursor Query with Context" },
+            { "cc", mode = { "n", "x" }, "<Cmd>CursorAsk<CR>", desc = "Ask Cursor" },
             {
-                "cl",
+                "cd",
                 mode = { "n", "x" },
-                "<Cmd>CursorQueryWithoutContext<CR>",
-                desc = "Cursor Query without Context",
+                "<Cmd>CursorChatBasedOnBuffer<CR>",
+                desc = "Chat with Cursor Based on Buffer",
             },
+            { "ce", mode = { "n", "x" }, "<Cmd>CursorChat<CR>", desc = "Chat with Cursor" },
         },
         config = function()
             -- require("cursor").query()
+        end,
+    },
+    {
+        "liuchengxu/vista.vim",
+        keys = {
+            { "<F4>", mode = { "n", "x" }, "<Cmd>Vista!!<CR>", desc = "Open/Close vista window" },
+        },
+        config = function()
+            vim.g.vista_icon_indent = { "╰─▸ ", "├─▸ " }
+            vim.g.vista_default_executive = "nvim_lsp"
+            vim.g.vista_fzf_preview = { "right:50%" }
+            vim.g["vista#renderer#enable_icon"] = 1
         end,
     },
 })
