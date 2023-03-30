@@ -9,7 +9,10 @@ end)
 
 return {
     color_scheme = "Builtin Solarized Dark",
-    font = wezterm.font("Hack Nerd Font", { weight = "Regular" }),
+    font = wezterm.font_with_fallback({
+        "Hack Nerd Font",
+        "苹方-简",
+    }),
     font_size = 14,
     tbeat_east_asian_ambiguous_width_as_wide = true,
     keys = {
