@@ -219,6 +219,31 @@ require("lazy").setup({
                 on_attach = on_attach,
             })
 
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    on_attach(client, bufnr)
+                end,
+                settings = {
+                    Lua = {
+                        hint = {
+                            enable = true,
+                            setType = true,
+                            arrayIndex = "Disable",
+                        },
+                        codelens = {
+                            enable = true,
+                        },
+                        completion = {
+                            postfix = ".",
+                            showWord = "Disable",
+                            workspaceWord = false,
+                        },
+                    },
+                },
+            })
+
             -- brew install bufbuild/buf/buf
             -- brew install hadolint
             -- pip3 install sqlfluff
@@ -253,7 +278,6 @@ require("lazy").setup({
                     null_ls.builtins.diagnostics.jsonlint,
                     null_ls.builtins.diagnostics.yamllint,
                     null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.diagnostics.luacheck,
                     null_ls.builtins.formatting.goimports,
                     null_ls.builtins.diagnostics.eslint,
                     null_ls.builtins.code_actions.eslint,
