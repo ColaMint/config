@@ -1052,16 +1052,16 @@ require("lazy").setup({
     --         vim.cmd("set nospell")
     --     end,
     -- },
-    --{
-    --    "folke/noice.nvim",
-    --    dependencies = {
-    --        "MunifTanjim/nui.nvim",
-    --        "rcarriga/nvim-notify",
-    --    },
-    --    config = function()
-    --        require("noice").setup({})
-    --    end,
-    --},
+    {
+        "folke/noice.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("noice").setup({})
+        end,
+    },
     {
         name = "cursor",
         dir = "/Users/liming/go/src/github.com/ColaMint/cursor.nvim",
