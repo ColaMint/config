@@ -258,7 +258,7 @@ require("lazy").setup({
             null_ls.setup({
                 sources = {
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "json", "yaml", "javascript", "typescript" },
+                        filetypes = { "json", "yaml", "javascript", "typescript", "markdown" },
                     }),
                     null_ls.builtins.diagnostics.buf,
                     null_ls.builtins.formatting.buf,
