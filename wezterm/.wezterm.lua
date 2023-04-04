@@ -14,7 +14,6 @@ return {
         "苹方-简",
     }),
     font_size = 14,
-    treat_east_asian_ambiguous_width_as_wide = true,
     keys = {
         { key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },
         { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },

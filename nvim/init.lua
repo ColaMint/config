@@ -113,14 +113,15 @@ require("lazy").setup({
             require("mason-lspconfig").setup()
 
             -- border
-            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-            vim.lsp.handlers["textDocument/signatureHelp"] =
-                vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
             vim.diagnostic.config({
                 float = {
                     border = "rounded",
                 },
             })
+            local handlers = {
+                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+            }
 
             -- Mappings.
             local opts = { noremap = true, silent = true }
@@ -178,6 +179,7 @@ require("lazy").setup({
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             -- go install golang.org/x/tools/gopls@latest
             lspconfig.gopls.setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     client.server_capabilities.documentFormattingProvider = false
@@ -199,27 +201,32 @@ require("lazy").setup({
             })
             -- pip3 install python-lsp-server
             lspconfig.pylsp.setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
             -- npm install -g vim-language-server
             lspconfig.vimls.setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
             -- npm i -g bash-language-server
             lspconfig.bashls.setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lemminx
             -- https://github.com/redhat-developer/vscode-xml/releases/download/latest/lemminx-osx-x86_64.zip
             lspconfig.lemminx.setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
 
             lspconfig.lua_ls.setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     client.server_capabilities.documentFormattingProvider = false
@@ -284,6 +291,7 @@ require("lazy").setup({
                     -- null_ls.builtins.diagnostics.cspell,
                     -- null_ls.builtins.code_actions.cspell,
                 },
+                handlers = handlers,
                 on_attach = on_attach,
             })
         end,
