@@ -1071,27 +1071,27 @@ require("lazy").setup({
             require("noice").setup({})
         end,
     },
-    {
-        name = "cursor",
-        dir = "/Users/liming/go/src/github.com/ColaMint/cursor.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
-        keys = {
-            { "cc", mode = { "n", "x" }, "<Cmd>CursorAsk<CR>", desc = "Ask Cursor" },
-            {
-                "cd",
-                mode = { "n", "x" },
-                "<Cmd>CursorChatBasedOnBuffer<CR>",
-                desc = "Chat with Cursor Based on Buffer",
-            },
-            { "ce", mode = { "n", "x" }, "<Cmd>CursorChat<CR>", desc = "Chat with Cursor" },
-        },
-        config = function()
-            -- require("cursor").query()
-        end,
-    },
+    --{
+    --    name = "cursor",
+    --    dir = "/Users/liming/go/src/github.com/ColaMint/cursor.nvim",
+    --    dependencies = {
+    --        "nvim-lua/plenary.nvim",
+    --        "MunifTanjim/nui.nvim",
+    --    },
+    --    keys = {
+    --        { "cc", mode = { "n", "x" }, "<Cmd>CursorAsk<CR>", desc = "Ask Cursor" },
+    --        {
+    --            "cd",
+    --            mode = { "n", "x" },
+    --            "<Cmd>CursorChatBasedOnBuffer<CR>",
+    --            desc = "Chat with Cursor Based on Buffer",
+    --        },
+    --        { "ce", mode = { "n", "x" }, "<Cmd>CursorChat<CR>", desc = "Chat with Cursor" },
+    --    },
+    --    config = function()
+    --        -- require("cursor").query()
+    --    end,
+    --},
     {
         "liuchengxu/vista.vim",
         keys = {
