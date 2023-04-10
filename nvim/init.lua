@@ -16,24 +16,20 @@ vim.opt.rtp:prepend(lazypath)
 -- 在有nvim-treesitter的情况下，加了这个会导致用vim直接打开指定文件时lsp不能自动启动
 -- syntax enable
 
-vim.cmd([[
-  filetype plugin indent on
-  let mapleader = ","
-  set number
-  set cursorline
-  set shiftwidth=4
-  set tabstop=4
-  set expandtab
-  set nobackup
-  set backspace=indent,eol,start
-  set encoding=utf8
-  set wrap
-  set textwidth=500
-  set signcolumn=yes
-  set mouse=
-  nnoremap - <PageDown>
-  nnoremap = <PageUp>
-]])
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.wrap = true
+vim.o.encoding = "utf8"
+vim.o.signcolumn = "yes"
+vim.o.mouse = "a"
+vim.o.cursorline = true
+vim.o.number = true
+vim.g.mapleader = ","
+vim.o.backspace = "indent,eol,start"
+
+vim.api.nvim_set_keymap("n", "-", "<PageDown>", { noremap = true })
+vim.api.nvim_set_keymap("n", "=", "<PageUp>", { noremap = true })
 
 require("lazy").setup({
     {
@@ -1103,5 +1099,9 @@ require("lazy").setup({
             vim.g.vista_fzf_preview = { "right:50%" }
             vim.g["vista#renderer#enable_icon"] = 1
         end,
+    },
+    {
+        "tpope/vim-sleuth",
+        event = "VeryLazy",
     },
 })
