@@ -22,7 +22,7 @@ vim.o.shiftwidth = 4
 vim.o.wrap = true
 vim.o.encoding = "utf8"
 vim.o.signcolumn = "yes"
-vim.o.mouse = "a"
+vim.o.mouse = ""
 vim.o.cursorline = true
 vim.o.number = true
 vim.g.mapleader = ","
@@ -1103,5 +1103,21 @@ require("lazy").setup({
     {
         "tpope/vim-sleuth",
         event = "VeryLazy",
+    },
+    {
+        "krivahtoo/silicon.nvim",
+        build = "./install.sh build",
+        config = function()
+            require("silicon").setup({
+                font = "Hack=16",
+                theme = "Monokai Extended",
+                watermark = {
+                    text = " @ColaMint",
+                },
+                window_title = function()
+                    return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
+                end,
+            })
+        end,
     },
 })
