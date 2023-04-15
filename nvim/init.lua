@@ -1126,4 +1126,12 @@ require("lazy").setup({
             require("satellite").setup()
         end,
     },
+    {
+        "kevinhwang91/nvim-bqf",
+        dependencies = {
+            { "junegunn/fzf", build = "lua vim.fn['fzf#install']()" },
+            { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+        },
+        ft = "qf",
+    },
 })
