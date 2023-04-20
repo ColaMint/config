@@ -183,7 +183,7 @@ require("lazy").setup({
                 end,
                 settings = {
                     gopls = {
-                        usePlaceholders = true,
+                        usePlaceholders = false,
                         hints = {
                             assignVariableTypes = true,
                             compositeLiteralFields = true,
