@@ -434,21 +434,15 @@ require("lazy").setup({
                 enable_diagnostics = true,
                 sort_case_insensitive = false, -- used when sorting files and directories in the tree
                 sort_function = nil, -- use a custom function for sorting files and directories in the tree
-                sources = {
-                    "filesystem",
-                    "buffers",
-                    "git_status",
-                },
                 source_selector = {
                     winbar = true,
                     statusline = false, -- toggle to show selector on statusline
                     content_layout = "center",
                     tabs_layout = "equal",
-                    tab_labels = {
-                        filesystem = "" .. " Files",
-                        buffers = "" .. " Bufs",
-                        git_status = "" .. " Git",
-                        diagnostics = "裂" .. " Diagnostics",
+                    sources = {
+                        { source = "filesystem" },
+                        { source = "buffers" },
+                        { source = "git_status" },
                     },
                 },
                 -- sort_function = function (a,b)
@@ -850,7 +844,7 @@ require("lazy").setup({
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "go", "python", "json", "javascript", "vim", "yaml", "vue", "sql", "lua", "help" },
+                ensure_installed = { "go", "python", "json", "javascript", "vim", "yaml", "vue", "sql", "lua" },
                 ignore_install = { "markdown" },
                 auto_install = true,
                 highlight = {
