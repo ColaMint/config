@@ -1,0 +1,9 @@
+[Unit]
+Description=Subconverter Service
+
+[Service]
+ExecStart=subconverter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
