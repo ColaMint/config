@@ -72,11 +72,12 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }c
+super + {_,shift + }w
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-super + bracket{left,right}
+# super + bracket{left,right}
+super + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
@@ -140,3 +141,15 @@ XF86AudioMute
 # change volume
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
+
+#
+# copy/paste
+#
+
+# copy 
+super + c
+    echo -n "$(xclip -o)" | xclip -in -selection clipboard
+
+# paste 
+super + v 
+    xdotool keyup v && (xprop -id `xdotool getwindowfocus` | grep WM_CLASS | grep -v wezterm && xdotool key --clearmodifiers Control_L+v || xdotool key --clearmodifiers Control_L+Shift_L+v)
