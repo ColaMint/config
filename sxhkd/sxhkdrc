@@ -23,6 +23,10 @@ super + b
 super + ctrl + a
     flameshot gui -c -p ~/Pictures/Screenshots
 
+# ocr 
+super + o
+    normcap 
+
 #
 # bspwm hotkeys
 #
