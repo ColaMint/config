@@ -12,7 +12,6 @@ output DisplayPort-5
 off
 output eDP
 crtc 0
-gamma 1.0:0.833:0.667
 mode 2880x1800
 pos 0x0
 primary
