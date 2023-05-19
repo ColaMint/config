@@ -13,7 +13,7 @@ pgrep -x mailspring > /dev/null || mailspring -b
 grep `pgrep Xorg` /tmp/init_redshift  > /dev/null || ~/.config/polybar/modules/redshift/redshift.sh on && echo `pgrep Xorg` > /tmp/init_redshift
 pgrep -x clash-verge > /dev/null || clash-verge &
 
-autorandr --change --skip-options gamma
+autorandr --batch --change 
 # if xrandr | grep "DisplayPort-1 connected" > /dev/null; then
 #     xrandr --output eDP --off --output DisplayPort-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 # else
