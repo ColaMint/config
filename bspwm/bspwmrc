@@ -1,6 +1,6 @@
 #! /bin/sh
 
-pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x keymapper > /dev/null || keymapper -u &
 fcitx5 &
 picom & 
 dunst &

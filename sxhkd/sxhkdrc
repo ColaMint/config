@@ -151,13 +151,13 @@ XF86Audio{Raise,Lower}Volume
 #
 
 # copy 
-super + c
-    echo -n "$(xclip -o)" | xclip -in -selection clipboard
-
-# paste 
-super + v 
-    xdotool keyup Super_L && xdotool keyup v && (xprop -id `xdotool getwindowfocus` | grep WM_CLASS | grep -v wezterm && xdotool key --clearmodifiers Control_L+v || xdotool key --clearmodifiers Control_L+Shift_L+v)
-
-# select all 
-super + a 
-    xdotool keyup Super_L && xdotool keyup a xdotool key --clearmodifiers Control_L+a
+#super + c
+#    echo -n "$(xclip -o)" | xclip -in -selection clipboard
+#
+## paste 
+#super + v 
+#    xdotool keyup Super_L && xdotool keyup v && (xprop -id `xdotool getwindowfocus` | grep WM_CLASS | grep -v wezterm && xdotool key --clearmodifiers Control_L+v || xdotool key --clearmodifiers Control_L+Shift_L+v)
+#
+## select all 
+#super + a 
+#    xdotool keyup Super_L && xdotool keyup a xdotool key --clearmodifiers Control_L+a
