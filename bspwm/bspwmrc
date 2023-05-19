@@ -12,6 +12,7 @@ nm-applet &
 pgrep -x mailspring > /dev/null || mailspring -b 
 grep `pgrep Xorg` /tmp/init_redshift  > /dev/null || ~/.config/polybar/modules/redshift/redshift.sh on && echo `pgrep Xorg` > /tmp/init_redshift
 pgrep -x clash-verge > /dev/null || clash-verge &
+# pgrep -x blueman-tray > /dev/null || blueman-manager &
 
 autorandr --change --ignore-lid
 # if xrandr | grep "DisplayPort-1 connected" > /dev/null; then
