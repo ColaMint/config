@@ -87,6 +87,10 @@ require("lazy").setup({
 						NeoTreeCursorLine = {
 							fg = c.base.yellow,
 						},
+						LspInlayHint = {
+							fg = "#727072",
+							bg = "#373438",
+						},
 					}
 				end,
 			})
@@ -1017,6 +1021,7 @@ require("lazy").setup({
 	--},
 	{
 		"lvimuser/lsp-inlayhints.nvim",
+		branch = "anticonceal",
 		config = function()
 			require("lsp-inlayhints").setup({
 				debug_mode = true,
