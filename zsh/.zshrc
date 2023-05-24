@@ -78,4 +78,4 @@ alias ls='lsd --hyperlink=auto'
 alias rg='ranger'
 
 # joshuto 
-alias f='/home/colamint/go/src/github.com/ColaMint/config/joshuto/joshuto'
+alias f='~/.config/joshuto/joshuto'
