@@ -30,6 +30,8 @@ vim.o.backspace = "indent,eol,start"
 
 vim.api.nvim_set_keymap("n", "-", "<PageDown>", { noremap = true })
 vim.api.nvim_set_keymap("n", "=", "<PageUp>", { noremap = true })
+vim.api.nvim_set_keymap("n", "J", "5j", { noremap = true })
+vim.api.nvim_set_keymap("n", "K", "5k", { noremap = true })
 
 require("lazy").setup({
 	{
