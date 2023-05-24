@@ -23,7 +23,7 @@ color:
   # When to colorize the output.
   # When "classic" is set, this is set to "never".
   # Possible values: never, auto, always
-  when: auto
+  when: never
   # How to colorize the output.
   # When "classic" is set, this is set to "no-color".
   # Possible values: default, <theme-file-name>
