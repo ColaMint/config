@@ -76,3 +76,6 @@ alias ls='lsd --hyperlink=auto'
 
 # ranger 
 alias rg='ranger'
+
+# joshuto 
+alias f='/home/colamint/go/src/github.com/ColaMint/config/joshuto/joshuto'
