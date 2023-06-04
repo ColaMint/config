@@ -19,6 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "javascript",
+    callback = function(args)
+        vim.o.tabstop = 2
+        vim.o.shiftwidth = 2
+    end,
+})
 vim.o.wrap = true
 vim.o.encoding = "utf8"
 vim.o.signcolumn = "yes"
