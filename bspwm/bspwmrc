@@ -37,6 +37,7 @@ bspc rule -a feishu desktop=^4
 bspc rule -a Feishu desktop=^4
 bspc rule -a Mailspring desktop=^5
 bspc rule -a netease-cloud-music desktop=^6
+bspc rule -a electron-netease-cloud-music desktop=^6
 
 # 修复不满屏
 for side in top right bottom left; do bspc config ${side}_monocle_padding -10; done
