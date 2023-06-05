@@ -1140,4 +1140,15 @@ require("lazy").setup({
         },
         ft = "qf",
     },
+    {
+        "Bekaboo/dropbar.nvim",
+        config = function()
+            vim.keymap.set("n", "<leader>p", function()
+                require("dropbar.api").pick()
+            end, {
+                noremap = true,
+                desc = "dropbar pick",
+            })
+        end,
+    },
 })
