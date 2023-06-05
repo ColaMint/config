@@ -4,7 +4,7 @@ PLAYER="ElectronNCM"
 DESKTOP="/usr/share/applications/electron-netease-cloud-music.desktop"
 
 is_running() {
-    if playerctl --list-all | grep $PLAYER > /dev/null; then
+    if playerctl --list-all 2>&1 | grep $PLAYER > /dev/null; then
         return 0
     else
         return 1
@@ -12,7 +12,7 @@ is_running() {
 }
 
 is_playing() {
-    if playerctl status | grep Playing > /dev/null; then
+    if playerctl status 2>&1 | grep Playing > /dev/null; then
         return 0
     else
         return 1
