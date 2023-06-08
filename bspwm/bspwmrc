@@ -1,21 +1,69 @@
 #! /bin/sh
 
-pgrep -x keymapper > /dev/null || keymapper -u &
+# 键盘映射
+# https://github.com/keymapperorg/KeyMapper
+if cat /proc/bus/input/devices | grep "Apple Inc. Magic Keyboard" > /dev/null; then
+    pkill -x keymapper > /dev/null; keymapper -c ~/.config/keymapper/mac.conf -u &
+else
+    pkill -x keymapper > /dev/null; keymapper -c ~/.config/keymapper/win.conf -u &
+fi
+
+# 输入法
+# https://github.com/fcitx/fcitx5
 fcitx5 &
+
+# 合成器 
+# https://github.com/yshui/picom
 picom & 
+
+# 消息通知
+# https://github.com/dunst-project/dunst
 dunst &
+
+# 壁纸
+# https://github.com/derf/feh
 feh --bg-center $HOME/Pictures/wall.jpg 
+
+# 状态栏
+# https://github.com/polybar/polybar
 $HOME/.config/polybar/launch.sh
-utools &
+
+# https://u.tools/
+pgrep -x utools > /dev/null || utools &
+
+# 避免电脑休眠
+# https://github.com/kyleleong/caffeine
 caffeine &
+
+# 网络管理
+# https://gitlab.gnome.org/GNOME/network-manager-applet
 nm-applet &
+
+# 邮件
+# https://github.com/Foundry376/Mailspring
 pgrep -x mailspring > /dev/null || mailspring -b 
+
+# 色温控制
+# https://github.com/jonls/redshift
 grep `pgrep Xorg` /tmp/init_redshift  > /dev/null || ~/.config/polybar/modules/redshift/redshift.sh on && echo `pgrep Xorg` > /tmp/init_redshift
+
+# clash 
+# https://github.com/zzzgydi/clash-verge
 pgrep -x clash-verge > /dev/null || clash-verge &
+
+# 身份验证弹窗
+# https://wiki.archlinux.org/title/Polkit
 /usr/lib/polkit-kde-authentication-agent-1 &
+
+# 蓝牙
+# https://github.com/blueman-project/blueman
 # pgrep -x blueman-tray > /dev/null || blueman-manager &
+
+# 让 mpd 支持 MPRIS 2
 # pgrep -x mpDris2 > /dev/null || mpDris2 &
 
+# 分辨率
+# https://github.com/phillipberndt/autorandr
 autorandr --change --ignore-lid
 # if xrandr | grep "DisplayPort-1 connected" > /dev/null; then
 #     xrandr --output eDP --off --output DisplayPort-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal
@@ -23,6 +71,7 @@ autorandr --change --ignore-lid
 #     xrandr --output eDP --primary --mode 2880x1800 --pos 0x0 --rotate normal --output DisplayPort-1 --off
 # fi
 
+# bspwm
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
@@ -39,5 +88,5 @@ bspc rule -a Mailspring desktop=^5
 bspc rule -a netease-cloud-music desktop=^6
 bspc rule -a electron-netease-cloud-music desktop=^6
 
-# 修复不满屏
+# 有时能修复不满屏
 for side in top right bottom left; do bspc config ${side}_monocle_padding -10; done
