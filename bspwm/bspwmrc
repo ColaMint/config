@@ -57,7 +57,7 @@ pgrep -x clash-verge > /dev/null || clash-verge &
 
 # 蓝牙
 # https://github.com/blueman-project/blueman
-pgrep -x blueman-tray > /dev/null || blueman-manager &
+# pgrep -x blueman-tray > /dev/null || blueman-manager &
 
 # 让 mpd 支持 MPRIS 2
 # pgrep -x mpDris2 > /dev/null || mpDris2 &
@@ -70,6 +70,10 @@ autorandr --change --ignore-lid
 # else
 #     xrandr --output eDP --primary --mode 2880x1800 --pos 0x0 --rotate normal --output DisplayPort-1 --off
 # fi
+
+# u盘自动挂载
+# https://github.com/coldfix/udiskie
+pgrep -x udiskie > /dev/null || udiskie &
 
 # bspwm
 bspc monitor -d I II III IV V VI VII VIII IX X
