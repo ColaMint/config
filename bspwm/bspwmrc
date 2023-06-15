@@ -1,5 +1,8 @@
 #! /bin/sh
 
+# x11设置
+xsettingsd &
+
 # 键盘映射
 # https://github.com/keymapperorg/KeyMapper
 if cat /proc/bus/input/devices | grep "Apple Inc. Magic Keyboard" > /dev/null; then
