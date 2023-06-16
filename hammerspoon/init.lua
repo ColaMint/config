@@ -41,3 +41,26 @@ end)
 hs.hotkey.bind({ "cmd", "shift" }, "m", function()
     hs.window.focusedWindow():maximize()
 end)
+
+-- disbale cmd+w/cmd+q for utm
+utm_binds = {
+    hs.hotkey.new({ "cmd" }, "w", nil, function() end),
+    hs.hotkey.new({ "cmd" }, "q", nil, function() end),
+}
+
+function enableUTMBinds()
+    for k, v in pairs(utm_binds) do
+        v:enable()
+    end
+end
+
+function disableUTMBinds()
+    for k, v in pairs(utm_binds) do
+        v:disable()
+    end
+end
+
+local wf = hs.window.filter
+wf_terminal = wf.new({ "UTM" })
+wf_terminal:subscribe(wf.windowFocused, enableUTMBinds)
+wf_terminal:subscribe(wf.windowUnfocused, disableUTMBinds)
