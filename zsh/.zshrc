@@ -69,7 +69,7 @@ eval $(thefuck --alias)
 [ -f ~/.env.sh ] && source ~/.env.sh
 
 # lsd
-alias ls='lsd --hyperlink=auto'
+alias ls='lsd'
 
 # fix kiity ssh issue
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
