@@ -1,0 +1,56 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m config layout bsp
+
+yabai -m config top_padding    10
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config right_padding  10
+yabai -m config window_gap     10
+
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_follows_focus on
+
+yabai -m config window_topmost off 
+
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+
+yabai -m config external_bar all:20:20
+
+function setup_space {
+  local idx="$1"
+  local name="$2"
+  local space=
+  echo "setup space $idx : $name"
+
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
+  fi
+
+  yabai -m space "$idx" --label "$name"
+}
+
+setup_space 1 code 
+setup_space 2 browser 
+setup_space 3 chat 
+setup_space 4 work 
+setup_space 5 mail 
+setup_space 6 music 
+setup_space 7 game 
+setup_space 8 video 
+setup_space 9 database 
+setup_space 10 cocument 
+
+yabai -m rule --add app="^WezTerm$" space=^1
+yabai -m rule --add app="^Google Chrome$" space=^2 
+yabai -m rule --add app="^微信$" space=^3
+yabai -m rule --add app="^飞书$" space=^4
+yabai -m rule --add app="^邮件$" space=^5
+yabai -m rule --add app="^网易云音乐$" space=^6

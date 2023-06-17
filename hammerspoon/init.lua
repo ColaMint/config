@@ -1,66 +1,139 @@
-hs.hotkey.bind({ "cmd" }, "1", function()
+-- [input-method]
+for key, value in pairs({
+    ["1"] = "com.apple.keylayout.ABC",
+    ["2"] = "com.sogou.inputmethod.sogou.pinyin",
+    ["3"] = "com.google.inputmethod.Japanese.base",
+}) do
+    hs.hotkey.bind({ "ctrl" }, key, function()
+        hs.keycodes.currentSourceID(value)
+    end)
+end
+
+-- [app]
+hs.hotkey.bind({ "cmd" }, "return", function()
     hs.application.launchOrFocus("WezTerm")
 end)
 
-hs.hotkey.bind({ "cmd" }, "2", function()
+hs.hotkey.bind({ "cmd" }, "b", function()
     hs.application.launchOrFocus("Google Chrome")
 end)
 
-hs.hotkey.bind({ "cmd" }, "3", function()
-    hs.application.launchOrFocus("Wechat")
+-- [yabai] restart
+hs.hotkey.bind({ "alt", "cmd" }, "r", function()
+    hs.execute("/opt/homebrew/bin/yabai --stop-service; /opt/homebrew/bin/yabai --start-service")
 end)
 
-hs.hotkey.bind({ "cmd" }, "4", function()
-    hs.application.launchOrFocus("Lark")
+-- [yabai] quict
+hs.hotkey.bind({ "alt", "cmd" }, "q", function()
+    hs.execute("/homebrew/bin/yabai --stop-service")
 end)
 
-hs.hotkey.bind({ "cmd" }, "5", function()
-    hs.application.launchOrFocus("Mail")
-end)
+-- [yabai] focus space
+for key, value in pairs({
+    ["1"] = 1,
+    ["2"] = 2,
+    ["3"] = 3,
+    ["4"] = 4,
+    ["5"] = 5,
+    ["6"] = 6,
+    ["7"] = 7,
+    ["8"] = 8,
+    ["9"] = 9,
+    ["0"] = 10,
+}) do
+    hs.hotkey.bind({ "cmd" }, key, function()
+        hs.execute("/opt/homebrew/bin/yabai -m space --focus " .. tostring(value))
+    end)
+end
 
-hs.hotkey.bind({ "ctrl" }, "1", function()
-    hs.keycodes.currentSourceID("com.apple.keylayout.ABC")
-end)
+-- [yabai] focus window
+for key, value in pairs({
+    ["k"] = "north",
+    ["l"] = "east",
+    ["n"] = "south",
+    ["h"] = "west",
+}) do
+    hs.hotkey.bind({ "cmd" }, key, function()
+        hs.execute("/opt/homebrew/bin/yabai -m window --focus " .. tostring(value))
+    end)
+end
 
-hs.hotkey.bind({ "ctrl" }, "2", function()
-    hs.keycodes.currentSourceID("com.sogou.inputmethod.sogou.pinyin")
-end)
+-- [yabai] swap window
+for key, value in pairs({
+    ["k"] = "north",
+    ["l"] = "east",
+    ["n"] = "south",
+    ["h"] = "west",
+}) do
+    hs.hotkey.bind({ "cmd", "shift" }, key, function()
+        hs.execute("/opt/homebrew/bin/yabai -m window --swap " .. tostring(value))
+    end)
+end
 
-hs.hotkey.bind({ "ctrl" }, "3", function()
-    hs.keycodes.currentSourceID("com.google.inputmethod.Japanese.base")
-end)
+-- [yabai] move window to space
+for key, value in pairs({
+    ["1"] = 1,
+    ["2"] = 2,
+    ["3"] = 3,
+    ["4"] = 4,
+    ["5"] = 5,
+    ["6"] = 6,
+    ["7"] = 7,
+    ["8"] = 8,
+    ["9"] = 9,
+    ["0"] = 10,
+}) do
+    hs.hotkey.bind({ "cmd", "shift" }, key, function()
+        hs.execute("/opt/homebrew/bin/yabai -m window --space " .. tostring(value))
+    end)
+end
 
-hs.hotkey.bind({ "cmd", "shift" }, "c", function()
-    hs.window.focusedWindow():centerOnScreen()
-end)
-
+-- [yabai] toggle fullscreen
 hs.hotkey.bind({ "cmd", "shift" }, "f", function()
-    hs.window.focusedWindow():toggleZoom()
+    hs.execute("/opt/homebrew/bin/yabai -m window --toggle native-fullscreen")
 end)
 
-hs.hotkey.bind({ "cmd", "shift" }, "m", function()
-    hs.window.focusedWindow():maximize()
+-- [yabai] toggle float
+hs.hotkey.bind({ "cmd", "shift" }, "t", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --toggle float")
 end)
 
--- disbale cmd+w/cmd+q for utm
-utm_binds = {
-    hs.hotkey.new({ "cmd" }, "w", nil, function() end),
-    hs.hotkey.new({ "cmd" }, "q", nil, function() end),
-}
+-- [yabai] resize window
+hs.hotkey.bind({ "alt", "cmd" }, "h", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize left:-20:0")
+end)
+hs.hotkey.bind({ "alt", "cmd" }, "l", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize right:20:0")
+end)
+hs.hotkey.bind({ "alt", "cmd" }, "k", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize top:0:-20")
+end)
+hs.hotkey.bind({ "alt", "cmd" }, "j", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize bottom:0:20")
+end)
+hs.hotkey.bind({ "alt", "cmd", "shift" }, "h", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize right:-20:0")
+end)
+hs.hotkey.bind({ "alt", "cmd", "shift" }, "l", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize left:20:0")
+end)
+hs.hotkey.bind({ "alt", "cmd", "shift" }, "k", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize bottom:0:-20")
+end)
+hs.hotkey.bind({ "alt", "cmd", "shift" }, "j", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --resize top:0:20")
+end)
 
-function enableUTMBinds()
-    for k, v in pairs(utm_binds) do
-        v:enable()
-    end
-end
-
-function disableUTMBinds()
-    for k, v in pairs(utm_binds) do
-        v:disable()
-    end
-end
-
-local wf = hs.window.filter
-wf_terminal = wf.new({ "UTM" })
-wf_terminal:subscribe(wf.windowFocused, enableUTMBinds)
-wf_terminal:subscribe(wf.windowUnfocused, disableUTMBinds)
+-- [yabai] move window
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "l", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --move rel:20:0")
+end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "h", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --move rel:-20:0")
+end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "k", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --move rel:0:-20")
+end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "j", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --move rel:0:20")
+end)
