@@ -18,6 +18,7 @@ if uname == "Linux" then
             "苹方-简",
         }),
         font_size = 12,
+        window_decorations = "NONE",
         keys = {
             { key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },
             { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
@@ -45,6 +46,7 @@ else
             "苹方-简",
         }),
         font_size = 14,
+        window_decorations = "NONE",
         keys = {
             { key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },
             { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
