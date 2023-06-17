@@ -50,6 +50,14 @@ else
             { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
             { key = "LeftArrow", mods = "OPT", action = act.SendString("\x1bb") },
             { key = "RightArrow", mods = "OPT", action = act.SendString("\x1bf") },
+            { key = "1", mods = "OPT", action = act.ActivateTab(0) },
+            { key = "2", mods = "OPT", action = act.ActivateTab(1) },
+            { key = "3", mods = "OPT", action = act.ActivateTab(2) },
+            { key = "4", mods = "OPT", action = act.ActivateTab(3) },
+            { key = "5", mods = "OPT", action = act.ActivateTab(4) },
+            { key = "6", mods = "OPT", action = act.ActivateTab(5) },
+            { key = "7", mods = "OPT", action = act.ActivateTab(6) },
+            { key = "8", mods = "OPT", action = act.ActivateTab(7) },
         },
     }
 end
