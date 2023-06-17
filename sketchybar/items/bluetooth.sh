@@ -10,6 +10,6 @@ $SKETCHBAR_BIN --add item bluetooth right                                       
                           background.color=0xff252731                            \
                           background.height=33                                   \
                           background.corner_radius=20                            \
-                          background.padding_right=0                             \
+                          background.padding_right=3                             \
                           script="$PLUGIN_DIR/bluetooth.sh"                      \
                           click_script="$BLUETOOTH_CLICK_SCRIPT"                 \
