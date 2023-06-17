@@ -49,8 +49,8 @@ setup_space 9 database
 setup_space 10 cocument 
 
 yabai -m rule --add app="^WezTerm$" space=^1
-yabai -m rule --add app="^Google Chrome$" space=^2 
-yabai -m rule --add app="^微信$" space=^3
-yabai -m rule --add app="^飞书$" space=^4
-yabai -m rule --add app="^邮件$" space=^5
+yabai -m rule --add app="^Google Chrome$"
+yabai -m rule --add app="^微信$" space=^3 manage=off
+yabai -m rule --add app="^飞书$" space=^4 manage=off
+yabai -m rule --add app="^邮件$" space=^5 manage=off
 yabai -m rule --add app="^网易云音乐$" space=^6
