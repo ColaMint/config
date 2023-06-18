@@ -37,19 +37,16 @@ $SKETCHBAR_BIN --bar height=50                                                  
                      background.padding_right=$PADDINGS                            \
                      background.padding_left=$PADDINGS                             \
 
-. "$ITEM_DIR/arch_menu.sh"
+. "$ITEM_DIR/menu.sh"
 . "$ITEM_DIR/system.sh"
 . "$ITEM_DIR/window_title.sh"
 . "$ITEM_DIR/email.sh"
  
 . "$ITEM_DIR/time.sh"
-# . "$ITEM_DIR/sound.sh"     # sound
 . "$ITEM_DIR/battery.sh"
-# . "$ITEM_DIR/playing.sh"   # playing on spotify
 
 . "$ITEM_DIR/bluetooth.sh"
 . "$ITEM_DIR/vpn.sh"
 . "$ITEM_DIR/wifi.sh"
-
 
 $SKETCHBAR_BIN --update

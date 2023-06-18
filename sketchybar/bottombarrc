@@ -37,8 +37,6 @@ $SKETCHBAR_BIN --bar height=50                                                  
                      background.padding_right=$PADDINGS                            \
                      background.padding_left=$PADDINGS                             \
 
-#$SKETCHBAR_BIN --animate sin 30 --bar y_offset=-100 y_offset=9
-
 . "$ITEM_DIR/mic.sh"
 . "$ITEM_DIR/sound.sh"
 . "$ITEM_DIR/music.sh"
