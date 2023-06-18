@@ -2,6 +2,6 @@
 
 SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 
-a=$(df -h "/" | awk 'NR==2{print $4}' | cut -c 1-4)
-FINAL=$(printf '%s\n' "${a%?} ${a#"${a%?}"}")
-$SKETCHBAR_BIN --set $NAME label="$FINAL"B
+used_disk_percentage=$(df -H | grep -E '^(/dev/disk3s5).' | awk '{ printf ("%s\n", $5) }')
+
+$SKETCHBAR_BIN --set $NAME label="$used_disk_percentage"
