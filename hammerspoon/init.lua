@@ -11,13 +11,13 @@ end
 
 -- [app]
 hs.hotkey.bind({ "cmd" }, "return", function()
-    hs.application.launchOrFocus("WezTerm")
-    -- os.execute("/Applications/WezTerm.app/Contents/MacOS/wezterm cli spawn --new-window")
+    -- hs.application.launchOrFocus("WezTerm")
+    hs.execute("open -n -a 'WezTerm'")
 end)
 
 hs.hotkey.bind({ "cmd" }, "b", function()
-    hs.application.launchOrFocus("Google Chrome")
-    -- os.execute("/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome")
+    -- hs.application.launchOrFocus("Google Chrome")
+    hs.execute("open -n -a 'Google Chrome'")
 end)
 
 -- [yabai] restart
