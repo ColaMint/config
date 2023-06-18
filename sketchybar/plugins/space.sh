@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
 
 WIN=$(yabai -m query --spaces --space $SID | jq '.windows[0]')
 HAS_WINDOWS_OR_IS_SELECTED="true"

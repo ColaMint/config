@@ -25,7 +25,7 @@ $SKETCHBAR_BIN --bar height=50                                                  
                      topmost=off                                                   \
                      sticky=on                                                     \
                      font_smoothing=off                                            \
-                     y_offset=-100                                                 \
+                     y_offset=10                                                   \
                      notch_width=0                                                 \
                                                                                    \
            --default drawing=on                                                    \
@@ -37,11 +37,9 @@ $SKETCHBAR_BIN --bar height=50                                                  
                      background.padding_right=$PADDINGS                            \
                      background.padding_left=$PADDINGS                             \
 
-$SKETCHBAR_BIN --animate sin 30 --bar y_offset=-100 y_offset=9
-
 . "$ITEM_DIR/arch_menu.sh"
 . "$ITEM_DIR/system.sh"
-. "$ITEM_DIR/spaces.sh"
+. "$ITEM_DIR/window_title.sh"
 . "$ITEM_DIR/email.sh"
  
 . "$ITEM_DIR/time.sh"
