@@ -2,13 +2,14 @@
 
 SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 
-getPrecentage=$(TARGET_PATH="."
-top -l 1 | grep -E "^CPU" | grep -Eo '[^[:space:]]+%' | head -1 | sed 's/3\(.\)$/\1/' | cut -d "." -f1)
+page_size=$(getconf PAGESIZE)
 
-getMB=$(TARGET_PATH="."
-top -l1 | awk '/PhysMem/ {print $2}')
+total_memory=$(sysctl -n hw.memsize)
 
-precentage=$(echo $getPrecentage)
-MB=$(echo $getMB)
+free_pages=$(vm_stat | awk '/Pages (free)/ {sum+=$3} END{print sum}')
 
-$SKETCHBAR_BIN --set $NAME icon="" label="$precentage%"
+free_memory=$((free_pages * page_size))
+
+used_memory_percentage=$(((total_memory - free_memory) * 100 / total_memory))
+
+$SKETCHBAR_BIN --set $NAME icon="" label="$used_memory_percentage%"

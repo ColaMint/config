@@ -7,6 +7,9 @@ $SKETCHBAR_BIN --add item bluetooth right                                       
                           icon.padding_left=16                                   \
                           icon.padding_right=8                                   \
                           icon.color=0xff7aa2f7                                  \
+                          label.font="$FONT:Medium:14.0"                         \
+                          label.padding_right=8                                  \
+                          label.padding_right=16                                 \
                           background.color=0xff252731                            \
                           background.height=33                                   \
                           background.corner_radius=20                            \

@@ -9,4 +9,6 @@ else
   COLOR=0xff7aa2f7
 fi
 
-$SKETCHBAR_BIN --set $NAME icon.color=$COLOR
+CONNECTED=$(/opt/homebrew/bin/blueutil --connected | wc -l | sed -e 's/^[[:space:]]*//')
+
+$SKETCHBAR_BIN --set $NAME icon.color=$COLOR label="$CONNECTED"
