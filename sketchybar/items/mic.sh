@@ -1,7 +1,7 @@
-SOUND_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
+MIC_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
 
-$SKETCHBAR_BIN --add item sound left                                             \
-           --set sound update_freq=1                                             \
+$SKETCHBAR_BIN --add item mic left                                               \
+           --set mic update_freq=1                                               \
                        icon.font="Font Awesome 6 Free:Solid:15.4"                \
                        icon.padding_left=16                                      \
                        icon.padding_right=4                                      \
@@ -13,6 +13,7 @@ $SKETCHBAR_BIN --add item sound left                                            
                        background.color=$BACKGROUND_COLOR                        \
                        background.height=$BACKGROUND_HEIGHT                      \
                        background.corner_radius=$BACKGROUND_CORNER_RADIUS        \
+                       background.padding_left=8                                 \
                        background.padding_right=3                                \
-                       script="$PLUGIN_DIR/sound.sh"                             \
-                       click_script="$SOUND_CLICK_SCRIPT"                        \
+                       script="$PLUGIN_DIR/mic.sh"                               \
+                       click_script="$MIC_CLICK_SCRIPT"                          \
