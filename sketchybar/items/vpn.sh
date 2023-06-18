@@ -1,4 +1,4 @@
-VPN_CLICK_SCRIPT="open /System/Library/PreferencePanes/Network.prefPane/"
+VPN_CLICK_SCRIPT="open 'x-apple.systempreferences:com.apple.preference.network?VPN'"
 
 $SKETCHBAR_BIN --add item vpn right                                              \
                --set vpn  update_freq=1                                          \
