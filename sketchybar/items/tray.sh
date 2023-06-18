@@ -1,4 +1,4 @@
-PADDING_LEFT=-20
+PADDING_LEFT=-15
 UPDATE_FREG=3
 
 $SKETCHBAR_BIN --add alias 'TextInputMenuAgent' right                 \
