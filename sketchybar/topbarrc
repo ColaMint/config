@@ -7,6 +7,12 @@ PADDINGS=3
 
 FONT="苹方-简"
 
+BAR_COLOR=0xee1a1c26
+LABEL_COLOR=0xffdfe1ea                                     
+BACKGROUND_COLOR=0xff252731
+BACKGROUND_HEIGHT=33
+BACKGROUND_CORNER_RADIUS=20
+
 $SKETCHBAR_BIN --bar height=50                                                     \
                      corner_radius=14                                              \
                      border_width=0                                                \
@@ -15,7 +21,7 @@ $SKETCHBAR_BIN --bar height=50                                                  
                      position=top                                                  \
                      padding_left=4                                                \
                      padding_right=4                                               \
-                     color=0xff1a1c26                                              \
+                     color=$BAR_COLOR                                              \
                      topmost=off                                                   \
                      sticky=on                                                     \
                      font_smoothing=off                                            \

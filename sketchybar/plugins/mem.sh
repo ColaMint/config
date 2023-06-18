@@ -12,4 +12,4 @@ free_memory=$((free_pages * page_size))
 
 used_memory_percentage=$(((total_memory - free_memory) * 100 / total_memory))
 
-$SKETCHBAR_BIN --set $NAME icon="" label="$used_memory_percentage%"
+$SKETCHBAR_BIN --set $NAME label="$used_memory_percentage%"
