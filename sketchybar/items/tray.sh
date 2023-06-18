@@ -1,5 +1,5 @@
 PADDING_LEFT=-20
-UPDATE_FREG=5
+UPDATE_FREG=3
 
 $SKETCHBAR_BIN --add alias 'TextInputMenuAgent' right                 \
                --set 'TextInputMenuAgent'                             \
