@@ -35,8 +35,8 @@ $SKETCHBAR_BIN --animate sin 30 --bar y_offset=-100 y_offset=9
 
 . "$ITEM_DIR/arch_menu.sh"
 . "$ITEM_DIR/system.sh"
-
 . "$ITEM_DIR/spaces.sh"
+. "$ITEM_DIR/email.sh"
  
 . "$ITEM_DIR/time.sh"
 # . "$ITEM_DIR/sound.sh"     # sound
