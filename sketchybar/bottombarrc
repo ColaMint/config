@@ -41,7 +41,10 @@ $SKETCHBAR_BIN --bar height=50                                                  
 
 . "$ITEM_DIR/mic.sh"
 . "$ITEM_DIR/sound.sh"
+. "$ITEM_DIR/music.sh"
 
 . "$ITEM_DIR/spaces.sh"
+
+. "$ITEM_DIR/tray.sh"
 
 $SKETCHBAR_BIN --update

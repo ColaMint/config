@@ -47,7 +47,6 @@ $SKETCHBAR_BIN --bar height=50                                                  
 . "$ITEM_DIR/battery.sh"
 # . "$ITEM_DIR/playing.sh"   # playing on spotify
 
-# $SKETCHBAR_BIN --add alias 网易云音乐 right 
 . "$ITEM_DIR/bluetooth.sh"
 . "$ITEM_DIR/vpn.sh"
 . "$ITEM_DIR/wifi.sh"
