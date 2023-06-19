@@ -22,7 +22,7 @@ end)
 
 -- [yabai] restart
 hs.hotkey.bind({ "alt", "cmd" }, "r", function()
-    hs.execute("/opt/homebrew/bin/yabai --stop-service; /opt/homebrew/bin/yabai --start-service")
+    hs.execute("/opt/homebrew/bin/yabai --restart-service")
 end)
 
 -- [yabai] quict
