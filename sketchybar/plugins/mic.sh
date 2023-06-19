@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo $INFO
+
 SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
 
 VOLUME=$(osascript -e "input volume of (get volume settings)")

@@ -1,7 +1,7 @@
 MIC_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
 
 $SKETCHBAR_BIN --add item mic left                                               \
-           --set mic update_freq=1                                               \
+           --set mic update_freq=5                                               \
                        icon.font="Font Awesome 6 Free:Solid:15.4"                \
                        icon.padding_left=16                                      \
                        icon.padding_right=4                                      \
