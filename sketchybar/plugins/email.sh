@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
 
 UNREAD=$(osascript -e 'tell application "Mail" to return the unread count of inbox')
 

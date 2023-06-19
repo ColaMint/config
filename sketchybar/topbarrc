@@ -40,7 +40,6 @@ $SKETCHBAR_BIN --bar height=50                                                  
 . "$ITEM_DIR/menu.sh"
 . "$ITEM_DIR/system.sh"
 . "$ITEM_DIR/window_title.sh"
-. "$ITEM_DIR/email.sh"
  
 . "$ITEM_DIR/time.sh"
 . "$ITEM_DIR/battery.sh"

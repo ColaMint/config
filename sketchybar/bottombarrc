@@ -44,5 +44,8 @@ $SKETCHBAR_BIN --bar height=50                                                  
 . "$ITEM_DIR/spaces.sh"
 
 . "$ITEM_DIR/tray.sh"
+. "$ITEM_DIR/feishu.sh"
+. "$ITEM_DIR/wechat.sh"
+. "$ITEM_DIR/email.sh"
 
 $SKETCHBAR_BIN --update
