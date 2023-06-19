@@ -18,8 +18,8 @@ yabai -m config mouse_follows_focus off
 yabai -m config window_topmost off 
 
 yabai -m config window_opacity on
-#yabai -m config active_window_opacity 1.0
-#yabai -m config normal_window_opacity 0.9
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 1.0
 
 yabai -m config external_bar all:20:60
 
@@ -54,8 +54,8 @@ yabai -m rule --add app="^飞书$" space=^4 manage=off
 yabai -m rule --add app="^邮件$" space=^5 manage=off
 yabai -m rule --add app="^网易云音乐$" space=^6
 yabai -m rule --add app="^TablePlus$" space=^9
-yabai -m rule --add app="^系统设置$" manage=off
-yabai -m rule --add app="^Stats$" manage=off
+yabai -m rule --add app="^系统设置$" manage=off sticky=on layer=above
+yabai -m rule --add app="^Stats$" manage=off sticky=on layer=above
 
 # yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_topbar --trigger window_focus"
 # yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_bottombar --trigger window_focus"
