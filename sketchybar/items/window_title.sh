@@ -1,5 +1,5 @@
 $SKETCHBAR_BIN --add item window_title center                                    \
-               --set window_title update_freq=1                                  \
+               --set window_title update_freq=0                                  \
                           icon.padding_left=0                                    \
                           icon.padding_right=0                                   \
                           label.font="$FONT:Medium:14.0"                         \
@@ -12,3 +12,4 @@ $SKETCHBAR_BIN --add item window_title center                                   
                           background.padding_left=0                              \
                           background.padding_right=0                             \
                           script="$PLUGIN_DIR/window_title.sh"                   \
+               --subscribe window_title front_app_switched                       \

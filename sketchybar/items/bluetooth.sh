@@ -1,7 +1,7 @@
 BLUETOOTH_CLICK_SCRIPT="open /System/Library/PreferencePanes/Bluetooth.prefPane"
 
 $SKETCHBAR_BIN --add item bluetooth right                                        \
-               --set bluetooth update_freq=1                                     \
+               --set bluetooth update_freq=10                                    \
                           icon="󰂯"                                               \
                           icon.font="Font Awesome 6 Free:Solid:15.4"             \
                           icon.padding_left=16                                   \

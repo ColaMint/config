@@ -1,7 +1,7 @@
 VPN_CLICK_SCRIPT="open 'x-apple.systempreferences:com.apple.preference.network?VPN'"
 
 $SKETCHBAR_BIN --add item vpn right                                              \
-               --set vpn  update_freq=1                                          \
+               --set vpn  update_freq=3                                          \
                           icon="󰖂"                                               \
                           icon.font="Font Awesome 6 Free:Solid:15.4"             \
                           icon.padding_left=16                                   \

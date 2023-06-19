@@ -1,5 +1,5 @@
 $SKETCHBAR_BIN --add item 飞书 right                                             \
-               --set 飞书 update_freq=5                                          \
+               --set 飞书 update_freq=10                                         \
                           icon="󱗆"                                               \
                           icon.font="Font Awesome 6 Free:Solid:18"               \
                           icon.color=0xff3f72e8                                  \

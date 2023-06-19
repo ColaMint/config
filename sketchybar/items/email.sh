@@ -1,7 +1,7 @@
 EMAIL_CLICK_SCRIPT="open -a 'Mail'"
 
 $SKETCHBAR_BIN --add item email right                                            \
-               --set email update_freq=60                                        \
+               --set email update_freq=10                                        \
                           icon="󰇮"                                               \
                           icon.font="Font Awesome 6 Free:Solid:18"               \
                           icon.color=0xff7aa2f7                                  \
