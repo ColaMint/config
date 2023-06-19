@@ -1,7 +1,7 @@
 SOUND_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
 
 $SKETCHBAR_BIN --add item sound left                                             \
-           --set sound update_freq=1                                             \
+           --set sound update_freq=0                                             \
                        icon.font="Font Awesome 6 Free:Solid:15.4"                \
                        icon.padding_left=16                                      \
                        icon.padding_right=4                                      \
@@ -16,3 +16,4 @@ $SKETCHBAR_BIN --add item sound left                                            
                        background.padding_right=3                                \
                        script="$PLUGIN_DIR/sound.sh"                             \
                        click_script="$SOUND_CLICK_SCRIPT"                        \
+           --subscribe sound volume_change                                       \

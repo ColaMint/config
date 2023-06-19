@@ -2,8 +2,8 @@
 
 SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
 
-VOLUME=$(osascript -e "output volume of (get volume settings)")
-MUTED=$(osascript -e "output muted of (get volume settings)")
+RESULT=$(osascript -e 'set {volume, muted} to {output volume, output muted} of (get volume settings)' -e 'return volume as string & " " & muted as string')
+read -r VOLUME MUTED <<< "$RESULT"
 
 if [[ $MUTED != "false" ]]; then
 ICON=""
