@@ -100,6 +100,11 @@ hs.hotkey.bind({ "cmd", "shift" }, "t", function()
     hs.execute("/opt/homebrew/bin/yabai -m window --toggle float")
 end)
 
+-- [yabai] toggle split
+hs.hotkey.bind({ "cmd", "shift" }, "s", function()
+    hs.execute("/opt/homebrew/bin/yabai -m window --toggle split")
+end)
+
 -- [yabai] resize window
 hs.hotkey.bind({ "alt", "cmd" }, "h", function()
     hs.execute("/opt/homebrew/bin/yabai -m window --resize left:-20:0")
