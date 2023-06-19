@@ -17,9 +17,9 @@ yabai -m config mouse_follows_focus off
 
 yabai -m config window_topmost off 
 
-yabai -m config window_opacity on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 1.0
+#yabai -m config window_opacity on
+#yabai -m config active_window_opacity 1.0
+#yabai -m config normal_window_opacity 0.9
 
 yabai -m config external_bar all:20:60
 
@@ -45,7 +45,7 @@ setup_space 6 music
 setup_space 7 game 
 setup_space 8 video 
 setup_space 9 database 
-setup_space 10 cocument 
+setup_space 10 document 
 
 yabai -m rule --add app="^WezTerm$" space=^1
 yabai -m rule --add app="^Google Chrome$"
