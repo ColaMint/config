@@ -1,4 +1,5 @@
-### cpu Widget ###
+CLICK_SCRIPT="open -a 'Activity Monitor'"
+
 $SKETCHBAR_BIN --add item cpu left                                                   \
                --set cpu  update_freq=10                                             \
                           icon=""                                                   \
@@ -16,8 +17,8 @@ $SKETCHBAR_BIN --add item cpu left                                              
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
                           background.padding_right=3                                 \
                           script="$PLUGIN_DIR/cpu.sh"                                \
+                          click_script="$CLICK_SCRIPT"                               \
 
-### mem Widget ###
 $SKETCHBAR_BIN --add item mem left                                                   \
                --set mem  update_freq=10                                             \
                           icon=""                                                   \
@@ -35,8 +36,8 @@ $SKETCHBAR_BIN --add item mem left                                              
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
                           background.padding_right=3                                 \
                           script="$PLUGIN_DIR/mem.sh"                                \
+                          click_script="$CLICK_SCRIPT"                               \
 
-### disk Widget ###
 $SKETCHBAR_BIN --add item disk left                                                  \
                --set disk update_freq=10                                             \
                           icon=""                                                   \
@@ -53,3 +54,4 @@ $SKETCHBAR_BIN --add item disk left                                             
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
                           background.padding_right=3                                 \
                           script="$PLUGIN_DIR/disk.sh"                               \
+                          click_script="$CLICK_SCRIPT"                               \
