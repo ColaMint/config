@@ -9,6 +9,45 @@ for key, value in pairs({
     end)
 end
 
+-- [input-volume]
+hs.hotkey.bind({ "ctrl" }, "F10", function()
+    for _, input_device in ipairs(hs.audiodevice.allInputDevices()) do
+        local level = input_device:inputVolume()
+        if level ~= nil then
+            if level == 0 then
+                level = 50
+            else
+                level = 0
+            end
+            input_device:setInputVolume(level)
+        end
+    end
+end)
+hs.hotkey.bind({ "ctrl" }, "F11", function()
+    for _, input_device in ipairs(hs.audiodevice.allInputDevices()) do
+        local level = input_device:inputVolume()
+        if level ~= nil then
+            level = level - 5
+            if level < 0 then
+                level = 0
+            end
+            input_device:setInputVolume(level)
+        end
+    end
+end)
+hs.hotkey.bind({ "ctrl" }, "F12", function()
+    for _, input_device in ipairs(hs.audiodevice.allInputDevices()) do
+        local level = input_device:inputVolume()
+        if level ~= nil then
+            level = level + 5
+            if level > 100 then
+                level = 100
+            end
+            input_device:setInputVolume(level)
+        end
+    end
+end)
+
 -- [app]
 hs.hotkey.bind({ "cmd" }, "return", function()
     hs.application.launchOrFocus("WezTerm")
