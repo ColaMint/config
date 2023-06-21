@@ -6,7 +6,7 @@ $SKETCHBAR_BIN --add item vpn right                                             
                           icon.font="Font Awesome 6 Free:Solid:15.4"             \
                           icon.padding_left=16                                   \
                           icon.padding_right=4                                   \
-                          icon.color=0xff9ece6a                                  \
+                          icon.color=0xfff7768e                                  \
                           icon.y_offset=-1                                       \
                           label.font="$FONT:Medium:14.0"                         \
                           label.color=$LABEL_COLOR                               \
