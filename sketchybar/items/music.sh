@@ -1,5 +1,3 @@
-UPDATE_FREG=3
-
 $SKETCHBAR_BIN --add alias '网易云音乐' left                               \
                --set '网易云音乐'                                          \
                      label.color=0xfff6768e                                \
@@ -9,6 +7,5 @@ $SKETCHBAR_BIN --add alias '网易云音乐' left                               
                      background.color=$BACKGROUND_COLOR                    \
                      background.height=$BACKGROUND_HEIGHT                  \
                      background.corner_radius=$BACKGROUND_CORNER_RADIUS    \
-                     update_freq=$UPDATE_FREG                              \
                      script="$PLUGIN_DIR/music.sh"                         \
                      click_script="open -a /Applications/NeteaseMusic.app" \
