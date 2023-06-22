@@ -12,5 +12,4 @@ if [[ ${#WINDOW_TITLE} -gt 50 ]]; then
   WINDOW_TITLE="$(echo "$WINDOW_TITLE" | cut -c 1-50)..."
 fi
 
-echo $WINDOW_TITLE
 $SKETCHBAR_BIN --set $NAME label="$WINDOW_TITLE"

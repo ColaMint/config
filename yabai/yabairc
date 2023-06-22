@@ -63,5 +63,5 @@ yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_bot
 yabai -m signal --add event=window_title_changed action="/opt/homebrew/bin/sketchy_topbar --trigger title_change"
 yabai -m signal --add event=window_title_changed action="/opt/homebrew/bin/sketchy_bottombar --trigger title_change"
 
-/opt/homebrew/bin/sketchy_topbar --config /Users/liming/.config/sketchybar/topbarrc &
+/opt/homebrew/bin/sketchy_topbar    --config /Users/liming/.config/sketchybar/topbarrc &
 /opt/homebrew/bin/sketchy_bottombar --config /Users/liming/.config/sketchybar/bottombarrc &
