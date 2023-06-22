@@ -1,12 +1,9 @@
 $SKETCHBAR_BIN --add item 飞书 right                                             \
                --set 飞书 update_freq=10                                         \
-                          icon="󱗆"                                               \
-                          icon.font="Font Awesome 6 Free:Solid:18"               \
+                          icon=󱗆                                                 \
                           icon.color=0xff3f72e8                                  \
                           icon.padding_left=16                                   \
                           icon.padding_right=4                                   \
-                          label.color=$LABEL_COLOR                               \
-                          label.font="$FONT:Medium:14.0"                         \
                           label.padding_right=8                                  \
                           label.padding_right=16                                 \
                           background.color=$BACKGROUND_COLOR                     \

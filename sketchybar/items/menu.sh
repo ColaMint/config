@@ -1,6 +1,5 @@
 $SKETCHBAR_BIN --add item arch left                                                             \
                --set arch icon="󰀵"                                                              \
-                          icon.font="Font Awesome 6 Free:Solid:20"                              \
                           icon.color=0xff7aa1f7                                                 \
                           icon.y_offset=1                                                       \
                           background.drawing=on                                                 \

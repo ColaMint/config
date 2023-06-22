@@ -1,12 +1,9 @@
 $SKETCHBAR_BIN --add item 微信 right                                             \
                --set 微信 update_freq=10                                         \
-                          icon="󰘑"                                               \
-                          icon.font="Font Awesome 6 Free:Solid:18"               \
+                          icon=󰘑                                                 \
                           icon.color=0xff2fb608                                  \
                           icon.padding_left=16                                   \
                           icon.padding_right=4                                   \
-                          label.color=$LABEL_COLOR                               \
-                          label.font="$FONT:Medium:14.0"                         \
                           label.padding_right=8                                  \
                           label.padding_right=16                                 \
                           background.color=$BACKGROUND_COLOR                     \

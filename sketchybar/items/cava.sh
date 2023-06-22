@@ -3,7 +3,6 @@ $SKETCHBAR_BIN --add item cava left                                             
                           icon.padding_left=0                                    \
                           icon.padding_right=0                                   \
                           label.color=0xfff6768e                                 \
-                          label.font="$FONT:Medium:14.0"                         \
                           label.padding_left=16                                  \
                           label.padding_right=16                                 \
                           background.color=$BACKGROUND_COLOR                     \

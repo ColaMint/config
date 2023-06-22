@@ -3,15 +3,19 @@ SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 ITEM_DIR="$HOME/.config/sketchybar/items"
 
-PADDINGS=3
-
-FONT="苹方-简"
-
+LABEL_FONT_FAMILY="苹方-简"
+LABEL_FONT_STYLE="Medium"
+LABEL_FONT_SIZE="14"
+LABEL_COLOR=0xffdfe1ea                                     
+ICON_FONT_FAMILY="Hack Nerd Font"
+ICON_FONT_STYLE="Regular"
+ICON_FONT_SIZE="16"
 BAR_COLOR=0xee1a1c26
 LABEL_COLOR=0xffdfe1ea                                     
 BACKGROUND_COLOR=0xff252731
 BACKGROUND_HEIGHT=33
 BACKGROUND_CORNER_RADIUS=20
+PADDINGS=3
 
 $SKETCHBAR_BIN --bar height=50                                                     \
                      corner_radius=14                                              \
@@ -30,10 +34,16 @@ $SKETCHBAR_BIN --bar height=50                                                  
                                                                                    \
            --default drawing=on                                                    \
                      updates=when_shown                                            \
-                     icon.padding_left=$PADDINGS                                   \
-                     icon.padding_right=$PADDINGS                                  \
+                     label.font.family="$LABEL_FONT_FAMILY"                        \
+                     label.font.style=$LABEL_FONT_STYLE                            \
+                     label.font.size=$LABEL_FONT_SIZE                              \
                      label.padding_left=$PADDINGS                                  \
                      label.padding_right=$PADDINGS                                 \
+                     icon.font.family="$ICON_FONT_FAMILY"                          \
+                     icon.font.style=$ICON_FONT_STYLE                              \
+                     icon.font.size=$ICON_FONT_SIZE                                \
+                     icon.padding_left=$PADDINGS                                   \
+                     icon.padding_right=$PADDINGS                                  \
                      background.padding_right=$PADDINGS                            \
                      background.padding_left=$PADDINGS                             \
 

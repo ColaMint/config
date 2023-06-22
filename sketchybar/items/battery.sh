@@ -2,13 +2,10 @@ BATTERY_CLICK_SCRIPT="open 'x-apple.systempreferences:com.apple.preference.batte
 
 $SKETCHBAR_BIN --add item battery right                                       \
                --set battery update_freq=10                                   \
-                       icon.font="Font Awesome 6 Free:Solid:15.4"             \
                        icon.padding_left=16                                   \
                        icon.padding_right=4                                   \
                        icon.color=0xff9ac868                                  \
                        icon.y_offset=-1                                       \
-                       label.font="$FONT:Medium:14.0"                         \
-                       label.color=$LABEL_COLOR                               \
                        label.padding_right=16                                 \
                        background.color=$BACKGROUND_COLOR                     \
                        background.height=$BACKGROUND_HEIGHT                   \

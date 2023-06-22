@@ -2,13 +2,10 @@ EMAIL_CLICK_SCRIPT="open -a 'Mail'"
 
 $SKETCHBAR_BIN --add item email right                                            \
                --set email update_freq=10                                        \
-                          icon="󰇮"                                               \
-                          icon.font="Font Awesome 6 Free:Solid:18"               \
+                          icon=󰇮                                                 \
                           icon.color=0xff7aa2f7                                  \
                           icon.padding_left=16                                   \
                           icon.padding_right=8                                   \
-                          label.color=$LABEL_COLOR                               \
-                          label.font="$FONT:Medium:14.0"                         \
                           label.padding_right=8                                  \
                           label.padding_right=16                                 \
                           background.color=$BACKGROUND_COLOR                     \

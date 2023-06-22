@@ -9,10 +9,9 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                                       drawing=on                                             \
                                       updates=on                                             \
                                       associated_display=1                                   \
-                                      label.font="$FONT:Black:10.0"                          \
-                                      icon.font="Font Awesome 6 Free:Solid:15.0"             \
                                       icon.padding_left=0                                    \
                                       icon.padding_right=64                                  \
+                                      icon.font.size=18                                      \
                                       background.color=0xff252630                            \
                                       background.height=$BACKGROUND_HEIGHT                   \
                                       background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
@@ -55,12 +54,12 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                                                                                              \
                --clone spaces.7       space_template                                         \
                --set   spaces.7       associated_space=7                                     \
-                                      icon=󱎓                                                 \
+                                      icon=                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.8       space_template                                         \
                --set   spaces.8       associated_space=8                                     \
-                                      icon=                                                 \
+                                      icon=                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.9       space_template                                         \
