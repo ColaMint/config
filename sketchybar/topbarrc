@@ -37,6 +37,9 @@ $SKETCHBAR_BIN --bar height=50                                                  
                      background.padding_right=$PADDINGS                            \
                      background.padding_left=$PADDINGS                             \
 
+$SKETCHBAR_BIN --add event window_focus
+$SKETCHBAR_BIN --add event title_change 
+
 . "$ITEM_DIR/menu.sh"
 . "$ITEM_DIR/system.sh"
 . "$ITEM_DIR/window_title.sh"

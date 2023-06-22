@@ -13,3 +13,5 @@ $SKETCHBAR_BIN --add item window_title center                                   
                           background.padding_right=0                             \
                           script="$PLUGIN_DIR/window_title.sh"                   \
                --subscribe window_title front_app_switched                       \
+               --subscribe window_title window_focus                             \
+               --subscribe window_title title_change                             \
