@@ -57,7 +57,7 @@ yabai -m rule --add app="^TablePlus$" space=^9
 yabai -m rule --add app="^系统设置$" manage=off sticky=on layer=above
 yabai -m rule --add app="^Stats$" manage=off sticky=on layer=above
 yabai -m rule --add app="^ClashX Pro$" manage=off sticky=on layer=above
-yabai -m rule --add app="^QQ$" manage=off
+#yabai -m rule --add app="^QQ$" manage=off
 
 yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_topbar --trigger window_focus"
 yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_bottombar --trigger window_focus"
