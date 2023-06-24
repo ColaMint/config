@@ -12,7 +12,7 @@ local uname = io.popen("uname"):read()
 if uname == "Linux" then
     return {
         color_scheme = "Builtin Solarized Dark",
-        -- jcolor_scheme = "SolarizedDark (Gogh)",
+        -- color_scheme = "SolarizedDark (Gogh)",
         font = wezterm.font_with_fallback({
             "Hack Nerd Font",
             "苹方-简",
@@ -41,6 +41,7 @@ if uname == "Linux" then
 else
     return {
         color_scheme = "Builtin Solarized Dark",
+        -- color_scheme = "SolarizedDark (Gogh)",
         font = wezterm.font_with_fallback({
             "Hack Nerd Font",
             "苹方-简",
