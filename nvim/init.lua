@@ -1187,4 +1187,11 @@ require("lazy").setup({
     {
         "wellle/targets.vim",
     },
+    {
+        "olexsmir/gopher.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
 })
