@@ -279,6 +279,12 @@ require("lazy").setup({
                     },
                 },
             })
+            lspconfig.sourcekit.setup({
+                handlers = handlers,
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "swift" },
+            })
 
             -- brew install bufbuild/buf/buf
             -- brew install hadolint
@@ -876,7 +882,7 @@ require("lazy").setup({
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "go", "python", "json", "javascript", "vim", "yaml", "vue", "sql", "lua" },
+                ensure_installed = { "go", "python", "json", "javascript", "vim", "yaml", "vue", "sql", "lua", "swift" },
                 ignore_install = { "markdown" },
                 auto_install = true,
                 highlight = {
