@@ -1215,4 +1215,10 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
         },
     },
+    {
+        "m4xshen/hardtime.nvim",
+        event = "VeryLazy",
+        opts = {},
+        enabled = false,
+    },
 })
