@@ -279,12 +279,13 @@ require("lazy").setup({
                     },
                 },
             })
-            lspconfig.sourcekit.setup({
-                handlers = handlers,
-                capabilities = capabilities,
-                on_attach = on_attach,
-                filetypes = { "swift" },
-            })
+            -- 没效果？
+            --lspconfig.sourcekit.setup({
+            --    handlers = handlers,
+            --    capabilities = capabilities,
+            --    on_attach = on_attach,
+            --    filetypes = { "swift" },
+            --})
 
             -- brew install bufbuild/buf/buf
             -- brew install hadolint
