@@ -46,7 +46,7 @@ require("lazy").setup({
         config = function()
             require("monokai-pro").setup({
                 transparent_background = false,
-                terminal_colors = true,
+                terminal_colors = false,
                 devicons = true, -- highlight the icons of `nvim-web-devicons`
                 styles = {
                     comment = { italic = true },
