@@ -4,11 +4,11 @@ SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 
 STATE=$(blueutil -p)
 if [ $STATE = 0 ]; then
-  COLOR=0xfff7768e
+  LABEL=
 else
-  COLOR=0xff7aa2f7
+  LABEL=
 fi
 
-CONNECTED=$(/opt/homebrew/bin/blueutil --connected | wc -l | sed -e 's/^[[:space:]]*//')
+# CONNECTED=$(/opt/homebrew/bin/blueutil --connected | wc -l | sed -e 's/^[[:space:]]*//')
 
-$SKETCHBAR_BIN --set $NAME icon.color=$COLOR label="$CONNECTED"
+$SKETCHBAR_BIN --set $NAME label="$LABEL"
