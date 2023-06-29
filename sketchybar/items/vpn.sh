@@ -1,6 +1,3 @@
-VPN_CLICK_SCRIPT="open 'x-apple.systempreferences:com.apple.preference.network?VPN'"
-
-echo "$ICON_FONT_FAMILY"
 $SKETCHBAR_BIN --add item vpn right                                              \
                --set vpn  update_freq=3                                          \
                           icon=󰒃                                                 \
@@ -18,4 +15,4 @@ $SKETCHBAR_BIN --add item vpn right                                             
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
                           background.padding_right=3                             \
                           script="$PLUGIN_DIR/vpn.sh"                            \
-                          click_script="$VPN_CLICK_SCRIPT"                       \
+                          click_script="$PLUGIN_DIR/toggle_vpn.sh"               \
