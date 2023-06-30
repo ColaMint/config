@@ -60,5 +60,6 @@ $SKETCHBAR_BIN --add event title_change
 . "$ITEM_DIR/feishu.sh"
 . "$ITEM_DIR/wechat.sh"
 . "$ITEM_DIR/email.sh"
+. "$ITEM_DIR/playing.sh"
 
 $SKETCHBAR_BIN --update
