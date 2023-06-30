@@ -11,3 +11,4 @@ $SKETCHBAR_BIN --add item clock right                                         \
                        background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
                        background.padding_right=8                             \
                        script="$PLUGIN_DIR/clock.sh"                          \
+                       click_script="open /Applications/万年历.app && osascript -e 'tell application \"System Events\" to tell process \"万年历\" to click menu bar item 1 of menu bar 2'"
