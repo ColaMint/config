@@ -2,6 +2,8 @@
 
 > https://github.com/FelixKratz/SketchyBar
 
+![SketchyBar](./assets/screenshot.png)
+
 ## Installation
 
 ```sh
