@@ -64,3 +64,7 @@ These Chinese software are used in my Sketchybar configuration. Please handle my
 
 - [Wechat/微信](https://apps.apple.com/us/app/wechat/id836500024)
 - [Feishu/飞书](https://apps.apple.com/cn/app/%E9%A3%9E%E4%B9%A6-%E5%85%88%E8%BF%9B%E5%9B%A2%E9%98%9F-%E5%85%88%E7%94%A8%E9%A3%9E%E4%B9%A6/id1551632588)
+
+## TODO
+
+- The calculation of free memory in [mem.sh](https://github.com/ColaMint/config/blob/main/sketchybar/plugins/mem.sh) differs significantly from the results of other memory monitoring software.
