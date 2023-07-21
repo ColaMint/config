@@ -11,5 +11,4 @@ $SKETCHBAR_BIN --add item 飞书 right                                          
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
                           background.padding_right=3                             \
                           script="$PLUGIN_DIR/app_status_label.sh"               \
-                          click_script="$EMAIL_CLICK_SCRIPT"                     \
                           click_script="open /Applications/Lark.app"             \
