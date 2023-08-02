@@ -47,18 +47,20 @@ setup_space 8 video
 setup_space 9 database 
 setup_space 10 document 
 
-yabai -m rule --add app="^WezTerm$" space=^1
-yabai -m rule --add app="^Google Chrome$"
-yabai -m rule --add app="^微信$" space=^3 manage=off
-yabai -m rule --add app="^飞书$" space=^4 manage=off
-yabai -m rule --add app="^邮件$" space=^5 manage=off
-yabai -m rule --add app="^网易云音乐$" space=^6
-yabai -m rule --add app="^TablePlus$" space=^9
-yabai -m rule --add app="^系统设置$" manage=off sticky=on layer=above
-yabai -m rule --add app="^活动监视器$" manage=off sticky=on layer=above
-yabai -m rule --add app="^Stats$" manage=off sticky=on layer=above
-yabai -m rule --add app="^ClashX Pro$" manage=off sticky=on layer=above
-#yabai -m rule --add app="^QQ$" manage=off
+yabai -m rule --add app="WezTerm" space=^1
+yabai -m rule --add app="Google Chrome"
+yabai -m rule --add app="微信" space=^3 manage=off
+yabai -m rule --add app="飞书" space=^4 manage=off
+yabai -m rule --add app="邮件" space=^5 manage=off
+yabai -m rule --add app="网易云音乐" space=^6
+yabai -m rule --add app="TablePlus" space=^9
+yabai -m rule --add app="系统设置" manage=off sticky=on layer=above
+yabai -m rule --add app="活动监视器" manage=off sticky=on layer=above
+yabai -m rule --add app="Stats" manage=off sticky=on layer=above
+yabai -m rule --add app="ClashX Pro" manage=off sticky=on layer=above
+#yabai -m rule --add app="QQ" manage=off
+yabai -m rule --add app="OBS" space=^8 manage=off
+yabai -m rule --add app="scrcpy" space=^8 manage=off
 
 yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_topbar --trigger window_focus"
 yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchy_bottombar --trigger window_focus"
