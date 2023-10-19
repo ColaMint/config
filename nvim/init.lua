@@ -708,7 +708,6 @@ require("lazy").setup({
 	{ "scrooloose/nerdcommenter" },
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
@@ -787,15 +786,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("indent_blankline").setup({
-				show_current_context = true,
-				show_current_context_start = true,
-			})
-		end,
-	},
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{ "godlygeek/tabular" },
 	{ "tyru/open-browser.vim" },
 	{
@@ -987,12 +978,12 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
-		"beauwilliams/focus.nvim",
-		config = function()
-			require("focus").setup()
-		end,
-	},
+	--{
+	--	"beauwilliams/focus.nvim",
+	--	config = function()
+	--		require("focus").setup()
+	--	end,
+	--},
 	{
 		"rcarriga/nvim-notify",
 		config = function()
@@ -1166,28 +1157,28 @@ require("lazy").setup({
 		"tpope/vim-sleuth",
 		event = "VeryLazy",
 	},
-	{
-		"krivahtoo/silicon.nvim",
-		build = "./install.sh build",
-		config = function()
-			require("silicon").setup({
-				font = "Hack=16",
-				theme = "Monokai Extended",
-				watermark = {
-					text = " @ColaMint",
-				},
-				window_title = function()
-					return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
-				end,
-			})
-		end,
-	},
-	{
-		"lewis6991/satellite.nvim",
-		config = function()
-			require("satellite").setup()
-		end,
-	},
+	--{
+	--	"krivahtoo/silicon.nvim",
+	--	build = "./install.sh build",
+	--	config = function()
+	--		require("silicon").setup({
+	--			font = "Hack=16",
+	--			theme = "Monokai Extended",
+	--			watermark = {
+	--				text = " @ColaMint",
+	--			},
+	--			window_title = function()
+	--				return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
+	--			end,
+	--		})
+	--	end,
+	--},
+	--{
+	--	"lewis6991/satellite.nvim",
+	--	config = function()
+	--		require("satellite").setup()
+	--	end,
+	--},
 	{
 		"kevinhwang91/nvim-bqf",
 		dependencies = {
@@ -1196,17 +1187,20 @@ require("lazy").setup({
 		},
 		ft = "qf",
 	},
-	{
-		"Bekaboo/dropbar.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>p", function()
-				require("dropbar.api").pick()
-			end, {
-				noremap = true,
-				desc = "dropbar pick",
-			})
-		end,
-	},
+	-- {
+	-- 	"Bekaboo/dropbar.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-telescope/telescope-fzf-native.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		vim.keymap.set("n", "<leader>p", function()
+	-- 			require("dropbar.api").pick()
+	-- 		end, {
+	-- 			noremap = true,
+	-- 			desc = "dropbar pick",
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"wellle/targets.vim",
 	},
