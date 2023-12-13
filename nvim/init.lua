@@ -123,6 +123,16 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"habamax/vim-godot",
+		config = function()
+			vim.g.godot_executable = "/Applications/Godot.app"
+			vim.api.nvim_set_keymap("n", "<F5>", "<cmd>GodotRun<cr>", {
+				noremap = true,
+				desc = "GodotRun",
+			})
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -279,6 +289,11 @@ require("lazy").setup({
 						},
 					},
 				},
+			})
+			lspconfig.gdscript.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 			-- 没效果？
 			--lspconfig.sourcekit.setup({
