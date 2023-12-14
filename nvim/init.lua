@@ -999,13 +999,13 @@ require("lazy").setup({
 	--		require("focus").setup()
 	--	end,
 	--},
-	{
-		"rcarriga/nvim-notify",
-		config = function()
-			vim.opt.termguicolors = true
-			vim.notify = require("notify")
-		end,
-	},
+	--{
+	--	"rcarriga/nvim-notify",
+	--	config = function()
+	--		vim.opt.termguicolors = true
+	--		vim.notify = require("notify")
+	--	end,
+	--},
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
@@ -1129,7 +1129,7 @@ require("lazy").setup({
 		"folke/noice.nvim",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
+			--"rcarriga/nvim-notify",
 		},
 		config = function()
 			require("noice").setup({})
