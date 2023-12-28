@@ -22,3 +22,8 @@ nnoremap <C-w><Left> <Cmd>call VSCodeNotify('workbench.action.moveEditorToLeftGr
 xnoremap <C-w><Left> <Cmd>call VSCodeNotify('workbench.action.moveEditorToLeftGroup')<CR>
 nnoremap <C-w><Right> <Cmd>call VSCodeNotify('workbench.action.moveEditorToRightGroup')<CR>
 xnoremap <C-w><Right> <Cmd>call VSCodeNotify('workbench.action.moveEditorToRightGroup')<CR>
+
+nnoremap <C-w><C-i> <Cmd>call VSCodeNotify('workbench.action.moveEditorToLeftGroup')<CR>
+xnoremap <C-w><C-i> <Cmd>call VSCodeNotify('workbench.action.moveEditorToLeftGroup')<CR>
+nnoremap <C-w><C-o> <Cmd>call VSCodeNotify('workbench.action.moveEditorToRightGroup')<CR>
+xnoremap <C-w><C-o> <Cmd>call VSCodeNotify('workbench.action.moveEditorToRightGroup')<CR>
