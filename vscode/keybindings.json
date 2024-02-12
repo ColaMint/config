@@ -1,50 +1,50 @@
 [
   {
-    "key": "cmd+o",
-    "command": "projectManager.listGitProjects#sideBarGit"
+    "command": "projectManager.listGitProjects#sideBarGit",
+    "key": "cmd+o"
   },
   {
-    "key": "ctrl+=",
     "command": "expand_region",
+    "key": "ctrl+=",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+-",
     "command": "undo_expand_region",
+    "key": "ctrl+-",
     "when": "editorTextFocus && editorHasSelection"
   },
   {
-    "key": "ctrl+e",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
   },
   {
-    "key": "ctrl+e",
     "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
     "when": "editorTextFocus"
   },
   {
-    "key": "a",
     "command": "explorer.newFile",
+    "key": "a",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "r",
     "command": "renameFile",
+    "key": "r",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "c",
     "command": "filesExplorer.copy",
+    "key": "c",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "p",
     "command": "filesExplorer.paste",
+    "key": "p",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "d",
     "command": "deleteFile",
+    "key": "d",
     "when": "filesExplorerFocus && !inputFocus"
   }
 ]

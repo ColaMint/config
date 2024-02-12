@@ -1,18 +1,18 @@
 {
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Hack Nerd Font",
   "editor.fontLigatures": false,
   "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
   "editor.linkedEditing": true,
   "editor.stickyScroll.enabled": false,
   "editor.suggest.insertMode": "replace",
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "always"
-  },
   "files.autoGuessEncoding": true,
   "godot_tools.gdscript_lsp_server_port": 6005,
   "projectManager.git.baseFolders": [
@@ -37,12 +37,12 @@
       "commands": ["editor.action.marker.nextInFiles"]
     },
     {
-      "before": ["J"],
-      "after": ["<C-d>"]
+      "after": ["<C-d>"],
+      "before": ["J"]
     },
     {
-      "before": ["K"],
-      "after": ["<C-u>"]
+      "after": ["<C-u>"],
+      "before": ["K"]
     },
     {
       "before": ["<leader>", "a"],
