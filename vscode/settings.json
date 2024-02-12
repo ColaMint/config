@@ -1,0 +1,63 @@
+{
+  "editor.fontFamily": "Hack Nerd Font",
+  "editor.fontLigatures": false,
+  "editor.fontWeight": "normal",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "editor.linkedEditing": true,
+  "editor.stickyScroll.enabled": false,
+  "editor.suggest.insertMode": "replace",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "files.autoGuessEncoding": true,
+  "godot_tools.gdscript_lsp_server_port": 6005,
+  "projectManager.git.baseFolders": [
+    "/Users/liming/go/src/github.com/ColaMint"
+  ],
+  "projectManager.sortList": "Recent",
+  "sortJSON.orderOverride": ["name", "version", "description"],
+  "sortJSON.orderUnderride": ["dependencies", "devDependencies"],
+  "vim.hlsearch": true,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["d", "h"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["d", "j"],
+      "commands": ["editor.action.marker.prevInFiles"]
+    },
+    {
+      "before": ["d", "k"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["J"],
+      "after": ["<C-d>"]
+    },
+    {
+      "before": ["K"],
+      "after": ["<C-u>"]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditor"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "workbench.settings.editor": "json",
+  "zenMode.hideLineNumbers": false
+}
