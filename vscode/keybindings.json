@@ -46,5 +46,9 @@
     "command": "deleteFile",
     "key": "d",
     "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "workbench.action.toggleZenMode",
+    "key": "ctrl+z"
   }
 ]
