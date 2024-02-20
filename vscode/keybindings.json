@@ -48,6 +48,11 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
+    "command": "explorer.openAndPassFocus",
+    "key": "enter",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
     "command": "workbench.action.toggleZenMode",
     "key": "ctrl+z"
   }

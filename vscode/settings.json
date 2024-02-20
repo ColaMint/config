@@ -57,7 +57,8 @@
       "commands": ["workbench.action.nextEditor"]
     }
   ],
-  "vim.useSystemClipboard": true,
+  "vim.useSystemClipboard": false,
   "workbench.settings.editor": "json",
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "workbench.startupEditor": "none"
 }

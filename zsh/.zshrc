@@ -36,6 +36,7 @@ antigen bundle npm
 antigen bundle pyenv 
 antigen bundle virtualenv 
 antigen bundle sublime 
+antigen bundle vscode
 antigen bundle history-substring-search 
 antigen bundle paulirish/git-open 
 # antigen bundle marlonrichert/zsh-autocomplete@main
