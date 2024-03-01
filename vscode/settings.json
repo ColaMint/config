@@ -2,6 +2,9 @@
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
   },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
@@ -13,10 +16,17 @@
   "editor.linkedEditing": true,
   "editor.stickyScroll.enabled": false,
   "editor.suggest.insertMode": "replace",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.wordBasedSuggestions": "allDocuments",
   "files.autoGuessEncoding": true,
   "godot_tools.gdscript_lsp_server_port": 6005,
   "projectManager.git.baseFolders": [
-    "/Users/liming/go/src/github.com/ColaMint"
+    "/Users/liming/go/src/github.com/ColaMint",
+    "/Users/liming/go/src/gitlab.umcasual.cn"
   ],
   "projectManager.sortList": "Recent",
   "sortJSON.orderOverride": ["name", "version", "description"],
@@ -60,5 +70,8 @@
   "vim.useSystemClipboard": false,
   "workbench.settings.editor": "json",
   "zenMode.hideLineNumbers": false,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "godotTools.lsp.serverPort": 6005,
+  "godotTools.editorPath.godot4": "/Applications/Godot_mono.app/Contents/MacOS/Godot",
+  "tabnine.experimentalAutoImports": true
 }
