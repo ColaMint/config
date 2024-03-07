@@ -3,19 +3,19 @@ hs.hotkey.bind({ "cmd" }, "1", function()
 end)
 
 hs.hotkey.bind({ "cmd" }, "2", function()
-    hs.application.launchOrFocus("Google Chrome")
+    hs.application.launchOrFocus("Visual Studio Code")
 end)
 
 hs.hotkey.bind({ "cmd" }, "3", function()
-    hs.application.launchOrFocus("Wechat")
+    hs.application.launchOrFocus("Google Chrome")
 end)
 
 hs.hotkey.bind({ "cmd" }, "4", function()
-    hs.application.launchOrFocus("Lark")
+    hs.application.launchOrFocus("Wechat")
 end)
 
 hs.hotkey.bind({ "cmd" }, "5", function()
-    hs.application.launchOrFocus("Mail")
+    hs.application.launchOrFocus("Lark")
 end)
 
 hs.hotkey.bind({ "ctrl" }, "1", function()
