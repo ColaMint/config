@@ -1,19 +1,18 @@
 # 装机配置
 
-* [终端](#终端)
-    * [Iterm2](#iterm2)
-    * [Wezterm](#wezterm)
-    * [Kitty](#kitty)
-    * [zsh](#zsh)
-    * [oh-my-zsh](#oh-my-zsh)
-    * [nerd-font](#nerd-font)
-    * [复制 zsh 配置文件](#复制-zsh-配置文件)
-    * [命令行工具](#命令行工具)
-* [vim](#vim)
-    * [neovim](#neovim)
-    * [复制 neovim 配置文件](#复制-neovim-配置文件)
-    * [安装插件管理器 vim-plug](#安装插件管理器-vim-plug)
-    * [安装插件和依赖](#安装插件和依赖)
+- [装机配置](#装机配置)
+  - [终端](#终端)
+    - [Iterm2](#iterm2)
+    - [Wezterm](#wezterm)
+    - [Kitty](#kitty)
+    - [zsh](#zsh)
+    - [oh-my-zsh](#oh-my-zsh)
+    - [nerd-font](#nerd-font)
+    - [复制 zsh 配置文件](#复制-zsh-配置文件)
+    - [命令行工具](#命令行工具)
+  - [vim](#vim)
+    - [neovim](#neovim)
+    - [复制 neovim 配置文件](#复制-neovim-配置文件)
 
 ## 终端
 
@@ -23,7 +22,7 @@ https://iterm2.com/downloads.html
 
 安装配色(Solarized Dark): https://github.com/mbadolato/iTerm2-Color-Schemes
 
-### Wezterm 
+### Wezterm
 
 https://github.com/wez/wezterm
 
@@ -33,7 +32,7 @@ https://github.com/wez/wezterm
 cp ./wezterm/.wezterm.lua ~/.wezterm.lua
 ```
 
-### Kitty 
+### Kitty
 
 ```sh
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -89,7 +88,7 @@ brew install thefuck
 
 brew install autojump
 
-brew install ranger 
+brew install ranger
 
 https://github.com/lsd-rs/lsd
 ```
