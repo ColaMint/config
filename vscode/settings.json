@@ -68,6 +68,10 @@
     {
       "before": ["L"],
       "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
     }
   ],
   "vim.useSystemClipboard": false,
@@ -76,5 +80,8 @@
   "workbench.startupEditor": "none",
   "godotTools.lsp.serverPort": 6005,
   "godotTools.editorPath.godot4": "/Applications/Godot_mono.app/Contents/MacOS/Godot",
-  "tabnine.experimentalAutoImports": true
+  "go.toolsManagement.autoUpdate": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 2
 }
