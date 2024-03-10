@@ -83,5 +83,6 @@
   "go.toolsManagement.autoUpdate": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "indentRainbow.indicatorStyle": "light",
-  "indentRainbow.lightIndicatorStyleLineWidth": 2
+  "indentRainbow.lightIndicatorStyleLineWidth": 2,
+  "redhat.telemetry.enabled": true
 }
