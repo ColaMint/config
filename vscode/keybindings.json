@@ -15,11 +15,11 @@
   },
   {
     "command": "workbench.action.toggleSidebarVisibility",
-    "key": "ctrl+e"
+    "key": "F3"
   },
   {
     "command": "workbench.files.action.focusFilesExplorer",
-    "key": "ctrl+e",
+    "key": "F3",
     "when": "editorTextFocus"
   },
   {

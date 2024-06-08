@@ -30,14 +30,16 @@ hs.hotkey.bind({ "ctrl" }, "3", function()
     hs.keycodes.currentSourceID("com.google.inputmethod.Japanese.base")
 end)
 
-hs.hotkey.bind({ "cmd", "shift" }, "c", function()
+hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
     hs.window.focusedWindow():centerOnScreen()
 end)
 
+--[[
 hs.hotkey.bind({ "cmd", "shift" }, "f", function()
     hs.window.focusedWindow():toggleZoom()
 end)
+--]]
 
-hs.hotkey.bind({ "cmd", "shift" }, "m", function()
+hs.hotkey.bind({ "ctrl", "cmd" }, "m", function()
     hs.window.focusedWindow():maximize()
 end)
