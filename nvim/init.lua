@@ -941,7 +941,19 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "go", "python", "json", "javascript", "vim", "yaml", "vue", "sql", "lua", "swift" },
+				ensure_installed = {
+					"go",
+					"python",
+					"json",
+					"javascript",
+					"vim",
+					"yaml",
+					"vue",
+					"sql",
+					"lua",
+					"swift",
+					"c_sharp",
+				},
 				ignore_install = { "markdown" },
 				auto_install = true,
 				highlight = {
