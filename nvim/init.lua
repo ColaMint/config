@@ -182,7 +182,7 @@ require("lazy").setup({
                     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                 end, bufopts)
                 vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-                vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+                vim.keymap.set("n", "<C-n>", vim.lsp.buf.rename, bufopts)
                 vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
                 vim.keymap.set("n", "gr", function()
                     require("telescope.builtin").lsp_references()
