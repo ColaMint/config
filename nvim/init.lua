@@ -1002,8 +1002,8 @@ require("lazy").setup({
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             vim.cmd([[
-                nnoremap <silent> <A-,>     <Cmd>BufferPrevious<CR>
-                nnoremap <silent> <A-.>     <Cmd>BufferNext<CR>
+                nnoremap <silent> <C-left>     <Cmd>BufferPrevious<CR>
+                nnoremap <silent> <C-right>    <Cmd>BufferNext<CR>
                 nnoremap <silent> <A-<>     <Cmd>BufferMovePrevious<CR>
                 nnoremap <silent> <A->>     <Cmd>BufferMoveNext<CR>
                 nnoremap <silent> <A-1>     <Cmd>BufferGoto 1<CR>
