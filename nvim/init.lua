@@ -236,6 +236,7 @@ require("lazy").setup({
 				},
 			})
 			-- pip3 install python-lsp-server
+			-- brew install python-lsp-server
 			lspconfig.pylsp.setup({
 				handlers = handlers,
 				capabilities = capabilities,
