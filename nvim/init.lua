@@ -365,6 +365,7 @@ require("lazy").setup({
             -- go install golang.org/x/tools/cmd/goimports@latest
             -- npm install -g cspell@latest
             -- npm i -g vscode-langservers-extracted
+            -- dotnet tool install -g csharpier
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
@@ -394,6 +395,9 @@ require("lazy").setup({
                     null_ls.builtins.code_actions.eslint,
                     -- null_ls.builtins.diagnostics.cspell,
                     -- null_ls.builtins.code_actions.cspell,
+                    null_ls.builtins.formatting.csharpier.with({
+                        filetypes = { "cs" },
+                    }),
                 },
                 handlers = handlers,
                 on_attach = on_attach,
