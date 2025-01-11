@@ -87,3 +87,10 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
+export PATH="/opt/homebrew/opt/mariadb@10.11/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/liming/.cache/lm-studio/bin"
+
+# llvm
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

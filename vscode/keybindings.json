@@ -55,5 +55,9 @@
   {
     "command": "workbench.action.toggleZenMode",
     "key": "ctrl+z"
+  },
+  {
+    "key": "alt+w",
+    "command": "workbench.action.quickSwitchWindow"
   }
 ]

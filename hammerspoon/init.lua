@@ -11,7 +11,7 @@ hs.hotkey.bind({ "cmd" }, "3", function()
 end)
 
 hs.hotkey.bind({ "cmd" }, "4", function()
-    hs.application.launchOrFocus("Lark")
+    hs.application.launchOrFocus("Cursor")
 end)
 
 hs.hotkey.bind({ "cmd" }, "5", function()
