@@ -136,17 +136,9 @@ require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
 		},
 		config = function()
-			-- Mason Usage
-			-- :Mason
-			-- :LspInstall
-			require("mason").setup()
-			require("mason-lspconfig").setup()
-
 			-- border
 			vim.diagnostic.config({
 				float = {
@@ -404,6 +396,17 @@ require("lazy").setup({
 			})
 		end,
 	},
+    {
+    -- Mason Usage
+    -- :Mason
+    -- :LspInstall
+    "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -1338,4 +1341,8 @@ require("lazy").setup({
 		opts = {},
 		enabled = false,
 	},
+	-- {
+	-- 	"luozhiya/fittencode.nvim",
+	-- 	opts = {},
+	-- },
 })

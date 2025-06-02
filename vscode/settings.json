@@ -27,7 +27,6 @@
   "editor.wordBasedSuggestions": "allDocuments",
   "editor.wordWrap": "on",
   "files.autoGuessEncoding": true,
-  "godot_tools.gdscript_lsp_server_port": 6005,
   "projectManager.git.baseFolders": [
     "/Users/liming/go/src/github.com/ColaMint",
     "/Users/liming/go/src/gitlab.umcasual.cn"
@@ -122,8 +121,6 @@
   "indentRainbow.lightIndicatorStyleLineWidth": 2,
   "redhat.telemetry.enabled": true,
   "debug.onTaskErrors": "abort",
-  "Codegeex.Privacy": true,
-  "Codegeex.EnableExtension": false,
   "editor.accessibilitySupport": "off",
   "[dart]": {
     "editor.formatOnSave": true,
@@ -134,7 +131,17 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
   },
-  "cmake.showOptionsMovedNotification": false,
   "dart.openDevTools": "flutter",
-  "vetur.validation.script": false
+  "vetur.validation.script": false,
+  "makefile.configureOnOpen": true,
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "2c23278a62dc9f96ab11bee897d9f53e6479d6419135e4560ce822a6431df5e5",
+      "allowed": true
+    }
+  ],
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "python.analysis.typeCheckingMode": "standard"
 }
