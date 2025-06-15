@@ -94,3 +94,15 @@ export PATH="$PATH:/Users/liming/.cache/lm-studio/bin"
 
 # llvm
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# bison
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+
+# switch
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM="${DEVKITPRO}/devkitARM"
+export DEVKITPPC="${DEVKITPRO}/devkitPPC"
+export PATH="${DEVKITPRO}/tools/bin:${PATH}"
+
+# Added by Windsurf
+export PATH="/Users/liming/.codeium/windsurf/bin:$PATH"

@@ -143,5 +143,6 @@
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
-  "python.analysis.typeCheckingMode": "standard"
+  "python.analysis.typeCheckingMode": "standard",
+  "workbench.secondarySideBar.showLabels": false
 }
